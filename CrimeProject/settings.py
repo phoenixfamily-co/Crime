@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -12,7 +13,11 @@ SECRET_KEY = 'django-insecure-=56+47c2k8yph88k#z_89w@j7-3o-1*1^48ig=g^w$u+c=rizm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'crime.abbaslotfinasab.com',
+    'www.crime.abbaslotfinasab.com'
+]
 
 # Application definition
 
@@ -97,7 +102,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = '/home/abbaslot/crime.abbaslotfinasab.com/static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # اگر فایل استاتیکی دارید که در مسیر پروژه هستند.
+]
+
+MEDIA_ROOT = '/home/abbaslot/crime.abbaslotfinasab.com/media/'
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
