@@ -14,9 +14,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from CrimeProject import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),  # مسیر پنل ادمین
+    path('set_language/', include('django.conf.urls.i18n')),  # مسیر تغییر زبان
+
 ]
+
+urlpatterns += i18n_patterns(
+    path('', include('Home.urls', namespace='home')),  # مسیر URLهای اپلیکیشن Home
+    path('home/', include('Home.urls', namespace='home')),  # مسیر URLهای اپلیکیشن Home
+    path('products/', include('Product.urls', namespace='products')),  # مسیر URLهای اپلیکیشن Product
+)
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
