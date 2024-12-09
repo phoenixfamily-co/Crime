@@ -364,11 +364,11 @@ footer .copyright {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{% url 'home:home-view' %}">{% trans "Home" %}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'products:product-view' %}">{% trans "Products" %}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'contact:contact-view' %}">{% trans "Contact Us" %}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'about:about-view' %}">{% trans "About Us" %}</a></li>
-                <li class="nav-item"><a class="nav-link active" href="{% url 'blogs:blog-view' %}">{% trans "Blogs" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="">{% trans "Home" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="">{% trans "Products" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="">{% trans "Contact Us" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="">{% trans "About Us" %}</a></li>
+                <li class="nav-item"><a class="nav-link active" href="">{% trans "Login" %}</a></li>
             </ul>
             <!-- دکمه تغییر تم -->
             <div class="ms-3 d-flex align-items-center">
@@ -387,11 +387,6 @@ footer .copyright {
                         <select name="language" class="form-select form-select-sm d-inline w-auto" onchange="this.form.submit()">
                         <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
                         <option value="fa" class="option-rtl" {% if LANGUAGE_CODE == 'fa' %}selected{% endif %}>فارسی</option>
-                        <option value="ar" class="option-rtl" {% if LANGUAGE_CODE == 'ar' %}selected{% endif %}>العربیة</option>
-                        <option value="tr" {% if LANGUAGE_CODE == 'tr' %}selected{% endif %}>Türkçe</option>
-                        <option value="ru" {% if LANGUAGE_CODE == 'ru' %}selected{% endif %}>Русский</option>
-                        <option value="hi" {% if LANGUAGE_CODE == 'hi' %}selected{% endif %}>हिन्दी</option>
-                        <option value="zh" {% if LANGUAGE_CODE == 'zh' %}selected{% endif %}>中文</option>
                     </select>
                     </label>
                 </form>
