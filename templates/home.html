@@ -497,6 +497,44 @@ footer .copyright {
     </div>
     </div>
 
+      <div class="col-md-4 mb-4">
+         <div class="card">
+             {% if post.image %}
+                 <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" />
+             {% else %}
+                 <img src="{% static 'images/banner.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+             {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">Crime Puzzle</h5>
+            <p class="card-text">
+                Crime Mystery Puzzle
+            </p>
+        </div>
+        <div class="card-footer">
+            <a href="" target="_blank">Play</a>
+        </div>
+    </div>
+    </div>
+
+      <div class="col-md-4 mb-4">
+         <div class="card">
+             {% if post.image %}
+                 <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" />
+             {% else %}
+                 <img src="{% static 'images/banner.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+             {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">Crime Puzzle</h5>
+            <p class="card-text">
+                Crime Mystery Puzzle
+            </p>
+        </div>
+        <div class="card-footer">
+            <a href="" target="_blank">Play</a>
+        </div>
+    </div>
+    </div>
+
   </div>
 </div>
 
