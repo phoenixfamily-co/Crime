@@ -364,10 +364,10 @@ footer .copyright {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="{% url 'product:start-view' %}">{% trans "Start" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'product:start-view' %}">{% trans "Start" %}</a></li>
                 <li class="nav-item" disabled><a class="nav-link" href="{% url 'product:suspects-view' %}">{% trans "Suspects" %}</a></li>
                 <li class="nav-item" disabled><a class="nav-link" href="">{% trans "Evidence" %}</a></li>
-                <li class="nav-item" disabled=><a class="nav-link" href="">{% trans "Result" %}</a></li>
+                <li class="nav-item" disabled=><a class="nav-link active" href="">{% trans "Result" %}</a></li>
             </ul>
 
            <!-- دکمه تغییر تم -->
@@ -418,13 +418,13 @@ footer .copyright {
 
         <!-- Reason Input -->
         <div class="mb-3 ms-5 me-5">
-            <label for="reason-text" class="form-label">Your Reason:</label>
-            <textarea class="form-control" id="reason-text" rows="4" placeholder="Explain why you chose this suspect..." required></textarea>
+            <label for="reason-text" class="form-label">{% trans 'Your Reason:' %}</label>
+            <textarea class="form-control" id="reason-text" rows="4" placeholder="{% trans 'Explain Why ...' %}" required></textarea>
         </div>
 
         <!-- Submit Button -->
         <div class="text-center">
-            <button type="submit" class="btn btn-success">Submit Answer</button>
+            <button type="submit" class="btn btn-primary mt-3">{% trans 'Submit' %}</button>
         </div>
     </form>
 </div>
