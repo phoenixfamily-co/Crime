@@ -1,0 +1,463 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow"> <!-- اجازه ایندکس و دنبال کردن لینک‌ها -->
+    <title>{{ page_title }}</title> <!-- عنوان صفحه -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/4a2a05a158.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --navbar-bg: #f8f9fa;
+            --navbar-border: #d32f2f;
+            --nav-link-color: #000000;
+            --nav-link-hover: #d32f2f;
+            --btn-bg: #d32f2f;
+            --btn-hover: #ff6659;
+            --btn-text: #ffffff;
+            --primary-light: #d32f2f; /* قرمز لوگو */
+            --primary-dark: #333;
+            --toggle-bg-light: var(--primary-light);
+            --toggle-bg-dark: #444;
+            --text-color-muted: #262626; /* رنگ خاکستری مشابه text-muted */
+             --navbar-toggler-border-color: #ccc; /* رنگ حاشیه برای حالت لایت */
+            --navbar-toggler-bg-color: #fff; /* رنگ پس‌زمینه برای حالت لایت */
+            --navbar-toggler-icon-color: #333; /* رنگ ایکون برای حالت لایت */
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --navbar-bg: #1e1e1e;
+            --navbar-border: #d32f2f;
+            --nav-link-color: #e0e0e0;
+            --nav-link-hover: #d32f2f;
+            --btn-bg: #d32f2f;
+            --btn-hover: #ff6659;
+            --btn-text: #ffffff;
+            --text-color-muted: #e1e1e1; /* رنگ خاکستری روشن‌تر برای حالت دارک */
+            --navbar-toggler-border-color-dark: #666; /* رنگ حاشیه برای حالت دارک */
+            --navbar-toggler-bg-color-dark: #333; /* رنگ پس‌زمینه برای حالت دارک */
+            --navbar-toggler-icon-color-dark: #fff; /* رنگ ایکون برای حالت دارک */
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar {
+            background-color: var(--navbar-bg);
+            border-bottom: 2px solid var(--navbar-border);
+        }
+
+        .nav-link {
+            color: var(--nav-link-color);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--nav-link-hover);
+        }
+
+        .nav-link.active {
+            color: var(--nav-link-hover) !important;
+            text-decoration: underline;
+            text-decoration-color: var(--nav-link-hover);
+             text-underline-offset: 5px;
+        }
+
+        .form-select {
+            background-color: var(--navbar-bg);
+            color: var(--text-color);
+            border: 1px solid var(--navbar-border);
+            direction: ltr !important;
+        }
+
+            /* تغییر رنگ حاشیه و سایه انتخاب شده */
+        select.form-select:focus {
+            border-color: #D32F2F !important; /* قرمز رنگ لوگو */
+            box-shadow: 0 0 0 0.25rem rgba(211, 47, 47, 0.5) !important; /* قرمز با شفافیت */
+        }
+
+        /* تغییر رنگ هاور برای گزینه‌ها */
+        select.form-select option:hover {
+            background-color: #FF6659 !important; /* قرمز روشن */
+            color: #fff !important; /* متن سفید */
+        }
+
+                /* تغییر رنگ سوییچ به رنگ قرمز */
+        .form-check-input {
+            background-color: #EBEBE4; /* رنگ دایره در حالت فعال */
+            border-color: #d32f2f!important; /* رنگ مرز (قرمز لوگو) */
+            box-shadow: 0 0 1px #d32f2f; /* سایه دور سوییچ */
+            transition: all 0.3s ease-in-out; /* انیمیشن تغییر */
+        }
+
+        /* تغییر رنگ هنگام فعال بودن (روشن) */
+        .form-check-input:checked {
+            background-color: #d32f2f; /* رنگ دایره در حالت فعال */
+            border-color: #d32f2f;
+            box-shadow: 0 0 1px #d32f2f; /* سایه بیشتر برای حالت روشن */
+        }
+
+
+        /* تغییر سایه و استایل هنگام فوکوس */
+        .form-check-input:focus {
+            box-shadow: 0 0 1px #ff0000; /* سایه هنگام فوکوس */
+            border-color: #d32f2f;
+
+        }
+
+         .form-check-input:checked:focus {
+             box-shadow: 0 0 1px #ff0000; /* سایه هنگام فوکوس */
+             border-color: #d32f2f;
+        }
+
+        .nav-item.align-items-center {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        html[dir="rtl"] .nav-item.align-items-center {
+            flex-direction: row-reverse;
+        }
+
+        .option-rtl{
+            text-align: right; /* یا گزینه‌ها به سمت راست تراز شوند */
+            padding-right: 10px; /* فاصله گزینه‌ها از راست */
+        }
+
+          footer {
+              background-color: var(--navbar-bg);
+              color: var(--text-color);
+              border-top: 2px solid var(--navbar-border)!important;
+              position: relative; /* برای جلوگیری از تداخل با بخش‌های دیگر */
+          }
+
+    footer a {
+        color: var(--text-color);
+        transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+        color: var(--nav-link-hover); /* رنگ لینک‌ها هنگام هاور */
+    }
+
+    footer i {
+        color: var(--text-color);
+    }
+
+    footer p {
+        color: var(--text-color);
+    }
+
+footer .copyright {
+    color: var(--text-color-muted); /* رنگ متن مشابه text-muted */
+    font-size: 0.875rem; /* اندازه متن شبیه text-muted */
+    margin: 0; /* حذف حاشیه */
+    transition: color 0.3s ease; /* تغییر روان رنگ */
+    opacity: 0.8; /* شفافیت متن مشابه text-muted */
+
+}
+
+    footer .contact-icon {
+        color: var(--primary-light); /* رنگ آیکون‌ها به رنگ لوگو */
+        font-size: 1.2rem; /* اندازه آیکون */
+        transition: color 0.3s ease; /* تغییر رنگ روان */
+        margin-right: 0.5rem
+    }
+
+
+    html[dir="rtl"] .contact-icon {
+        margin-right: 0; /* حذف فاصله سمت راست برای زبان‌های راست‌به‌چپ */
+        margin-left: 0.5rem; /* ایجاد فاصله از سمت چپ */
+    }
+
+       .center-container {
+           text-align: center;
+           margin-top: 200px;
+           padding: 30px;
+           background-color: var(--navbar-bg);
+           border-radius: 8px;
+           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+           max-width: 80%;
+           width: 400px;
+           transition: background-color 0.3s ease;
+           position: relative;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%); /* این باعث می‌شود که بخش در وسط صفحه باشد */
+           z-index: 1000; /* اطمینان از اینکه این بخش بالاتر از سایر محتویات صفحه قرار می‌گیرد */
+       }
+
+        .center-container h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .center-container p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .center-container .spinner-border {
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+            border-width: 4px;
+            color: var(--btn-bg);
+        }
+
+        html[dir="rtl"] .social-icons {
+            display: flex;
+            justify-content: center; /* برای وسط‌چین کردن آیکون‌ها */
+            gap: 10px; /* فاصله بین آیکون‌ها */
+            direction: rtl; /* جهت متن و آیکون‌ها به راست */
+        }
+
+        html[dir="rtl"] .social-icons a {
+            margin-left: 0; /* حذف margin چپ اضافی */
+            margin-right: 10px; /* فاصله مناسب برای راست به چپ */
+        }
+
+        .social-icons a i {
+            color: var(--text-color);; /* رنگ پیش‌فرض */
+            transition: color 0.3s ease; /* انیمیشن */
+        }
+
+        .social-icons a i:hover {
+            color: var(--btn-bg) !important; /* تغییر رنگ هنگام hover */
+        }
+
+        html[dir="rtl"] .logo-container {
+            text-align: right; /* راست چین کردن محتوا */
+            margin-right: 20px; /* فاصله از سمت راست */
+        }
+
+        /* برای زبان‌های چپ به راست (LTR) */
+        html[dir="ltr"] .logo-container {
+            text-align: center; /* وسط چین کردن محتوا */
+        }
+
+        .navbar-toggler-icon {
+            display: none!important; /* مخفی کردن آیکون پیش‌فرض */
+        }
+
+        .custom-toggler{
+            color: var(--text-color);
+            border: 0;
+            font-size: 24px;
+        }
+
+        .navbar-toggler {
+            border: none !important; /* حذف بردر دور دکمه */
+            outline: none !important; /* حذف کادر زمانی که روی دکمه کلیک می‌کنید */
+            background-color: transparent; /* حذف پس‌زمینه */
+            box-shadow: none !important; /* حذف هرگونه سایه */
+        }
+        .navbar-toggler:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+
+        .input-group input {
+            background-color: transparent;
+            color: var(--text-color);
+            outline: none!important;
+            box-shadow: none;
+        }
+
+         .input-group input::placeholder {
+            color: var(--text-color);
+        }
+
+        .input-group input:focus {
+            background-color: transparent;
+            border-color: var(--primary-light)!important;
+            color: var(--text-color);
+            outline: none!important;
+            box-shadow: none;
+        }
+
+        .input-group button {
+            background-color: var(--btn-bg)!important;
+            border-radius: 0;
+            color: white;
+        }
+
+
+        .input-group button:hover {
+            background-color: var(--btn-bg)!important;
+            opacity: 0.7;
+
+        }
+         .input-group button:active {
+            background-color: var(--btn-bg) !important;
+
+        }
+
+          .input-group button:focus {
+            background-color: var(--btn-bg) !important;
+
+        }
+
+        .card-footer{
+            color: var(--primary-light)!important;
+            background-color:var(--navbar-bg)!important; ;
+            border-color:var(--primary-light)!important ;
+          }
+
+          .card-footer a {
+              width: 100%;
+              height: 100%;
+              line-height: 100%;
+              vertical-align: center;
+              text-align: center;
+              justify-content: center;
+              cursor: pointer;
+              display: inline-block;
+              color: var(--primary-light)!important;
+              text-decoration: none!important;
+
+          }
+
+          .card {
+              background-color:transparent;!important;
+              color: var(--text-color)!important;
+              border-color:var(--primary-light)!important ;
+          }
+
+          .card-body {
+              background-color:transparent;!important;
+              color: var(--text-color)!important;
+          }
+
+           .suspect-card {
+            max-width: 300px;
+            margin: auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .suspect-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .suspect-card .card-body {
+            text-align: center;
+        }
+
+        .suspect-card .btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg shadow-sm">
+    <div class="container">
+        <a class="navbar-brand">
+            <img src="{% static 'images/logo.png' %}" alt="{% trans 'Logo' %}" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
+            <span class="navbar-toggler-icon">
+            </span>
+            <i class="fa-solid fa-bars custom-toggler"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="">{% trans "Home" %}</a></li>
+                <li class="nav-item" disabled><a class="nav-link" href="">{% trans "Category" %}</a></li>
+                <li class="nav-item" disabled=><a class="nav-link" href="">{% trans "Stories" %}</a></li>
+                <li class="nav-item" disabled><a class="nav-link" href="">{% trans "Contact Us" %}</a></li>
+                <li class="nav-item" disabled><a class="nav-link" href="">{% trans "About Us" %}</a></li>
+            </ul>
+
+           <!-- دکمه تغییر تم -->
+            <div class="ms-3 d-flex align-items-center">
+                <i class="fas fa-user"></i>
+            </div>
+
+            <!-- دکمه تغییر تم -->
+            <div class="ms-3 d-flex align-items-center">
+                <i class="fas fa-sun"></i>
+                <div class="ms-2 form-check form-switch">
+                    <label for="theme-switch"></label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="theme-switch" />
+                </div>
+                <i class="fas fa-moon"></i>
+            </div>
+            <!-- فرم تغییر زبان -->
+            <div class="ms-3">
+                <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <label>
+                        <select name="language" class="form-select form-select-sm d-inline w-auto" onchange="this.form.submit()">
+                        <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+                        <option value="fa" class="option-rtl" {% if LANGUAGE_CODE == 'fa' %}selected{% endif %}>فارسی</option>
+                    </select>
+                    </label>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container py-5">
+        <div class="row justify-content-center">
+            <!-- Suspect Card -->
+            <div class="suspect-card">
+                <img src="https://via.placeholder.com/300x200" alt="Suspect Image">
+                <div class="card-body">
+                    <h5 class="card-title">John Doe</h5>
+                    <p class="card-text">Age: 35 | Last seen: City Square</p>
+                    <button class="btn btn-primary">View Interrogation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const themeSwitch = document.getElementById("theme-switch");
+  const currentTheme = localStorage.getItem("theme") || "light";
+
+  if (currentTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    themeSwitch.checked = true;
+  }
+
+  themeSwitch.addEventListener("change", function () {
+    if (this.checked) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  });
+});
+    </script>
+</body>
+</html>
