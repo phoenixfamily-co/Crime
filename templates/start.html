@@ -364,8 +364,8 @@ footer .copyright {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="">{% trans "Start" %}</a></li>
-                <li class="nav-item" disabled><a class="nav-link" href="">{% trans "Suspects" %}</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'product:start-view' %}">{% trans "Start" %}</a></li>
+                <li class="nav-item" disabled><a class="nav-link" href="{% url 'product:suspects-view' %}">{% trans "Suspects" %}</a></li>
                 <li class="nav-item" disabled><a class="nav-link" href="">{% trans "Evidence" %}</a></li>
                 <li class="nav-item" disabled=><a class="nav-link" href="">{% trans "Result" %}</a></li>
             </ul>
