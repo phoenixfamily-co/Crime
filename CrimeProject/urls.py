@@ -30,6 +30,8 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', include('Home.urls', namespace='home')),  # مسیر URLهای اپلیکیشن Home
     path('home/', include('Home.urls', namespace='home')),  # مسیر URLهای اپلیکیشن Home
+    path('product/', include('Product.urls', namespace='product')),  # مسیر URLهای اپلیکیشن Home
+
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
