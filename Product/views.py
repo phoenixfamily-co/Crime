@@ -21,7 +21,6 @@ def interrogation(request):
     return render(request, 'interrogation.html', {'LANGUAGE_CODE': current_language})
 
 
-
 @cache_page(60 * 15)
 def result(request):
     current_language = get_language()
