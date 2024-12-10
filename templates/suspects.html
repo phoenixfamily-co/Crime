@@ -348,29 +348,6 @@ footer .copyright {
               background-color:transparent;!important;
               color: var(--text-color)!important;
           }
-
-           .suspect-card {
-            max-width: 300px;
-            margin: auto;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .suspect-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .suspect-card .card-body {
-            text-align: center;
-        }
-
-        .suspect-card .btn {
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
@@ -387,10 +364,10 @@ footer .copyright {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="{% url 'product:start-view' %}">{% trans "Start" %}</a></li>
-                <li class="nav-item" disabled><a class="nav-link" href="{% url 'product:suspects-view' %}">{% trans "Suspects" %}</a></li>
-                <li class="nav-item" disabled><a class="nav-link" href="">{% trans "Evidence" %}</a></li>
-                <li class="nav-item" disabled=><a class="nav-link" href="">{% trans "Result" %}</a></li>
+                <li class="nav-item"><a class="nav-link " href="{% url 'product:start-view' %}">{% trans "Start" %}</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'product:suspects-view' %}">{% trans "Suspects" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="">{% trans "Evidence" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="">{% trans "Result" %}</a></li>
             </ul>
 
            <!-- دکمه تغییر تم -->
@@ -423,19 +400,187 @@ footer .copyright {
     </div>
 </nav>
 
-<div class="container py-5">
-        <div class="row justify-content-center">
-            <!-- Suspect Card -->
-            <div class="suspect-card">
-                <img src="https://via.placeholder.com/300x200" alt="Suspect Image">
-                <div class="card-body">
-                    <h5 class="card-title">John Doe</h5>
-                    <p class="card-text">Age: 35 | Last seen: City Square</p>
-                    <button class="btn btn-primary">View Interrogation</button>
+<div class="container w-80 mt-4">
+    <div class="input-group">
+        <label for="search-input"></label>
+        <input type="text" id="search-input" class="form-control" placeholder="{% trans 'Search' %}">
+        <div class="input-group-append">
+            <button id="search-button" class="btn" type="button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-12" style="color:var(--primary-light);">
+      <h4 class="mb-3">{% trans 'Power of Observation Creates Knowledge That Leads to More Power' %}</h4>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <!-- Blog Post Card -->
+
+    <div class="col-md-4 mb-4">
+         <div class="card">
+             {% if post.image %}
+                 <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" />
+             {% else %}
+                 <img src="{% static 'images/banner.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+             {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">Crime Puzzle</h5>
+            <p class="card-text">
+                Crime Mystery Puzzle
+            </p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'product:start-view' %}" target="_blank">Play</a>
+        </div>
+    </div>
+    </div>
+
+      <div class="col-md-4 mb-4">
+         <div class="card">
+             {% if post.image %}
+                 <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" />
+             {% else %}
+                 <img src="{% static 'images/banner.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+             {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">Crime Puzzle</h5>
+            <p class="card-text">
+                Crime Mystery Puzzle
+            </p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'product:start-view' %}" target="_blank">Play</a>
+        </div>
+    </div>
+    </div>
+
+      <div class="col-md-4 mb-4">
+         <div class="card">
+             {% if post.image %}
+                 <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" />
+             {% else %}
+                 <img src="{% static 'images/banner.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+             {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">Crime Puzzle</h5>
+            <p class="card-text">
+                Crime Mystery Puzzle
+            </p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'product:start-view' %}" target="_blank">Play</a>
+        </div>
+    </div>
+    </div>
+
+      <div class="col-md-4 mb-4">
+         <div class="card">
+             {% if post.image %}
+                 <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" />
+             {% else %}
+                 <img src="{% static 'images/banner.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+             {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">Crime Puzzle</h5>
+            <p class="card-text">
+                Crime Mystery Puzzle
+            </p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'product:start-view' %}" target="_blank">Play</a>
+        </div>
+    </div>
+    </div>
+
+      <div class="col-md-4 mb-4">
+         <div class="card">
+             {% if post.image %}
+                 <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" />
+             {% else %}
+                 <img src="{% static 'images/banner.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+             {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">Crime Puzzle</h5>
+            <p class="card-text">
+                Crime Mystery Puzzle
+            </p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'product:start-view' %}" target="_blank">Play</a>
+        </div>
+    </div>
+    </div>
+
+      <div class="col-md-4 mb-4">
+         <div class="card">
+             {% if post.image %}
+                 <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" />
+             {% else %}
+                 <img src="{% static 'images/banner.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+             {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">Crime Puzzle</h5>
+            <p class="card-text">
+                Crime Mystery Puzzle
+            </p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'product:start-view' %}" target="_blank">Play</a>
+        </div>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+
+   <footer class="mt-5">
+    <div class="container py-4">
+        <div class="row align-items-center">
+            <!-- لوگوی شرکت -->
+            <div class="col-md-4 text-center mb-3 mb-md-0">
+                <a href="//phoenixfamily.co">
+                    <img src="{% static 'images/logo.png' %}" alt="{% trans 'Company Logo' %}" class="img-fluid" style="max-width: 150px;">
+                </a>
+            </div>
+
+            <!-- اطلاعات تماس -->
+            <div class="col-md-4 text-center mb-3 mb-md-0">
+                <h6 class="mb-2">{% trans "Contact Us" %}</h6>
+                <p class="mb-1">
+                    <i class="fas fa-phone-alt contact-icon  me-2"></i>{% trans "Phone" %}: +989022981378
+                </p>
+                <p class="mb-0">
+                    <i class="fas fa-envelope contact-icon me-2"></i>{% trans "Email" %}: info@phoenixfamily.co
+                </p>
+            </div>
+
+            <!-- شبکه‌های اجتماعی -->
+            <div class="col-md-4 text-center right">
+                <h6 class="mb-2">{% trans "Follow Us" %}</h6>
+                <div class="social-icons">
+                <a href="//instagram.com/phoenixfamily.co?igsh=ZzRpb2owOHdnMWd5" class="me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="//t.me/Abbas_lotfinasab" class="me-3"><i class="fab fa-telegram fa-lg"></i></a>
+                <a href="//wa.link/9x7e5p" class="me-3"><i class="fab fa-whatsapp fa-lg"></i></a>
+                <a href="//linkedin.com/company/phoenixfamily/"><i class="fa-brands fa-linkedin fa-lg"></i></a>
                 </div>
             </div>
         </div>
+
+        <!-- کپی‌رایت -->
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <p class="mb-0 copyright">
+                    &copy; 2024 PhoenixFamily. {% trans "All rights reserved." %}
+                </p>
+            </div>
+        </div>
     </div>
+</footer>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -458,5 +603,28 @@ footer .copyright {
   });
 });
     </script>
+
+<script>
+    function searchFunction() {
+    var input, filter, posts, post, title, i, txtValue;
+    input = document.getElementById('searchInput');
+    filter = input.value.toLowerCase();
+    posts = document.getElementsByClassName('blog-post');
+
+    // Loop through all blog posts and hide those that don't match the search
+    for (i = 0; i < posts.length; i++) {
+        post = posts[i];
+        title = post.getElementsByTagName('h4')[0];
+        txtValue = title.textContent || title.innerText;
+
+        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+            post.style.display = "";
+        } else {
+            post.style.display = "none";
+        }
+    }
+}
+</script>
+
 </body>
 </html>
