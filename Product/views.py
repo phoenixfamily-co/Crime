@@ -22,6 +22,12 @@ def interrogation(request):
 
 
 @cache_page(60 * 15)
+def evidence(request):
+    current_language = get_language()
+    return render(request, 'evidence.html', {'LANGUAGE_CODE': current_language})
+
+
+@cache_page(60 * 15)
 def result(request):
     current_language = get_language()
     return render(request, 'result.html', {'LANGUAGE_CODE': current_language})
