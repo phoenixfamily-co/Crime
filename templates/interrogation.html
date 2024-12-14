@@ -12,87 +12,141 @@
             background-color: #1c1c1e;
             color: #f5f5f5;
             font-family: 'Roboto', sans-serif;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
             padding: 20px;
         }
-        .suspect-info, .question-list {
+        .section {
             background-color: #2c2c2e;
             border-radius: 10px;
             padding: 20px;
+            margin-bottom: 20px;
         }
-        .suspect-info h5, .question-list h5 {
+        .section h5 {
             color: #ffd700;
+            margin-bottom: 15px;
         }
-        .stress-indicator {
-            height: 20px;
+        .profile-info p {
+            margin: 5px 0;
+        }
+        .card {
+            background-color: #3c3c3e;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .card p {
+            color: #f5f5f5;
+        }
+        .btn {
+            background-color: #ffd700;
+            color: #1c1c1e;
+            border: none;
+        }
+        .btn:hover {
+            background-color: #f0c800;
+        }
+        .indicator {
             background-color: #3c3c3e;
             border-radius: 10px;
-            margin-bottom: 10px;
+            height: 20px;
             position: relative;
+            margin-bottom: 10px;
         }
-        .stress-bar {
-            height: 100%;
-            width: 50%;
+        .indicator-bar {
             background-color: #ff4747;
+            height: 100%;
             border-radius: 10px;
+            transition: width 0.5s ease-in-out;
         }
-        .face-analysis {
-            background-color: #2c2c2e;
-            border-radius: 10px;
-            padding: 15px;
+        .emotion-analysis {
             text-align: center;
         }
-        .question-btn {
-            display: block;
+        .emotion-analysis img {
+            border-radius: 10px;
             margin-bottom: 10px;
-            background-color: #ffd700;
-            border: none;
-            color: #1c1c1e;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: left;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2 class="text-center">Interrogation Room</h2>
 
-        <div class="row">
-            <!-- Suspect Info -->
-            <div class="col-md-4 suspect-info">
-                <h5>Suspect Details</h5>
-                <img src="{% static 'images/suspect 1.webp' %}" alt="Suspect" class="rounded-circle mb-3" width="100" height="100">
-                <p>Name: John Doe</p>
-                <p>Age: 35</p>
-                <p>Occupation: Teacher</p>
-                <p>Stress Level:</p>
-                <div class="stress-indicator">
-                    <div class="stress-bar"></div>
-                </div>
+        <!-- بخش اول: پروفایل مظنون -->
+        <div class="section profile-info">
+            <h5>Suspect Profile</h5>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Age:</strong> 35</p>
+            <p><strong>Address:</strong> 123 Main St, Cityville</p>
+            <p><strong>Blood Group:</strong> O+</p>
+            <p><strong>Other Details:</strong> No prior convictions</p>
+        </div>
+
+        <!-- بخش دوم: سوالات و پاسخ‌ها -->
+        <div class="section">
+            <h5>Questions & Answers</h5>
+            <div id="question-card" class="card p-3">
+                <p><strong>Question:</strong> Where were you last night?</p>
+                <p><strong>Answer:</strong> I was at home watching TV.</p>
             </div>
-
-            <!-- Suspect Image and Analysis -->
-            <div class="col-md-4 face-analysis">
-                <h5>Suspect Analysis</h5>
-                <img src="face.jpg" alt="Suspect Face" class="rounded mb-3" width="200">
-                <p>Emotion: Angry</p>
-                <p>Heart Rate: 120 BPM</p>
-            </div>
-
-            <!-- Question List -->
-            <div class="col-md-4 question-list">
-                <h5>Questions</h5>
-                <button class="question-btn">Where were you last night?</button>
-                <button class="question-btn">Do you know the victim?</button>
-                <button class="question-btn">Can anyone confirm your alibi?</button>
+            <div class="d-flex justify-content-between">
+                <button class="btn" onclick="previousQuestion()">Previous</button>
+                <button class="btn" onclick="nextQuestion()">Next</button>
             </div>
         </div>
+
+        <!-- بخش سوم: تحلیل جسمی و احساسی -->
+        <div class="section">
+            <h5>Physical & Emotional Analysis</h5>
+            <p><strong>Heart Rate:</strong> <span id="heart-rate">120 BPM</span></p>
+            <div class="indicator">
+                <div id="stress-bar" class="indicator-bar" style="width: 60%;"></div>
+            </div>
+            <p><strong>Stress Level:</strong> <span id="stress-level">Moderate</span></p>
+            <div class="emotion-analysis">
+                <h6>Facial Emotion Analysis</h6>
+                <img src="face.jpg" alt="Suspect Face" width="150">
+                <p><strong>Emotion:</strong> Nervous</p>
+            </div>
+        </div>
+
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let questions = [
+            { question: "Where were you last night?", answer: "I was at home watching TV.", heartRate: "120 BPM", stress: "60%", emotion: "Nervous" },
+            { question: "Do you know the victim?", answer: "Yes, he was my colleague.", heartRate: "130 BPM", stress: "70%", emotion: "Angry" },
+            { question: "Can anyone confirm your alibi?", answer: "No, I was alone.", heartRate: "140 BPM", stress: "80%", emotion: "Defensive" }
+        ];
+        let currentQuestion = 0;
+
+        function updateUI() {
+            const questionCard = document.getElementById("question-card");
+            const heartRate = document.getElementById("heart-rate");
+            const stressBar = document.getElementById("stress-bar");
+            const stressLevel = document.getElementById("stress-level");
+            const emotionText = document.querySelector(".emotion-analysis p strong");
+
+            questionCard.innerHTML = `
+                <p><strong>Question:</strong> ${questions[currentQuestion].question}</p>
+                <p><strong>Answer:</strong> ${questions[currentQuestion].answer}</p>
+            `;
+            heartRate.textContent = questions[currentQuestion].heartRate;
+            stressBar.style.width = questions[currentQuestion].stress;
+            stressLevel.textContent = questions[currentQuestion].stress === "80%" ? "High" : "Moderate";
+            emotionText.textContent = questions[currentQuestion].emotion;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                updateUI();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                updateUI();
+            }
+        }
+    </script>
 </body>
 </html>
