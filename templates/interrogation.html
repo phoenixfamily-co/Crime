@@ -70,14 +70,56 @@
     <div class="container">
 
         <!-- بخش اول: پروفایل مظنون -->
-        <div class="section profile-info">
+         <div class="section profile-info">
             <h5>Suspect Profile</h5>
-            <p><strong>Name:</strong> John Doe</p>
-            <p><strong>Age:</strong> 35</p>
-            <p><strong>Address:</strong> 123 Main St, Cityville</p>
-            <p><strong>Blood Group:</strong> O+</p>
-            <p><strong>Other Details:</strong> No prior convictions</p>
+            <div class="profile-container">
+                <!-- تصویر مظنون -->
+                <div class="profile-image">
+                    <img src="{% static 'images/suspect 1.webp' %} alt="Suspect Image">
+                </div>
+                <!-- اطلاعات مظنون -->
+                <table class="profile-table">
+                    <tr>
+                        <th>Name:</th>
+                        <td>John Doe</td>
+                    </tr>
+                    <tr>
+                        <th>Age:</th>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <th>Gender:</th>
+                        <td>Male</td>
+                    </tr>
+                    <tr>
+                        <th>Height:</th>
+                        <td>180 cm</td>
+                    </tr>
+                    <tr>
+                        <th>Weight:</th>
+                        <td>75 kg</td>
+                    </tr>
+                    <tr>
+                        <th>Blood Group:</th>
+                        <td>O+</td>
+                    </tr>
+                    <tr>
+                        <th>Marital Status:</th>
+                        <td>Married</td>
+                    </tr>
+                    <tr>
+                        <th>Occupation:</th>
+                        <td>Accountant</td>
+                    </tr>
+                    <tr>
+                        <th>Address:</th>
+                        <td>123 Main St, Cityville</td>
+                    </tr>
+                </table>
+            </div>
         </div>
+
+    </div>
 
         <!-- بخش دوم: سوالات و پاسخ‌ها -->
         <div class="section">
