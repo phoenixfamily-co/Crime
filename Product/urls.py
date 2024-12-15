@@ -9,5 +9,6 @@ urlpatterns = [
     path('interrogation/', views.interrogation, name='interrogation-view'),  # صفحه اصلی
     path('evidence/', views.evidence, name='evidence-view'),  # صفحه اصلی
     path('result/', views.result, name='result-view'),  # صفحه اصلی
+    path('autopsy/', views.autopsy, name='autopsy-view'),  # صفحه اصلی
 
 ]

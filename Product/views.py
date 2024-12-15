@@ -31,3 +31,10 @@ def evidence(request):
 def result(request):
     current_language = get_language()
     return render(request, 'result.html', {'LANGUAGE_CODE': current_language})
+
+
+@cache_page(60 * 15)
+def autopsy(request):
+    current_language = get_language()
+    return render(request, 'autopsy.html', {'LANGUAGE_CODE': current_language})
+

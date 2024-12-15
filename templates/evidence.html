@@ -423,7 +423,7 @@ footer .copyright {
                 <div class="card-body">
                     <h5 class="card-title">Unlocked Evidence</h5>
                     <p class="card-text">A suspicious letter found at the crime scene.</p>
-                    <button class="btn btn-success w-100">View Details</button>
+                    <button onclick="window.open({% url 'product:autopsy-view' %})" class="btn btn-success w-100">View Details</button>
                 </div>
             </div>
         </div>
