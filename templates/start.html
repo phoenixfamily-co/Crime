@@ -52,15 +52,12 @@
             --navbar-toggler-icon-color-dark: #fff; /* رنگ ایکون برای حالت دارک */
         }
 
-       body {
-            background-color: #1c1c1c;
-            color: #f0f0f0;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
+      body {
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .navbar {
