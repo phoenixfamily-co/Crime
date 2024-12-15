@@ -52,12 +52,15 @@
             --navbar-toggler-icon-color-dark: #fff; /* رنگ ایکون برای حالت دارک */
         }
 
-        body {
-            margin: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: Arial, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+       body {
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
         }
 
         .navbar {
@@ -318,11 +321,6 @@ footer .copyright {
 
         }
 
-        .card-footer{
-            color: var(--primary-light)!important;
-            background-color:var(--navbar-bg)!important; ;
-            border-color:var(--primary-light)!important ;
-          }
 
           .card-footer a {
               width: 100%;
@@ -338,16 +336,36 @@ footer .copyright {
 
           }
 
-          .card {
-              background-color:transparent;!important;
-              color: var(--text-color)!important;
-              border-color:var(--primary-light)!important ;
-          }
+        .container {
+            text-align: center;
+            max-width: 700px;
+        }
 
-          .card-body {
-              background-color:transparent;!important;
-              color: var(--text-color)!important;
-          }
+        .typing-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .timer {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #ff6961;
+        }
+
+        .btn-custom {
+            margin-top: 30px;
+            background-color: #ff6961;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .btn-custom:hover {
+            background-color: #ff4d4d;
+        }
+
     </style>
 </head>
 <body>
@@ -399,6 +417,48 @@ footer .copyright {
         </div>
     </div>
 </nav>
+
+ <div class="container">
+        <!-- تایپ تدریجی متن -->
+        <div class="typing-text" id="typingText"></div>
+
+        <!-- زمان و تاریخ -->
+        <div class="timer" id="timer"></div>
+
+        <!-- دکمه شروع -->
+        <button class="btn btn-custom btn-lg">Start Investigation</button>
+    </div>
+
+    <script>
+        // تایپ تدریجی متن
+        const text = `
+        The case begins now.
+        A body was found in the alley of a quiet neighborhood.
+        Time is running out, detective. Can you uncover the truth?
+        `;
+        const typingText = document.getElementById("typingText");
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                typingText.textContent += text[index];
+                index++;
+                setTimeout(typeText, 50); // سرعت تایپ (به میلی‌ثانیه)
+            }
+        }
+        typeText();
+
+        // نمایش زمان
+        function updateTimer() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, "0");
+            const minutes = String(now.getMinutes()).padStart(2, "0");
+            const seconds = String(now.getSeconds()).padStart(2, "0");
+            const date = now.toLocaleDateString("en-US");
+            document.getElementById("timer").textContent = `Time: ${hours}:${minutes}:${seconds} | Date: ${date}`;
+        }
+        setInterval(updateTimer, 1000);
+    </script>
 
 
 
