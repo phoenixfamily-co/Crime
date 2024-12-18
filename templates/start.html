@@ -353,11 +353,17 @@ footer .copyright {
 
 
         .btn-custom {
-            margin-top: 30px;
-            background-color: var(--primary-light)!important;
-            color: var(--text-color);
-            font-weight: bold;
-            margin-bottom: 15px;
+            position: fixed;
+            bottom: 20px; /* فاصله از پایین صفحه */
+            left: 20px; /* فاصله از سمت چپ صفحه */
+            background-color: var(--btn-bg); /* رنگ دکمه */
+            color: white; /* رنگ متن دکمه */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .btn-custom:hover {
@@ -388,10 +394,9 @@ footer .copyright {
  <div class="container">
         <!-- تایپ تدریجی متن -->
         <div class="typing-text" id="typingText"></div>
+ </div>
 
-        <!-- دکمه شروع -->
-        <button onclick="window.location.assign('{% url 'product:suspects-view' %}')" class="btn btn-custom btn-lg">Start Investigation</button>
-    </div>
+<button onclick="window.location.assign('{% url 'product:suspects-view' %}')" class="btn btn-custom btn-lg">شروع تحقیقات</button>
 
     <script>
         // تایپ تدریجی متن
