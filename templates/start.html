@@ -370,33 +370,44 @@ footer .copyright {
             opacity: 0.7;
         }
 
-         .logoHolder {
-            width: 100%;
-            margin-top: 20px;
-            left: 0;
+        .header {
             display: flex;
-            z-index: 10 !important;
-            direction: ltr;
             align-items: center;
             justify-content: center;
+            padding: 20px 0;
+            position: relative;
+        }
 
+        .header::before,
+        .header::after {
+            content: '';
+            flex: 1;
+            border-top: 2px solid var(--btn-bg); /* خط سفید */
+            margin: 0 10px;
+        }
+
+        .header h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase; /* حروف بزرگ */
+            letter-spacing: 2px; /* فاصله بین حروف */
+            margin: 0;
         }
 
     </style>
 </head>
 <body>
 
-<div class="logoHolder">
-    <img src="{% static 'images/logo.png' %}" alt="{% trans 'Logo' %}" class="d-inline-block align-text-top">
-</div>
-
+<header class="header mt-2">
+        <h3>گزارش پلیس</h3>
+    </header>
 
  <div class="container">
         <!-- تایپ تدریجی متن -->
         <div class="typing-text" id="typingText"></div>
  </div>
 
-<button onclick="window.location.assign('{% url 'product:suspects-view' %}')" class="btn btn-custom btn-lg">شروع تحقیقات</button>
+<button onclick="window.location.assign('{% url 'product:suspects-view' %}')" class="btn btn-custom btn-lg">مظنونین</button>
 
     <script>
         // تایپ تدریجی متن
