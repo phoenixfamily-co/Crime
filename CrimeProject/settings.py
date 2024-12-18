@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
-    'CrimeProject.middleware.MobileOnlyMiddleware',
+    # 'CrimeProject.middleware.MobileOnlyMiddleware',
 
 ]
 
