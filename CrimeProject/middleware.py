@@ -9,5 +9,5 @@ class MobileOnlyMiddleware:
     def __call__(self, request):
         user_agent = get_user_agent(request)
         if not user_agent.is_mobile:
-            return redirect('home:support-view')
+            return redirect('/support/')
         return self.get_response(request)
