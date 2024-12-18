@@ -392,25 +392,12 @@ footer .copyright {
 
 
  <div class="container">
-        <!-- تایپ تدریجی متن -->
-        <div class="typing-text" id="typingText"></div>
- </div>
-
-<button onclick="window.location.assign('{% url 'product:suspects-view' %}')" class="btn btn-custom btn-lg">شروع تحقیقات</button>
-
-    <script>
-        // تایپ تدریجی متن
-        const text = `
-       شب است و سکوت سنگینی بر شهر حاکم است. صدای ضعیف زوزه باد از میان کوچه‌های خالی شنیده می‌شود. در انتهای یک کوچه تاریک و باریک، پلیس‌ها چراغ‌های آبی و قرمز خود را روشن کرده‌اند و صحنه‌ای ترسناک را روشن می‌کنند: یک جسد بی‌جان روی زمین افتاده است.
-
+     <p>
+         شب است و سکوت سنگینی بر شهر حاکم است. صدای ضعیف زوزه باد از میان کوچه‌های خالی شنیده می‌شود. در انتهای یک کوچه تاریک و باریک، پلیس‌ها چراغ‌های آبی و قرمز خود را روشن کرده‌اند و صحنه‌ای ترسناک را روشن می‌کنند: یک جسد بی‌جان روی زمین افتاده است.
 قربانی، مردی حدوداً ۴۰ ساله، با لباس رسمی و یک کیف دستی کنار او پیدا شده. هیچ اثری از درگیری یا شلیک گلوله نیست، اما کبودی عجیب روی گردن او نشان می‌دهد که او به قتل رسیده است.
-
 با رسیدن شما به صحنه جرم، سروان پلیس با چهره‌ای نگران به سمت شما می‌آید:
-
 "کارآگاه، این پرونده معمولی نیست. قربانی یکی از مدیران ارشد یک شرکت بزرگ فناوری بوده و به نظر می‌رسد که اطلاعات محرمانه‌ای را با خود حمل می‌کرده. این پرونده می‌تواند بزرگ‌تر از چیزی باشد که فکر می‌کنیم."
-
 در همان لحظه، صدای موبایل شما قطع سکوت را می‌شکند. از طرف رئیس اداره پلیس است:
-
 "این پرونده باید هر چه سریع‌تر بسته شود. مطبوعات و شرکت‌های رقیب نباید از جزئیات آن باخبر شوند."
 
 شواهد اولیه محدود است:
@@ -426,32 +413,8 @@ footer .copyright {
 آیا می‌توانید این پرونده پیچیده را حل کنید و پرده از راز قتل قربانی بردارید؟
 
 سرنوشت پرونده در دستان شماست.
-        `;
-        const typingText = document.getElementById("typingText");
-        let index = 0;
-
-        function typeText() {
-            if (index < text.length) {
-                typingText.textContent += text[index];
-                index++;
-                setTimeout(typeText, 50); // سرعت تایپ (به میلی‌ثانیه)
-            }
-        }
-        typeText();
-
-        // نمایش زمان
-        function updateTimer() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, "0");
-            const minutes = String(now.getMinutes()).padStart(2, "0");
-            const seconds = String(now.getSeconds()).padStart(2, "0");
-            const date = now.toLocaleDateString("en-US");
-            document.getElementById("timer").textContent = `Time: ${hours}:${minutes}:${seconds} | Date: ${date}`;
-        }
-        setInterval(updateTimer, 1000);
-    </script>
-
-
+     </p>
+ </div>
 
 
 <script>
