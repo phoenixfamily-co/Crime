@@ -348,57 +348,38 @@ footer .copyright {
               background-color:transparent;!important;
               color: var(--text-color)!important;
           }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .header::before,
+        .header::after {
+            content: '';
+            flex: 1;
+            border-top: 2px solid var(--btn-bg); /* خط سفید */
+            margin: 0 10px;
+        }
+
+        .header h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase; /* حروف بزرگ */
+            letter-spacing: 2px; /* فاصله بین حروف */
+            margin: 0;
+        }
+
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg shadow-sm">
-    <div class="container">
-        <a class="navbar-brand">
-            <img src="{% static 'images/logo.png' %}" alt="{% trans 'Logo' %}" class="d-inline-block align-text-top">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
-            <span class="navbar-toggler-icon">
-            </span>
-            <i class="fa-solid fa-bars custom-toggler"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{% url 'product:start-view' %}">{% trans "Start" %}</a></li>
-                <li class="nav-item"><a class="nav-link active" href="{% url 'product:suspects-view' %}">{% trans "Suspects" %}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'product:evidence-view' %}">{% trans "Evidence" %}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'product:result-view' %}">{% trans "Result" %}</a></li>
-            </ul>
-
-           <!-- دکمه تغییر تم -->
-            <div class="ms-3 d-flex align-items-center">
-                <i class="fas fa-user"></i>
-            </div>
-
-            <!-- دکمه تغییر تم -->
-            <div class="ms-3 d-flex align-items-center">
-                <i class="fas fa-sun"></i>
-                <div class="ms-2 form-check form-switch">
-                    <label for="theme-switch"></label>
-                    <input class="form-check-input" type="checkbox" role="switch" id="theme-switch" />
-                </div>
-                <i class="fas fa-moon"></i>
-            </div>
-            <!-- فرم تغییر زبان -->
-            <div class="ms-3">
-                <form action="{% url 'set_language' %}" method="post">
-                    {% csrf_token %}
-                    <label>
-                        <select name="language" class="form-select form-select-sm d-inline w-auto" onchange="this.form.submit()">
-                        <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
-                        <option value="fa" class="option-rtl" {% if LANGUAGE_CODE == 'fa' %}selected{% endif %}>فارسی</option>
-                    </select>
-                    </label>
-                </form>
-            </div>
-        </div>
-    </div>
-</nav>
+ <header class="header">
+        <h3>مظنونین</h3>
+    </header>
 
 <div class="container w-80 mt-5">
     <div class="input-group">
