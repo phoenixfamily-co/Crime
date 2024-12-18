@@ -18,12 +18,14 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 from CrimeProject import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # مسیر پنل ادمین
     path('set_language/', include('django.conf.urls.i18n')),  # مسیر تغییر زبان
+    path('not-supported/', TemplateView.as_view(template_name='support.html'), name='not_supported'),
 
 ]
 
