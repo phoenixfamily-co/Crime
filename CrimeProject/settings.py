@@ -17,8 +17,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'crime.abbaslotfinasab.com',
-    'www.crime.abbaslotfinasab.com'
+    'crime.phoenixfamily.co',
+    'www.crime.phoenixfamily.co'
 ]
 
 # Application definition
@@ -119,14 +119,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = '/home/abbaslot/crime.abbaslotfinasab.com/static/'
+STATIC_ROOT = '/home/phoenixf/crime.phoenixfamily.co/static/'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # اگر فایل استاتیکی دارید که در مسیر پروژه هستند.
 ]
 
-MEDIA_ROOT = '/home/abbaslot/crime.abbaslotfinasab.com/media/'
+MEDIA_ROOT = '/home/phoenixf/crime.phoenixfamily.co/media/'
 MEDIA_URL = '/media/'
 
 # Default primary key field type
