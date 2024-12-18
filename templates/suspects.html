@@ -373,6 +373,34 @@ footer .copyright {
             margin: 0;
         }
 
+         .btn-left {
+            position: fixed;
+            bottom: 20px; /* فاصله از پایین صفحه */
+            left: 20px; /* فاصله از سمت چپ صفحه */
+            background-color: var(--btn-bg); /* رنگ دکمه */
+            color: white; /* رنگ متن دکمه */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+          .btn-right {
+            position: fixed;
+            bottom: 20px; /* فاصله از پایین صفحه */
+            right: 20px; /* فاصله از سمت چپ صفحه */
+            background-color: var(--btn-bg); /* رنگ دکمه */
+            color: white; /* رنگ متن دکمه */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
     </style>
 </head>
 <body>
@@ -469,7 +497,7 @@ footer .copyright {
             <p class="card-text">Age: 35 | Last seen: City Square</p>
         </div>
         <div class="card-footer">
-            <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'View Interrogation' %}</a>
+            <a href="{% url 'product:interrogation-view' %}" target="_blank">اتاق بازجویی</a>
         </div>
     </div>
     </div>
@@ -477,8 +505,9 @@ footer .copyright {
   </div>
 </div>
 
+ <button onclick="window.location.assign('{% url 'product:evidence-view' %}')" class="btn btn-right btn-lg">داستان بازی</button>
 
-
+ <button onclick="window.location.assign('{% url 'product:evidence-view' %}')" class="btn btn-left btn-lg">مدارک و شواهد</button>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
