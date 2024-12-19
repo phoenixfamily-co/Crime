@@ -192,15 +192,21 @@
             white-space: pre-wrap;
             word-wrap: break-word;
         }
+
         .main{
             position: fixed;
             bottom: 20px; /* فاصله از پایین صفحه */
-            left: 20px; /* فاصله از سمت چپ صفحه */
         }
 
          html[dir="rtl"] .main {
-            direction: rtl;
-    }
+             direction: rtl;
+             left: 20px; /* فاصله از سمت چپ صفحه */
+         }
+
+           html[dir="ltr"] .main {
+               direction: ltr;
+               right:  20px; /* فاصله از سمت چپ صفحه */
+         }
 
         .btn {
             display: flex;
