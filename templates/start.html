@@ -306,7 +306,7 @@
 <div class="main">
     <a href="{% url 'product:suspects-view' %}" class="btn yellow">
         <span>{% trans "مظنونین" %}</span>
-        <i class="fa-solid fa-arrow-left"></i>
+        <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left"{% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
     </a>
 </div>
 
