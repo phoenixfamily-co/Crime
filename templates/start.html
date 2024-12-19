@@ -221,7 +221,7 @@
         transition: all 0.5s linear;
     }
 
-    .btn:hover ion-icon {
+    .btn:hover i {
         transform: rotate(-90deg);
 
     }
@@ -231,7 +231,7 @@
             color: var(--text-color);
         }
 
-        .yellow:hover ion-icon {
+        .yellow:hover i{
             transform: translateX(10px);
         }
 
@@ -292,7 +292,7 @@
 <div class="main">
     <a href="{% url 'product:suspects-view' %}" class="btn yellow">
         <span>{% trans 'مظنونین' %}</span>
-        <ion-icon name="arrow-forward-circle"></ion-icon>
+        <i class="fa-solid fa-arrow-right"></i>
     </a>
 </div>
 
