@@ -311,11 +311,10 @@
 <div class="main">
     <a href="{% url 'product:suspects-view' %}" class="btn yellow">
         <span>{% trans "مظنونین" %}</span>
-        <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left"{% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
+        <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
     </a>
 </div>
 
-<button onclick="window.location.assign('{% url 'product:suspects-view' %}')" class="btn btn-custom btn-lg">{% trans 'مظنونین' %}</button>
 
     <script>
         // تایپ تدریجی متن
