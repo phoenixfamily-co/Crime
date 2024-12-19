@@ -236,8 +236,12 @@
         }
 
         .yellow:hover i{
-            transform: translateX(-10px);
+            transform: translateX(10px);
         }
+
+          html[dir="rtl"] .yellow:hover i {
+            direction: rtl;
+    }
 
         .header {
             display: flex;
