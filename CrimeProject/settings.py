@@ -108,7 +108,7 @@ LANGUAGES = [
     ('fa', _('Farsi')),
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa'
 
 TIME_ZONE = 'UTC'
 
