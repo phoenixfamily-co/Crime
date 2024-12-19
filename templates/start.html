@@ -7,8 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow"> <!-- اجازه ایندکس و دنبال کردن لینک‌ها -->
-    <title>{{ page_title }}</title> <!-- عنوان صفحه -->
+    <title>{% trans 'گزارش پلیس' %}</title> <!-- عنوان صفحه -->
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -59,7 +58,6 @@
             font-family: Arial, sans-serif;
             transition: background-color 0.3s, color 0.3s;
         }
-
 
         .form-select {
             background-color: var(--navbar-bg);
@@ -194,23 +192,49 @@
             white-space: pre-wrap;
             word-wrap: break-word;
         }
-        .btn-custom {
+        .main{
             position: fixed;
             bottom: 20px; /* فاصله از پایین صفحه */
             left: 20px; /* فاصله از سمت چپ صفحه */
-            background-color: var(--btn-bg); /* رنگ دکمه */
-            color: white; /* رنگ متن دکمه */
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-custom:hover {
-            opacity: 0.7;
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 220.52px;
+            min-height: 56px;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: 400;
+            text-decoration: none;
         }
+
+         span {
+             font-size: 20px;
+             padding: 0 10px;
+         }
+
+    ion-icon {
+        font-size: 2em;
+        transition: all 0.5s linear;
+    }
+
+    .btn:hover ion-icon {
+        transform: rotate(-90deg);
+
+    }
+
+        .yellow {
+            border: 2px solid #ffc107;
+            color: black;
+        }
+
+        .yellow:hover ion-icon {
+            transform: translateX(10px);
+        }
+
 
         .header {
             display: flex;
@@ -240,8 +264,7 @@
                .container {
                  max-width: 90%;
              }
-
-}
+           }
 
 
          @media screen and (max-width: 768px) {
@@ -255,14 +278,24 @@
 </head>
 <body>
 
+
 <header class="header mt-2">
         <h3>{% trans 'گزارش پلیس' %}</h3>
     </header>
 
- <div class="container">
+
+<div class="container">
         <!-- تایپ تدریجی متن -->
         <div class="typing-text" id="typingText"></div>
  </div>
+
+
+<div class="main">
+    <a href="{% url 'product:suspects-view' %}" class="btn yellow">
+        <span>{% trans 'مظنونین' %}</span>
+        <ion-icon name="arrow-forward-circle"></ion-icon>
+    </a>
+</div>
 
 <button onclick="window.location.assign('{% url 'product:suspects-view' %}')" class="btn btn-custom btn-lg">{% trans 'مظنونین' %}</button>
 
@@ -323,8 +356,8 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-  const themeSwitch = document.getElementById("theme-switch");
-  const currentTheme = localStorage.getItem("theme") || "light";
+        const themeSwitch = document.getElementById("theme-switch");
+        const currentTheme = localStorage.getItem("theme") || "dark";
 
   if (currentTheme === "dark") {
     document.body.classList.add("dark-mode");
@@ -341,7 +374,9 @@
     }
   });
 });
-    </script>
+
+
+</script>
 
 
 
