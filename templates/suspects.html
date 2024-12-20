@@ -224,11 +224,19 @@
             color: var(--text-color);
         }
 
-        .yellow:hover i{
+        .main-next.yellow:hover i{
             transform: translateX(10px);
         }
 
-          html[dir="rtl"] .yellow:hover i {
+         .main-pre.yellow:hover i{
+            transform: translateX(-10px);
+        }
+
+          html[dir="rtl"].main-pre.yellow:hover i {
+            transform: translateX(10px)!important;
+          }
+
+           html[dir="rtl"].main-next.yellow:hover i {
             transform: translateX(-10px)!important;
           }
 
