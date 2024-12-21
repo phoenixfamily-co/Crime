@@ -209,10 +209,10 @@
              padding: 0 10px;
          }
 
-    ion-icon {
-        font-size: 2em;
-        transition: all 0.5s linear;
-    }
+        ion-icon {
+            font-size: 2em;
+            transition: all 0.5s linear;
+        }
 
     .btn:hover i {
         transform: rotate(90deg);
@@ -259,90 +259,69 @@
         </div>
     </div>
 </div>
-<div class="container my-5">
+
+ <div class="container my-5">
   <div class="row mt-4 mx-5">
     <!-- Blog Post Card -->
 
-    <div class="col-md-4 mb-4">
-         <div class="card">
-             <img src="{% static 'images/suspect 1.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+    <div class="col-6 col-md-4 mb-4">
+      <div class="card">
+        <img src="{% static 'images/suspect 1.webp' %}" class="card-img-top" alt="{{ post.title }}" />
         <div class="card-body">
-             <h5 class="card-title">John Doe</h5>
-            <p class="card-text">Age: 35 | Last seen: City Square</p>
+          <h5 class="card-title">John Doe</h5>
+          <p class="card-text">Age: 35 | Last seen: City Square</p>
         </div>
         <div class="card-footer">
-            <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'View Interrogation' %}</a>
+          <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'View Interrogation' %}</a>
         </div>
-    </div>
+      </div>
     </div>
 
-      <div class="col-md-4 mb-4">
-         <div class="card">
-             <img src="{% static 'images/suspect 2.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+    <!-- Repeat similar cards -->
+    <div class="col-6 col-md-4 mb-4">
+      <div class="card">
+        <img src="{% static 'images/suspect 2.webp' %}" class="card-img-top" alt="{{ post.title }}" />
         <div class="card-body">
-             <h5 class="card-title">John Doe</h5>
-            <p class="card-text">Age: 35 | Last seen: City Square</p>
+          <h5 class="card-title">John Doe</h5>
+          <p class="card-text">Age: 35 | Last seen: City Square</p>
         </div>
         <div class="card-footer">
-            <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'View Interrogation' %}</a>
+          <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'View Interrogation' %}</a>
         </div>
-    </div>
+      </div>
     </div>
 
-      <div class="col-md-4 mb-4">
-         <div class="card">
-             <img src="{% static 'images/suspect 1.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+    <!-- Continue for other cards -->
+
+       <div class="col-6 col-md-4 mb-4">
+      <div class="card">
+        <img src="{% static 'images/suspect 2.webp' %}" class="card-img-top" alt="{{ post.title }}" />
         <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <p class="card-text">Age: 35 | Last seen: City Square</p>
+          <h5 class="card-title">John Doe</h5>
+          <p class="card-text">Age: 35 | Last seen: City Square</p>
         </div>
         <div class="card-footer">
-            <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'View Interrogation' %}</a>
+          <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'View Interrogation' %}</a>
         </div>
-    </div>
+      </div>
     </div>
 
-      <div class="col-md-4 mb-4">
-         <div class="card">
-             <img src="{% static 'images/suspect 2.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+       <div class="col-6 col-md-4 mb-4">
+      <div class="card">
+        <img src="{% static 'images/suspect 2.webp' %}" class="card-img-top" alt="{{ post.title }}" />
         <div class="card-body">
-             <h5 class="card-title">John Doe</h5>
-            <p class="card-text">Age: 35 | Last seen: City Square</p>
+          <h5 class="card-title">John Doe</h5>
+          <p class="card-text">Age: 35 | Last seen: City Square</p>
         </div>
         <div class="card-footer">
-            <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'View Interrogation' %}</a>
+          <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'View Interrogation' %}</a>
         </div>
-    </div>
-    </div>
-
-      <div class="col-md-4 mb-4">
-         <div class="card">
-             <img src="{% static 'images/suspect 1.webp' %}" class="card-img-top" alt="{{ post.title }}" />
-        <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <p class="card-text">Age: 35 | Last seen: City Square</p>
-        </div>
-        <div class="card-footer">
-            <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'View Interrogation' %}</a>
-        </div>
-    </div>
-    </div>
-
-      <div class="col-md-4 mb-4">
-         <div class="card">
-             <img src="{% static 'images/suspect 2.webp' %}" class="card-img-top" alt="{{ post.title }}" />
-        <div class="card-body">
-             <h5 class="card-title">John Doe</h5>
-            <p class="card-text">Age: 35 | Last seen: City Square</p>
-        </div>
-        <div class="card-footer">
-            <a href="{% url 'product:interrogation-view' %}" target="_blank">اتاق بازجویی</a>
-        </div>
-    </div>
+      </div>
     </div>
 
   </div>
 </div>
+
 
  <div class="main-pre">
     <a href="{% url 'product:start-view' %}" class="btn yellow">
