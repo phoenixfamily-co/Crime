@@ -203,6 +203,9 @@
           }
 
         .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100px;
             height: 56px;
             border-radius: 100px;
@@ -260,7 +263,7 @@
  </div>
 
 <footer class="mt-3">
-    <div class="container py-3">
+    <div class="container py-1">
         <a href="{% url 'product:suspects-view' %}" class="btn {% if LANGUAGE_BIDI %}me-auto{% else %}ms-auto{% endif %}">
             <span>{% trans "مظنونین" %}</span>
             <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
