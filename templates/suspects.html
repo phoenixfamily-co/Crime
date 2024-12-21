@@ -177,18 +177,18 @@
          }
 
         html[dir="ltr"] .main-pre {
-               direction: rtl;
-               left:  20px; /* فاصله از سمت چپ صفحه */
+            direction: rtl;
+            left:  20px; /* فاصله از سمت چپ صفحه */
          }
 
-         html[dir="rtl"] .main-next {
-             direction: rtl;
-             left: 20px; /* فاصله از سمت چپ صفحه */
+        html[dir="rtl"] .main-next {
+            direction: rtl;
+            left: 20px; /* فاصله از سمت چپ صفحه */
          }
 
         html[dir="ltr"] .main-next {
-               direction: ltr;
-               right:  20px; /* فاصله از سمت چپ صفحه */
+            direction: ltr;
+            right:  20px; /* فاصله از سمت چپ صفحه */
          }
 
         .btn {
@@ -214,33 +214,33 @@
             transition: all 0.5s linear;
         }
 
-    .btn:hover i {
-        transform: rotate(-90deg);
-
-    }
+        .btn:hover i {
+            transform: rotate(-90deg);
+        }
 
         .yellow {
             border: 2px solid var(--btn-bg);
             color: var(--text-color);
         }
 
-        .main-next.yellow:hover i{
+        html[dir="ltr"].main-next.yellow:hover i{
             transform: translateX(10px);
         }
 
-         .main-pre.yellow:hover i{
+        html[dir="ltr"].main-pre.yellow:hover i{
             transform: translateX(-10px);
         }
 
-          html[dir="rtl"].main-pre.yellow:hover i {
+        html[dir="rtl"].main-pre.yellow:hover i {
             transform: translateX(10px)!important;
-          }
+        }
 
-           html[dir="rtl"].main-next.yellow:hover i {
+        html[dir="rtl"].main-next.yellow:hover i {
             transform: translateX(-10px)!important;
-          }
+        }
 
     </style>
+
 </head>
 <body>
 
@@ -324,40 +324,40 @@
 
 
  <div class="main-pre">
-    <a href="{% url 'product:start-view' %}" class="btn yellow">
-        <span>{% trans "گزارش" %}</span>
-        <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right" {% else %}class="fa-solid fa-arrow-left"{% endif %} ></i>
-    </a>
-</div>
+     <a href="{% url 'product:start-view' %}" class="btn yellow">
+         <span>{% trans "گزارش" %}</span>
+         <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right" {% else %}class="fa-solid fa-arrow-left"{% endif %} ></i>
+     </a>
+ </div>
 
  <div class="main-next">
     <a href="{% url 'product:evidence-view' %}" class="btn yellow">
         <span>{% trans "مدارک" %}</span>
         <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
     </a>
-</div>
+ </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-  const themeSwitch = document.getElementById("theme-switch");
-  const currentTheme = localStorage.getItem("theme") || "dark";
+        const themeSwitch = document.getElementById("theme-switch");
+        const currentTheme = localStorage.getItem("theme") || "dark";
 
-  if (currentTheme === "dark") {
-    document.body.classList.add("dark-mode");
-    themeSwitch.checked = true;
-  }
+        if (currentTheme === "dark") {
+            document.body.classList.add("dark-mode");
+            themeSwitch.checked = true;
+        }
 
-  themeSwitch.addEventListener("change", function () {
-    if (this.checked) {
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
-  });
-});
-    </script>
+        themeSwitch.addEventListener("change", function () {
+            if (this.checked) {
+                document.body.classList.add("dark-mode");
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.body.classList.remove("dark-mode");
+                localStorage.setItem("theme", "light");
+            }
+        });
+    });
+</script>
 
 <script>
     function searchFunction() {

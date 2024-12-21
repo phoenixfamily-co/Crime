@@ -203,10 +203,10 @@
              left: 20px; /* فاصله از سمت چپ صفحه */
          }
 
-           html[dir="ltr"] .main {
-               direction: ltr;
-               right:  20px; /* فاصله از سمت چپ صفحه */
-         }
+        html[dir="ltr"] .main {
+            direction: ltr;
+            right:  20px; /* فاصله از سمت چپ صفحه */
+        }
 
         .btn {
             display: flex;
@@ -225,17 +225,13 @@
              font-size: 20px;
              padding: 0 10px;
          }
-
-    ion-icon {
-        font-size: 2em;
-        transition: all 0.5s linear;
-    }
-
-    .btn:hover i {
-        transform: rotate(90deg);
-
-    }
-
+        ion-icon {
+            font-size: 2em;
+            transition: all 0.5s linear;
+        }
+        .btn:hover i {
+            transform: rotate(90deg);
+        }
         .yellow {
             border: 2px solid var(--btn-bg);
             color: var(--text-color);
@@ -245,9 +241,9 @@
             transform: translateX(10px);
         }
 
-          html[dir="rtl"] .yellow:hover i {
+        html[dir="rtl"] .yellow:hover i {
             transform: translateX(-10px)!important;
-          }
+        }
 
         .header {
             display: flex;
@@ -273,15 +269,14 @@
             margin: 0;
         }
 
-           @media (min-width: 576px) {
-               .container {
-                   max-width: 90%;
-                   justify-content: center;
-                   align-items: center;
 
-             }
-           }
-
+        @media (min-width: 576px) {
+            .container {
+                max-width: 90%;
+                justify-content: center;
+                align-items: center;
+            }
+        }
 
          @media screen and (max-width: 768px) {
              .container {
@@ -291,11 +286,9 @@
              }
          }
 
-
     </style>
 </head>
 <body>
-
 
 <header class="header mt-2">
         <h3>{% trans 'گزارش پلیس' %}</h3>
