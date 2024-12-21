@@ -222,12 +222,9 @@
          }
 
         .btn:hover i {
-            transform: translateX(10px);
+            transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(10px){% endif %}
         }
 
-        html[dir="rtl"]footer.btn:hover i {
-            transform: translateX(-10px);
-        }
 
         .header {
             display: flex;
