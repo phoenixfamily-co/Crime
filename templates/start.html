@@ -193,60 +193,36 @@
             word-wrap: break-word;
         }
 
-        .main{
-            position: fixed;
-            width: 100%;
-            background-color: var(--navbar-bg);
-            bottom: 20px; /* فاصله از پایین صفحه */
-        }
-
-         html[dir="rtl"] .main {
-             direction: rtl;
-             left: 20px; /* فاصله از سمت چپ صفحه */
-         }
-
-        html[dir="ltr"] .main {
-            direction: ltr;
-            right:  20px; /* فاصله از سمت چپ صفحه */
-        }
+         footer {
+             background-color: var(--navbar-bg);
+             color: var(--text-color);
+             position: fixed; /* برای جلوگیری از تداخل با بخش‌های دیگر */
+             bottom: 0;
+          }
 
         .btn {
+            left: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-width: 100px;
-            min-height: 56px;
-            border: none;
+            width: auto;
+            height: 56px;
             border-radius: 100px;
             cursor: pointer;
             font-weight: 400;
             text-decoration: none;
+            border: 2px solid var(--btn-bg);
+            color: var(--text-color);
         }
 
          span {
              font-size: 20px;
              padding: 0 10px;
          }
-        ion-icon {
-            font-size: 2em;
-            transition: all 0.5s linear;
-        }
-        .btn:hover i {
-            transform: rotate(90deg);
-        }
-        .yellow {
-            border: 2px solid var(--btn-bg);
-            color: var(--text-color);
-        }
 
-        .yellow:hover i{
+        .btn:hover i {
             transform: translateX(10px);
         }
-
-        html[dir="rtl"] .yellow:hover i {
-            transform: translateX(-10px)!important;
-        }
-
         .header {
             display: flex;
             align-items: center;
@@ -271,23 +247,6 @@
             margin: 0;
         }
 
-
-        @media (min-width: 576px) {
-            .container {
-                max-width: 90%;
-                justify-content: center;
-                align-items: center;
-            }
-        }
-
-         @media screen and (max-width: 768px) {
-             .container {
-                 max-width: 90%;
-                 justify-content: center;
-                 align-items: center;
-             }
-         }
-
     </style>
 </head>
 <body>
@@ -302,13 +261,14 @@
         <div class="typing-text" id="typingText"></div>
  </div>
 
-
-<div class="main">
-    <a href="{% url 'product:suspects-view' %}" class="btn yellow">
-        <span>{% trans "مظنونین" %}</span>
-        <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
-    </a>
-</div>
+<footer class="mt-3">
+    <div class="container py-3">
+        <a href="{% url 'product:suspects-view' %}" class="btn">
+            <span>{% trans "مظنونین" %}</span>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
+        </a>
+    </div>
+</footer>
 
     <script>
         // تایپ تدریجی متن
