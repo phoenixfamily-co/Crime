@@ -137,6 +137,37 @@
               color: var(--text-color)!important;
           }
 
+                   footer {
+             background-color: var(--navbar-bg);
+             color: var(--text-color);
+             position: fixed; /* برای جلوگیری از تداخل با بخش‌های دیگر */
+             bottom: 0;
+             width: 100%;
+          }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 56px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: 400;
+            text-decoration: none;
+            border: 2px solid var(--btn-bg);
+            color: var(--text-color);
+        }
+
+         span {
+             font-size: 20px;
+             padding: 0 10px;
+         }
+
+        .btn:hover i {
+            transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %}
+        }
+
         .header {
             display: flex;
             align-items: center;
@@ -161,88 +192,8 @@
             margin: 0;
         }
 
-        .main-pre{
-            position: fixed;
-            bottom: 20px; /* فاصله از پایین صفحه */
-        }
 
-        .main-next{
-            position: fixed;
-            bottom: 20px; /* فاصله از پایین صفحه */
-        }
 
-         html[dir="rtl"] .main-pre {
-             direction: ltr;
-             right: 20px; /* فاصله از سمت چپ صفحه */
-         }
-
-        html[dir="ltr"] .main-pre {
-            direction: rtl;
-            left:  20px; /* فاصله از سمت چپ صفحه */
-         }
-
-        html[dir="rtl"] .main-next {
-            direction: rtl;
-            left: 20px; /* فاصله از سمت چپ صفحه */
-         }
-
-        html[dir="ltr"] .main-next {
-            direction: ltr;
-            right:  20px; /* فاصله از سمت چپ صفحه */
-         }
-
-        .btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-width: 100px;
-            min-height: 56px;
-            border: none;
-            border-radius: 100px;
-            cursor: pointer;
-            font-weight: 400;
-            text-decoration: none;
-        }
-
-         span {
-             font-size: 20px;
-             padding: 0 10px;
-         }
-
-        ion-icon {
-            font-size: 2em;
-            transition: all 0.5s linear;
-        }
-
-        .btn:hover i {
-            transform: rotate(-90deg);
-        }
-
-        .yellow {
-            border: 2px solid var(--btn-bg);
-            color: var(--text-color);
-        }
-
-        html[dir="ltr"].main-next.yellow:hover i{
-            transform: translateX(10px);
-        }
-
-        html[dir="ltr"].main-pre.yellow:hover i{
-            transform: translateX(-10px);
-        }
-
-        html[dir="rtl"].main-pre.yellow:hover i {
-            transform: translateX(10px)!important;
-        }
-
-        html[dir="rtl"].main-next.yellow:hover i {
-            transform: translateX(-10px)!important;
-        }
-        footer {
-              background-color: var(--navbar-bg);
-              color: var(--text-color);
-              position: fixed; /* برای جلوگیری از تداخل با بخش‌های دیگر */
-          }
     </style>
 
 </head>
@@ -334,12 +285,19 @@
      </a>
  </div>
 
- <div class="main-next">
-    <a href="{% url 'product:evidence-view' %}" class="btn yellow">
-        <span>{% trans "مدارک" %}</span>
-        <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
-    </a>
- </div>
+ <footer>
+    <div class="container-fluid py-3 px-3">
+        <a href="{% url 'product:suspects-view' %}" class="btn {% if LANGUAGE_BIDI %}ms-auto{% else %}ms-auto{% endif %}">
+            <span>{% trans "گزارش" %}</span>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
+        </a>
+
+     <a href="{% url 'product:suspects-view' %}" class="btn {% if LANGUAGE_BIDI %}me-auto{% else %}ms-auto{% endif %}">
+            <span>{% trans "مدارک" %}</span>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
+        </a>
+    </div>
+</footer>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
