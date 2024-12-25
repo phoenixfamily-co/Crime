@@ -165,13 +165,21 @@
              padding: 0 10px;
          }
 
-        a.btn:hover .previous {
-             transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}
+        .btn:hover i.previous {
+            transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}!important;
+            transition: transform 0.3s ease; /* برای انیمیشن روان */
+
          }
 
-        a.btn:hover .next {
-             transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %}
+        .btn:hover i.next {
+            transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %} !important;
+            transition: transform 0.3s ease; /* برای انیمیشن روان */
+
          }
+
+        i{
+            display: inline-block;
+        }
 
         .header {
             display: flex;
