@@ -281,14 +281,14 @@
 
  <footer>
     <div class="container-fluid d-flex align-items-center justify-content-between pb-2  py-3 px-3">
-        <a href="{% url 'product:suspects-view' %}" class="btn">
+        <a href="{% url 'product:start-view' %}" class="btn">
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right" {% else %}class="fa-solid fa-arrow-left"{% endif %}></i>
             <span>{% trans "گزارش" %}</span>
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right" {% else %}class="fa-solid fa-arrow-left"{% endif %} ></i>
         </a>
 
-     <a href="{% url 'product:suspects-view' %}" class="btn">
+     <a href="{% url 'product:evidence-view' %}" class="btn">
             <span>{% trans "مدارک" %}</span>
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %}></i>
         </a>
     </div>
 </footer>
