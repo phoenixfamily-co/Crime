@@ -24,11 +24,6 @@
             color: #d32f2f;
             margin-bottom: 15px;
         }
-        .profile-container {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
         .profile-image {
             border-radius: 10px;
             overflow: hidden;
@@ -36,28 +31,22 @@
             height: 150px;
             border: 3px solid #d32f2f;
         }
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .profile-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* سه ستون */
-            gap: 10px 20px;
-            flex: 1;
-        }
-        .profile-item {
-            display: flex;
-            justify-content: space-between;
-            background-color: #3c3c3e;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 0.95rem;
-        }
-        .profile-item span {
-            color: #d32f2f;
-        }
+    .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .profile-item {
+        display: flex;
+        justify-content: space-between;
+        background-color: #3c3c3e;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 0.95rem;
+    }
+    .profile-item span {
+        color: #d32f2f;
+    }
 
         .card {
             background-color: #3c3c3e;
@@ -101,47 +90,69 @@
 <body>
 
 <div class="container">
-
-        <!-- بخش اول: پروفایل مظنون -->
-     <div class="section profile-info">
-            <h5>Suspect Profile</h5>
-            <div class="profile-container">
-                <!-- تصویر مظنون -->
+    <!-- بخش اول: پروفایل مظنون -->
+    <div class="section profile-info">
+        <h5>Suspect Profile</h5>
+        <div class="row align-items-start">
+            <!-- تصویر مظنون -->
+            <div class="col-12 col-sm-4 col-md-3 mb-3 mb-sm-0 d-flex justify-content-center">
                 <div class="profile-image">
                     <img src="{% static 'images/suspect 1.webp' %}" alt="Suspect Image">
                 </div>
-                <!-- اطلاعات مظنون -->
-                <div class="profile-grid">
-                    <div class="profile-item">
-                        <span>Name:</span> John Doe
+            </div>
+            <!-- اطلاعات مظنون -->
+            <div class="col-12 col-sm-8 col-md-9">
+                <div class="row g-3">
+                    <div class="col-6 col-md-4">
+                        <div class="profile-item">
+                            <span>Name:</span> John Doe
+                        </div>
                     </div>
-                    <div class="profile-item">
-                        <span>Age:</span> 35
+                    <div class="col-6 col-md-4">
+                        <div class="profile-item">
+                            <span>Age:</span> 35
+                        </div>
                     </div>
-                    <div class="profile-item">
-                        <span>Gender:</span> Male
+                    <div class="col-6 col-md-4">
+                        <div class="profile-item">
+                            <span>Gender:</span> Male
+                        </div>
                     </div>
-                    <div class="profile-item">
-                        <span>Height:</span> 180 cm
+                    <div class="col-6 col-md-4">
+                        <div class="profile-item">
+                            <span>Height:</span> 180 cm
+                        </div>
                     </div>
-                    <div class="profile-item">
-                        <span>Weight:</span> 75 kg
+                    <div class="col-6 col-md-4">
+                        <div class="profile-item">
+                            <span>Weight:</span> 75 kg
+                        </div>
                     </div>
-                    <div class="profile-item">
-                        <span>Blood Group:</span> O+
+                    <div class="col-6 col-md-4">
+                        <div class="profile-item">
+                            <span>Blood Group:</span> O+
+                        </div>
                     </div>
-                    <div class="profile-item">
-                        <span>Marital Status:</span> Married
+                    <div class="col-6 col-md-4">
+                        <div class="profile-item">
+                            <span>Marital Status:</span> Married
+                        </div>
                     </div>
-                    <div class="profile-item">
-                        <span>Occupation:</span> Accountant
+                    <div class="col-6 col-md-4">
+                        <div class="profile-item">
+                            <span>Occupation:</span> Accountant
+                        </div>
                     </div>
-                    <div class="profile-item">
-                        <span>Address:</span> 123 Main St, Cityville
+                    <div class="col-12">
+                        <div class="profile-item">
+                            <span>Address:</span> 123 Main St, Cityville
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
         <!-- بخش دوم: سوالات و پاسخ‌ها -->
         <div class="section">
