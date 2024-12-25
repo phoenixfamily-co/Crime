@@ -165,13 +165,13 @@
              padding: 0 10px;
          }
 
-        .btn:hover i.previous {
+        .btn:hover.previous {
             transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}!important;
             transition: transform 0.3s ease; /* برای انیمیشن روان */
 
          }
 
-        .btn:hover i.next {
+        .btn:hover.next {
             transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %} !important;
             transition: transform 0.3s ease; /* برای انیمیشن روان */
 
