@@ -165,6 +165,14 @@
              padding: 0 10px;
          }
 
+         .previous:hover{
+             transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}
+         }
+
+         .next:hover{
+             transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %}
+         }
+
         .header {
             display: flex;
             align-items: center;
@@ -278,13 +286,13 @@
  <footer>
     <div class="container-fluid d-flex align-items-center justify-content-between pb-2  py-3 px-3">
         <a href="{% url 'product:start-view' %}" class="btn" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr" {% endif %}>
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right" {% else %}class="fa-solid fa-arrow-left"{% endif %} style="transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}"></i>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right previous" {% else %}class="fa-solid fa-arrow-left"{% endif %}></i>
             <span>{% trans "گزارش" %}</span>
         </a>
 
      <a href="{% url 'product:evidence-view' %}" class="btn">
             <span>{% trans "مدارک" %}</span>
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} style="transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %}"></i>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left next" {% else %}class="fa-solid fa-arrow-right"{% endif %}></i>
         </a>
     </div>
 </footer>
