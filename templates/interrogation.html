@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,47 +108,47 @@
                 <div class="row g-3">
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>Name:</span> John Doe
+                            <span>{% trans "نام:" %}</span> علی حسین زاده
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>Age:</span> 35
+                            <span>{% trans "سن:" %}</span> 35
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>Gender:</span> Male
+                            <span>{% trans "جنسیت:" %}</span> Male
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>Height:</span> 180 cm
+                            <span>{% trans "قد:" %}</span> 180 cm
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>Weight:</span> 75 kg
+                            <span>{% trans "وزن:" %}</span> 75 kg
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>Blood Group:</span> O+
+                            <span>{% trans "گروه خونی:" %}</span> O+
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>Marital Status:</span> Married
+                            <span>{% trans "تاهل:" %}</span> Married
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>Occupation:</span> Accountant
+                            <span>{% trans "شغل:" %}</span> Accountant
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>Relation:</span> Husband
+                            <span>{% trans "نوع ارتباط:" %}</span> Husband
                         </div>
                     </div>
                 </div>
