@@ -165,20 +165,14 @@
              padding: 0 10px;
          }
 
-        .btn:hover i.previous {
-            transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}!important;
-            transition: transform 0.3s ease; /* برای انیمیشن روان */
-
+         .btn:hover .previous-icon {
+             transform: {% if LANGUAGE_BIDI %}translateX(5px){% else %}translateX(-5px){% endif %}!important;
+             transition: transform 0.3s ease; /* انیمیشن روان */
          }
 
-        .btn:hover i.next {
-            transform: translateX(-10px);
-            transition: transform 0.3s ease; /* برای انیمیشن روان */
-
-         }
-
-        i{
-            display: inline-block;
+        .btn:hover .next-icon {
+            transform: {% if LANGUAGE_BIDI %}translateX(-5px){% else %}translateX(5px){% endif %}!important;
+            transition: transform 0.3s ease; /* انیمیشن روان */
         }
 
         .header {
@@ -294,13 +288,13 @@
  <footer>
     <div class="container-fluid d-flex align-items-center justify-content-between pb-2  py-3 px-3">
         <a href="{% url 'product:start-view' %}" class="btn" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr" {% endif %}>
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right previous" {% else %}class="fa-solid fa-arrow-left"{% endif %}></i>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right previous-icon" {% else %}class="fa-solid fa-arrow-left previous-icon"{% endif %}></i>
             <span>{% trans "گزارش" %}</span>
         </a>
 
      <a href="{% url 'product:evidence-view' %}" class="btn">
             <span>{% trans "مدارک" %}</span>
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left next" {% else %}class="fa-solid fa-arrow-right"{% endif %}></i>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left next-icon" {% else %}class="fa-solid fa-arrow-right next-icon"{% endif %}></i>
         </a>
     </div>
 </footer>
