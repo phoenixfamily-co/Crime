@@ -90,6 +90,30 @@
             border-radius: 10px;
             margin-bottom: 10px;
         }
+        .exit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 56px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: 400;
+            text-decoration: none;
+            border: 2px solid var(--btn-bg);
+            color: var(--text-color);
+        }
+
+         span {
+             font-size: 20px;
+             padding: 0 10px;
+         }
+
+        .exit:hover i {
+            transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %};
+            transition: transform 0.3s ease; /* انیمیشن روان */
+
+        }
     </style>
 </head>
 <body>
@@ -101,9 +125,10 @@
     <div class="section profile-info">
         <div class="d-flex align-items-center justify-content-between mb-3">
         <h5 class="mb-0">{% trans "پروفایل مظنون" %}</h5>
-        <i href="{% url 'product:suspects-view' %}"
-           class="fa-solid fa-door-open"
-           style="color: #d32f2f; font-size: 24px; cursor: pointer;"></i>
+        <a href="{% url 'product:suspects-view' %}" class="exit {% if LANGUAGE_BIDI %}me-auto{% else %}ms-auto{% endif %}">
+            <span>{% trans "خروج" %}</span>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
+        </a>
     </div>
         <div class="row align-items-start">
             <!-- تصویر مظنون -->
