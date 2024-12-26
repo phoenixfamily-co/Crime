@@ -162,12 +162,12 @@
         <div class="section">
             <h5>{% trans 'سوال و جواب' %}</h5>
             <div id="question-card" class="card p-3">
-                <p><strong>Question:</strong> Where were you last night?</p>
-                <p><strong>Answer:</strong> I was at home watching TV.</p>
+                <p><strong>{% trans 'سوال:' %}</strong> Where were you last night?</p>
+                <p><strong>{% trans 'جواب:' %}</strong> I was at home watching TV.</p>
             </div>
             <div class="d-flex justify-content-between">
-                <button class="btn" onclick="previousQuestion()">Previous</button>
-                <button class="btn" onclick="nextQuestion()">Next</button>
+                <button class="btn" onclick="previousQuestion()">{% trans 'قبلی' %}</button>
+                <button class="btn" onclick="nextQuestion()">{% trans 'بعدی' %}</button>
             </div>
         </div>
 
@@ -177,11 +177,11 @@
         <!-- بخش سوم: تحلیل جسمی و احساسی -->
         <div class="section">
             <h5>{% trans 'آنالیز بدن' %}</h5>
-            <p><strong>{% trans 'ضربان قلب' %}</strong> <span id="heart-rate">120 BPM</span></p>
+            <p><strong>{% trans 'ضربان قلب:' %}</strong> <span id="heart-rate">120 BPM</span></p>
             <div class="indicator">
                 <div id="stress-bar" class="indicator-bar" style="width: 60%;"></div>
             </div>
-            <p><strong>{% trans 'سطح استرس' %}</strong> <span id="stress-level">Moderate</span></p>
+            <p><strong>{% trans 'سطح استرس:' %}</strong> <span id="stress-level">Moderate</span></p>
             <div class="emotion-analysis">
                 <h6>{% trans 'حالت چهره' %}</h6>
                 <p><strong>Nervous</strong></p>
