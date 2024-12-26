@@ -160,7 +160,7 @@
 <div class="container-fluid">
         <!-- بخش دوم: سوالات و پاسخ‌ها -->
         <div class="section">
-            <h5>Questions & Answers</h5>
+            <h5>{% trans 'سوال و جواب' %}</h5>
             <div id="question-card" class="card p-3">
                 <p><strong>Question:</strong> Where were you last night?</p>
                 <p><strong>Answer:</strong> I was at home watching TV.</p>
@@ -176,14 +176,14 @@
 <div class="container-fluid">
         <!-- بخش سوم: تحلیل جسمی و احساسی -->
         <div class="section">
-            <h5>Physical & Emotional Analysis</h5>
-            <p><strong>Heart Rate:</strong> <span id="heart-rate">120 BPM</span></p>
+            <h5>{% trans 'آنالیز بدن' %}</h5>
+            <p><strong>{% trans 'ضربان قلب' %}</strong> <span id="heart-rate">120 BPM</span></p>
             <div class="indicator">
                 <div id="stress-bar" class="indicator-bar" style="width: 60%;"></div>
             </div>
-            <p><strong>Stress Level:</strong> <span id="stress-level">Moderate</span></p>
+            <p><strong>{% trans 'سطح استرس' %}</strong> <span id="stress-level">Moderate</span></p>
             <div class="emotion-analysis">
-                <h6>Facial Emotion Analysis</h6>
+                <h6>{% trans 'حالت چهره' %}</h6>
                 <p><strong>Nervous</strong></p>
             </div>
         </div>
