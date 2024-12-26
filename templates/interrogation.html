@@ -99,8 +99,12 @@
 <div class="container-fluid">
     <!-- بخش اول: پروفایل مظنون -->
     <div class="section profile-info">
-        <h5>{% trans "پروفایل مظنون" %}</h5>
-        <i href="{% url 'product:suspects-view' %}" class="fa-solid fa-door-open" style="color: #d32f2f; font-size: 16px"></i>
+        <div class="d-flex align-items-center justify-content-between">
+        <h5 class="mb-0">{% trans "پروفایل مظنون" %}</h5>
+        <i href="{% url 'product:suspects-view' %}"
+           class="fa-solid fa-door-open"
+           style="color: #d32f2f; font-size: 16px; cursor: pointer;"></i>
+    </div>
         <div class="row align-items-start">
             <!-- تصویر مظنون -->
             <div class="col-12 col-sm-4 col-md-3 mb-3 mb-sm-0 d-flex justify-content-center">
