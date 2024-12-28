@@ -78,7 +78,7 @@ def create_product(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
 
-    return render(request, 'autopsy.html', {
+    return render(request, 'manager/create_product.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
     })
