@@ -195,7 +195,7 @@
          }
 
         .btn:hover i {
-            transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(+10px){% endif %};
+            transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}!important;
             transition: transform 0.3s ease; /* انیمیشن روان */
 
         }
@@ -266,7 +266,7 @@
  <footer>
     <div class="container-fluid py-3 px-3">
         <a href="{% url 'product:evidence-view' %}" class="btn {% if LANGUAGE_BIDI %}ms-auto{% else %}me-auto{% endif %}">
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right" {% else %}class="fa-solid fa-arrow-left"{% endif %} ></i>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right" {% else %}class="fa-solid fa-arrow-left"{% endif %}></i>
             <span>{% trans "مدارک" %}</span>
 
         </a>
