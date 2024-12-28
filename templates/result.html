@@ -234,6 +234,9 @@
     </header>
 
 <div class="container mt-3">
+
+    <h5>{% trans 'قاتل را مشخص کنید' %}</h5>
+
     <form id="submit-answer-form">
         <!-- Select Suspect -->
         <div class="mb-3">
@@ -249,8 +252,8 @@
 
         <!-- Reason Input -->
         <div class="mb-3">
-            <label for="reason-text" class="form-label">{% trans 'دلیل شما . . .' %}</label>
-            <textarea class="form-control" id="reason-text" rows="4" placeholder="{% trans 'توضیح دهید چرا' %}" required></textarea>
+            <label for="reason-text" class="form-label">{% trans 'دلیل شما' %}</label>
+            <textarea class="form-control" id="reason-text" rows="4" placeholder="{% trans 'توضیح دهید چرا . . .' %}" required></textarea>
         </div>
 
         <!-- Submit Button -->
