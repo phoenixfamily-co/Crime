@@ -52,6 +52,7 @@ class Case(models.Model):
 
 class Suspect(models.Model):
     name = models.CharField(max_length=200, verbose_name="نام و نام خانوادگی")
+    murderer = models.BooleanField(verbose_name='قاتل', default=False)
     age = models.IntegerField(verbose_name="سن")
     gender = models.CharField(
         max_length=10,
