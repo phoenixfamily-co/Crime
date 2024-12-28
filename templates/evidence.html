@@ -348,57 +348,71 @@ footer .copyright {
               background-color:transparent;!important;
               color: var(--text-color)!important;
           }
+
+           footer {
+             background-color: var(--navbar-bg);
+             color: var(--text-color);
+             position: fixed; /* برای جلوگیری از تداخل با بخش‌های دیگر */
+             bottom: 0;
+             width: 100%;
+          }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 56px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: 400;
+            text-decoration: none;
+            border: 2px solid var(--btn-bg);
+            color: var(--text-color);
+        }
+
+         span {
+             font-size: 20px;
+             padding: 0 10px;
+         }
+
+        .btn:hover i {
+            transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %};
+            transition: transform 0.3s ease; /* انیمیشن روان */
+
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .header::before,
+        .header::after {
+            content: '';
+            flex: 1;
+            border-top: 2px solid var(--btn-bg); /* خط سفید */
+            margin: 0 10px;
+        }
+
+        .header h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase; /* حروف بزرگ */
+            letter-spacing: 2px; /* فاصله بین حروف */
+            margin: 0;
+        }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="//phoenixfamily.co">
-            <img src="{% static 'images/logo.png' %}" alt="{% trans 'Logo' %}" class="d-inline-block align-text-top">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
-            <span class="navbar-toggler-icon">
-            </span>
-            <i class="fa-solid fa-bars custom-toggler"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{% url 'product:start-view' %}">{% trans "Start" %}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'product:suspects-view' %}">{% trans "Suspects" %}</a></li>
-                <li class="nav-item"><a class="nav-link active" href="{% url 'product:evidence-view' %}">{% trans "Evidence" %}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'product:result-view' %}">{% trans "Result" %}</a></li>
-            </ul>
+ <header class="header mt-2">
+        <h3>شواهد و مدارک</h3>
+    </header>
 
-           <!-- دکمه تغییر تم -->
-            <div class="ms-3 d-flex align-items-center">
-                <i class="fas fa-user"></i>
-            </div>
-
-            <!-- دکمه تغییر تم -->
-            <div class="ms-3 d-flex align-items-center">
-                <i class="fas fa-sun"></i>
-                <div class="ms-2 form-check form-switch">
-                    <label for="theme-switch"></label>
-                    <input class="form-check-input" type="checkbox" role="switch" id="theme-switch" />
-                </div>
-                <i class="fas fa-moon"></i>
-            </div>
-            <!-- فرم تغییر زبان -->
-            <div class="ms-3">
-                <form action="{% url 'set_language' %}" method="post">
-                    {% csrf_token %}
-                    <label>
-                        <select name="language" class="form-select form-select-sm d-inline w-auto" onchange="this.form.submit()">
-                        <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
-                        <option value="fa" class="option-rtl" {% if LANGUAGE_CODE == 'fa' %}selected{% endif %}>فارسی</option>
-                    </select>
-                    </label>
-                </form>
-            </div>
-        </div>
-    </div>
-</nav>
 
 <div class="container mt-5">
     <!-- Search and Filter Bar -->
@@ -443,6 +457,20 @@ footer .copyright {
     </div>
 </div>
 
+  <footer>
+    <div class="container-fluid d-flex align-items-center justify-content-between pb-2  py-3 px-3">
+        <a href="{% url 'product:start-view' %}" class="btn" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr" {% endif %}>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right previous-icon" {% else %}class="fa-solid fa-arrow-left previous-icon"{% endif %}></i>
+            <span>{% trans "گزارش" %}</span>
+        </a>
+
+     <a href="{% url 'product:evidence-view' %}" class="btn">
+            <span>{% trans "مدارک" %}</span>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left next-icon" {% else %}class="fa-solid fa-arrow-right next-icon"{% endif %}></i>
+        </a>
+    </div>
+</footer>
+
 
 
 
@@ -450,7 +478,7 @@ footer .copyright {
 <script>
     document.addEventListener("DOMContentLoaded", function () {
   const themeSwitch = document.getElementById("theme-switch");
-  const currentTheme = localStorage.getItem("theme") || "light";
+  const currentTheme = localStorage.getItem("theme") || "dark";
 
   if (currentTheme === "dark") {
     document.body.classList.add("dark-mode");
