@@ -73,6 +73,17 @@ def autopsy(request):
     })
 
 
+@cache_page(60 * 15)
+def create_product(request):
+    current_language = get_language()
+    is_bidi = get_language_bidi()
+
+    return render(request, 'autopsy.html', {
+        'LANGUAGE_CODE': current_language,
+        'LANGUAGE_BIDI': is_bidi,
+    })
+
+
 class CaseViewSet(viewsets.ModelViewSet):
     queryset = Case.objects.all()
     serializer_class = CaseSerializer
