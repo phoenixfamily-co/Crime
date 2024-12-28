@@ -195,7 +195,7 @@
          }
 
         .btn:hover i {
-            transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %};
+            transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(+10px){% endif %};
             transition: transform 0.3s ease; /* انیمیشن روان */
 
         }
