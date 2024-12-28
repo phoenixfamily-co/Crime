@@ -459,13 +459,13 @@ footer .copyright {
 
   <footer>
     <div class="container-fluid d-flex align-items-center justify-content-between pb-2  py-3 px-3">
-        <a href="{% url 'product:start-view' %}" class="btn" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr" {% endif %}>
+        <a href="{% url 'product:suspects-view' %}" class="btn" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr" {% endif %}>
             <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right previous-icon" {% else %}class="fa-solid fa-arrow-left previous-icon"{% endif %}></i>
-            <span>{% trans "گزارش" %}</span>
+            <span>{% trans "مظنونین" %}</span>
         </a>
 
-     <a href="{% url 'product:evidence-view' %}" class="btn">
-            <span>{% trans "مدارک" %}</span>
+     <a href="{% url 'product:result-view' %}" class="btn">
+            <span>{% trans "نتیجه" %}</span>
             <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left next-icon" {% else %}class="fa-solid fa-arrow-right next-icon"{% endif %}></i>
         </a>
     </div>
