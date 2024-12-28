@@ -19,7 +19,7 @@ class Case(models.Model):
     report = models.TextField(verbose_name="گزارش پلیس")
     Video = models.FileField(upload_to='videos/', verbose_name="ویدیو پرونده")
     result = models.TextField(verbose_name="دادنامه پرونده")
-    active = models.BooleanField(blank=True, null=True, verbose_name='فعال')
+    active = models.BooleanField(blank=True, null=True, verbose_name='فعال', default=True)
     price = models.IntegerField(verbose_name="قیمت")
 
     age_range = models.CharField(

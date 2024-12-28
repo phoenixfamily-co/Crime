@@ -55,6 +55,20 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
+          .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 60px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: 400;
+            text-decoration: none;
+            border: 2px solid var(--btn-bg);
+            color: var(--text-color);
+        }
+
     </style>
 </head>
 <body>
@@ -64,25 +78,48 @@
     <form method="POST">
       <!-- فیلد عنوان پرونده -->
       <div class="mb-3">
-        <label for="caseTitle" class="form-label">عنوان پرونده</label>
-        <input type="text" class="form-control" id="caseTitle" name="caseTitle" required>
+        <label for="title" class="form-label">عنوان پرونده</label>
+        <input type="text" class="form-control" id="title" name="title" required>
       </div>
 
       <!-- فیلد توضیحات -->
       <div class="mb-3">
-        <label for="caseDescription" class="form-label">توضیحات پرونده</label>
-        <textarea class="form-control" id="caseDescription" name="caseDescription" rows="4" required></textarea>
+        <label for="description" class="form-label">توضیحات پرونده</label>
+        <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+      </div>
+
+        <div class="mb-3">
+        <label for="result" class="form-label">دادنامه پرونده</label>
+        <textarea class="form-control" id="result" name="result" rows="4" required></textarea>
+      </div>
+
+        <div class="mb-3">
+        <label for="report" class="form-label">گزارش پلیس</label>
+        <textarea class="form-control" id="report" name="report" rows="4" required></textarea>
+      </div>
+
+        <div class="mb-3">
+        <label for="score" class="form-label">درجه سختی</label>
+        <input type="number" min="1" max="10" class="form-control" id="score" name="score" required>
+      </div>
+
+        <div class="mb-3">
+        <label for="category" class="form-label">دسته بندی</label>
+        <select class="form-select" id="category" name="category" required>
+
+        </select>
       </div>
 
       <!-- فیلد درجه سختی -->
       <div class="mb-3">
-        <label for="difficultyLevel" class="form-label">درجه سختی</label>
+        <label for="difficultyLevel" class="form-label">سطح سختی</label>
         <select class="form-select" id="difficultyLevel" name="difficultyLevel" required>
           <option value="1">آسان</option>
           <option value="5">متوسط</option>
           <option value="10">سخت</option>
         </select>
       </div>
+
 
       <!-- فیلد رده سنی -->
       <div class="mb-3">
@@ -96,39 +133,21 @@
         </select>
       </div>
 
-      <!-- فیلد امتیاز -->
-      <div class="mb-3">
-        <label for="score" class="form-label">امتیاز</label>
-        <input type="number" class="form-control" id="score" name="score" required>
-      </div>
-
-      <!-- فیلد برای انتخاب مظنون -->
-      <div class="mb-3">
-        <label for="suspect" class="form-label">مظنون</label>
-        <select class="form-select" id="suspect" name="suspect">
-          <option value="suspect1">مظنون 1</option>
-          <option value="suspect2">مظنون 2</option>
-          <option value="suspect3">مظنون 3</option>
-        </select>
-      </div>
-
       <!-- فیلد انتخاب فایل مدرک -->
       <div class="mb-3">
-        <label for="evidenceFile" class="form-label">فایل مدرک</label>
-        <input class="form-control" type="file" id="evidenceFile" name="evidenceFile">
+        <label for="poster" class="form-label">عکس پرونده</label>
+        <input class="form-control" type="file" id="poster" name="image">
       </div>
 
-      <!-- فیلد وضعیت بررسی مدرک -->
+
+        <!-- فیلد انتخاب فایل مدرک -->
       <div class="mb-3">
-        <label for="evidenceStatus" class="form-label">وضعیت بررسی مدرک</label>
-        <select class="form-select" id="evidenceStatus" name="evidenceStatus" required>
-          <option value="UNREVIEWED">بررسی نشده</option>
-          <option value="REVIEWED">بررسی شده</option>
-        </select>
+        <label for="video" class="form-label">ویدیو پرونده</label>
+        <input class="form-control" type="file" id="video" name="video">
       </div>
 
       <!-- دکمه ارسال فرم -->
-      <button type="submit" class="btn btn-primary w-100">ساخت پرونده</button>
+      <button type="submit" class="btn">ساخت پرونده</button>
     </form>
   </div>
 
