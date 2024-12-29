@@ -197,6 +197,7 @@
             const form = event.target;
             const formData = new FormData(form);
 
+            console.log(JSON.stringify(formData));
             // ارسال درخواست به API
             fetch('{% url 'product:case-list' %}', {
                 method: 'POST',
