@@ -149,7 +149,14 @@ class EvidenceViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         # دریافت داده‌ها از درخواست
-        serializer = self.get_serializer(data=request.data)
+        data = request.data.copy()  # کپی داده‌های موجود
+        file = request.FILES.get('file')  # دریافت فایل از request.FILES
+
+        # اگر فایل وجود داشته باشد، آن را به داده‌ها اضافه می‌کنیم
+        if file:
+            data['file'] = file
+
+        serializer = self.get_serializer(data=data)
 
         # اعتبارسنجی و ذخیره داده‌ها
         if serializer.is_valid():
