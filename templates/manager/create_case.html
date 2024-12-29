@@ -221,16 +221,16 @@
             })
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('Something went wrong!');
+                        throw new Error('اشکالی پیش آمده');
                     }
                     return response.json();
                 })
                 .then(data => {
-                    alert('Case created successfully!');
+                    alert('پرونده با موفقیت ساخته شد');
                     console.log(data);
                 })
                 .catch(error => {
-                    alert('Error creating case.');
+                    alert(error);
                     console.error(error);
                 });
         });
