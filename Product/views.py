@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.cache import cache_page
 from django.utils.translation import get_language, get_language_bidi
 from rest_framework import viewsets
+from rest_framework.response import Response
 
 from Product.models import Case, Suspect, Interrogation, Evidence
 from Product.serializers import CaseSerializer, SuspectSerializer, InterrogationSerializer, EvidenceSerializer
@@ -145,6 +146,16 @@ class EvidenceViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(status=status)
 
         return queryset
+
+    def create(self, request, *args, **kwargs):
+        # دریافت داده‌ها از درخواست
+        serializer = self.get_serializer(data=request.data)
+
+        # اعتبارسنجی و ذخیره داده‌ها
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)  # داده‌ها ذخیره شده و پاسخ برگشت می‌دهیم
+        return Response(serializer.errors, status=400)
 
 
 class InterrogationViewSet(viewsets.ModelViewSet):
