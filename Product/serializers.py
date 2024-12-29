@@ -5,7 +5,7 @@ from .models import Case, Suspect, Interrogation, Evidence
 class CaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Case
-        fields = ['id', 'title', 'description']
+        fields = ['id', 'title', 'description', 'price ']
 
 
 class SuspectSerializer(serializers.ModelSerializer):
