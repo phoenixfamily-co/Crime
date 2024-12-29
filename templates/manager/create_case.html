@@ -109,7 +109,7 @@
 
   <div class="container my-5">
     <h2 class="text-center">ساخت پرونده جنایی</h2>
-      <form action="{% url 'product:case-list' %}" method="POST" enctype="multipart/form-data">
+      <form id="caseForm" method="POST" enctype="multipart/form-data">
       <!-- فیلد عنوان پرونده -->
       <div class="mb-3">
         <label for="title" class="form-label">عنوان پرونده</label>
@@ -165,8 +165,8 @@
 
       <!-- فیلد انتخاب فایل مدرک -->
       <div class="mb-3">
-        <label for="poster" class="form-label">عکس پرونده</label>
-        <input class="form-control" type="file" id="poster" name="image">
+        <label for="image" class="form-label">عکس پرونده</label>
+        <input class="form-control" type="file" id="image" name="image">
       </div>
 
 
@@ -190,43 +190,51 @@
     </form>
   </div>
 
-{#  <script>#}
-{#        document.getElementById('caseForm').addEventListener('submit', function (event) {#}
-{#            event.preventDefault(); // جلوگیری از رفتار پیش‌فرض ارسال فرم#}
-{##}
-{#            // جمع‌آوری داده‌ها#}
-{#            const formData = {#}
-{#                title: document.getElementById('title').value,#}
-{#                description: document.getElementById('description').value,#}
-{#                difficulty: document.getElementById('difficulty').value,#}
-{#                age_rating: document.getElementById('age_rating').value,#}
-{#                score: parseInt(document.getElementById('score').value, 10),#}
-{#            };#}
-{##}
-{#            // ارسال درخواست به API#}
-{#            fetch('{% url 'product:' %}', {#}
-{#                method: 'POST',#}
-{#                headers: {#}
-{#                    'Content-Type': 'application/json',#}
-{#                },#}
-{#                body: JSON.stringify(formData),#}
-{#            })#}
-{#                .then(response => {#}
-{#                    if (!response.ok) {#}
-{#                        throw new Error('Something went wrong!');#}
-{#                    }#}
-{#                    return response.json();#}
-{#                })#}
-{#                .then(data => {#}
-{#                    alert('Case created successfully!');#}
-{#                    console.log(data);#}
-{#                })#}
-{#                .catch(error => {#}
-{#                    alert('Error creating case.');#}
-{#                    console.error(error);#}
-{#                });#}
-{#        });#}
-{#    </script>#}
+  <script>
+        document.getElementById('caseForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // جلوگیری از رفتار پیش‌فرض ارسال فرم
+
+            // جمع‌آوری داده‌ها
+            const formData = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                report: document.getElementById('report').value,
+                difficulty_number: document.getElementById('difficulty_number').value,
+                difficulty_level: document.getElementById('difficulty_level').value,
+                age_range: document.getElementById('age_range').value,
+                category:document.getElementById('category').value,
+                image:document.getElementById('image').value,
+                video:document.getElementById('video').value,
+                result:document.getElementById('result').value,
+                price:parseInt(document.getElementById('score').value,10),
+
+
+            };
+
+            // ارسال درخواست به API
+            fetch('{% url 'product:product:case-list' %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Something went wrong!');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('Case created successfully!');
+                    console.log(data);
+                })
+                .catch(error => {
+                    alert('Error creating case.');
+                    console.error(error);
+                });
+        });
+    </script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
