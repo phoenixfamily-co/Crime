@@ -167,11 +167,7 @@
         <!-- میزان حقیقت -->
         <div class="mb-3">
             <label for="truth_level" class="form-label">میزان حقیقت (1 تا 10)</label>
-            <select class="form-select" id="truth_level" name="truth_level" required>
-                {% for i in range(1, 11) %}
-                <option value="{{ i }}">{{ i }}</option>
-                {% endfor %}
-            </select>
+            <input type="number" min="1" max="10" class="form-control" id="truth_level" name="truth_level" required>
         </div>
 
         <!-- دکمه ارسال فرم -->
