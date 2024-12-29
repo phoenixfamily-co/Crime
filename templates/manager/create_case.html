@@ -200,7 +200,10 @@
             // ارسال درخواست به API
             fetch('{% url 'product:case-list' %}', {
                 method: 'POST',
-                body: formData,
+                 headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
 
             })
                 .then(response => {
