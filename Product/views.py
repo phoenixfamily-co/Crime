@@ -98,10 +98,12 @@ def create_suspect(request):
 def create_evidence(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
+    cases = Case.objects.all()
 
     return render(request, 'manager/create_evidence.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
+        'cases': cases,
     })
 
 

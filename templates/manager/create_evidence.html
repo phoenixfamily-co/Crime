@@ -115,9 +115,10 @@
             <label for="case" class="form-label">انتخاب پرونده</label>
             <select class="form-select" id="case" name="case" required>
                 <!-- اینجا لیستی از پرونده‌ها را باید از سرور بارگذاری کنید -->
+                {% for case in cases %}
                 <option value="">انتخاب کنید...</option>
-                <option value="1">پرونده ۱</option>
-                <option value="2">پرونده ۲</option>
+                <option value="{{ case.id }}">{{ case.title}}</option>
+                {% endfor %}
             </select>
         </div>
 
