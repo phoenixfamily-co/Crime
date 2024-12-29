@@ -191,6 +191,8 @@
 
         // جمع‌آوری داده‌ها با استفاده از FormData
         const formData = new FormData(form);
+        console.log(JSON.stringify(formData));
+
 
         // ارسال درخواست به API
         fetch('{% url "product:evidence-list" %}', { // آدرس مناسب API را جایگزین کنید
