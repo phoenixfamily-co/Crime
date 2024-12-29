@@ -53,6 +53,7 @@ class Case(models.Model):
 class Suspect(models.Model):
     name = models.CharField(max_length=200, verbose_name="نام و نام خانوادگی")
     murderer = models.BooleanField(verbose_name='قاتل', default=False)
+    job = models.CharField(max_length=200, verbose_name="َشغل" , blank=True, null=True)
     age = models.IntegerField(verbose_name="سن")
     gender = models.CharField(
         max_length=10,
@@ -76,6 +77,8 @@ class Suspect(models.Model):
         choices=[('single', 'مجرد'), ('married', 'متاهل'), ('divorced', 'طلاقت گرفته')],
         verbose_name="وضعیت تاهل"
     )
+    relationship_with_victim = models.CharField(max_length=200, verbose_name="ارتباط با مقتول", blank=True, null=True)
+    alibi = models.TextField(verbose_name="بهانه یا توضیحات مظنون", blank=True, null=True)
 
     def __str__(self):
         return self.name
