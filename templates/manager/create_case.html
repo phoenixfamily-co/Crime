@@ -194,34 +194,20 @@
         document.getElementById('caseForm').addEventListener('submit', function (event) {
             event.preventDefault(); // جلوگیری از رفتار پیش‌فرض ارسال فرم
 
-            // جمع‌آوری داده‌ها
-            const formData = {
-                title: document.getElementById('title').value,
-                description: document.getElementById('description').value,
-                report: document.getElementById('report').value,
-                difficulty_number: document.getElementById('difficulty_number').value,
-                difficulty_level: document.getElementById('difficulty_level').value,
-                age_range: document.getElementById('age_range').value,
-                category:document.getElementById('category').value,
-                image:document.getElementById('image').value,
-                video:document.getElementById('video').value,
-                result:document.getElementById('result').value,
-                price:parseInt(document.getElementById('price').value,10),
-
-
-            };
+            const form = event.target;
+            const formData = new FormData(form);
 
             // ارسال درخواست به API
             fetch('{% url 'product:case-list' %}', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+                body: formData,
+
             })
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('اشکالی پیش آمده');
+                        return response.json().then(data => {
+                    throw new Error(data.detail || 'خطا در ثبت مدرک');
+                });
                     }
                     return response.json();
                 })
@@ -230,7 +216,7 @@
                     console.log(data);
                 })
                 .catch(error => {
-                    alert(error);
+                    alert('خطا: ' + error.message);
                     console.error(error);
                 });
         });

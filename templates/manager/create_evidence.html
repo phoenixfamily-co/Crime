@@ -181,6 +181,40 @@
     </form>
   </div>
 
+  <script>
+    document.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault(); // جلوگیری از رفتار پیش‌فرض ارسال فرم
+
+        // انتخاب فرم
+        const form = event.target;
+
+        // جمع‌آوری داده‌ها با استفاده از FormData
+        const formData = new FormData(form);
+
+        // ارسال درخواست به API
+        fetch('{% url "product:evidence-list" %}', { // آدرس مناسب API را جایگزین کنید
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.detail || 'خطا در ثبت مدرک');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert('مدرک با موفقیت ثبت شد');
+            console.log('Response:', data);
+        })
+        .catch(error => {
+            alert('خطا: ' + error.message);
+            console.error('Error:', error);
+        });
+    });
+</script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const themeSwitch = document.getElementById("theme-switch");
