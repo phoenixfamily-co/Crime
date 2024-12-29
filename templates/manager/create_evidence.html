@@ -195,10 +195,7 @@
         // ارسال درخواست به API
         fetch('{% url "product:evidence-list" %}', { // آدرس مناسب API را جایگزین کنید
             method: 'POST',
-             headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: formData
+            body: formData
         })
         .then(response => {
             if (!response.ok) {
