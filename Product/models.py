@@ -13,7 +13,7 @@ class Category(models.Model):
 class Case(models.Model):
     title = models.CharField(max_length=200, verbose_name="عنوان پرونده")
     description = models.TextField(verbose_name="شرح پرونده")
-    image = models.ImageField(upload_to="images/", verbose_name='عکس پرونده')
+    image = models.ImageField(upload_to="images/", verbose_name='عکس پرونده', null=True, blank=True)
     location = models.CharField(max_length=200, verbose_name="محل وقوع")
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ثبت پرونده")
     report = models.TextField(verbose_name="گزارش پلیس")
