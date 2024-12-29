@@ -19,7 +19,10 @@ urlpatterns = [
     path('evidence/', views.evidence, name='evidence-view'),  # صفحه اصلی
     path('result/', views.result, name='result-view'),  # صفحه اصلی
     path('autopsy/', views.autopsy, name='autopsy-view'),  # صفحه اصلی
-    path('manager/product/', views.create_product, name='create-product-view'),  # صفحه اصلی
+    path('manager/case/', views.create_case, name='create-case-view'),  # صفحه اصلی
+    path('manager/suspect/', views.create_suspect, name='creat-suspect-view'),  # صفحه اصلی
+    path('manager/evidence/', views.create_evidence, name='create-evidence-view'),  # صفحه اصلی
+    path('manager/interrogation/', views.create_interrogation, name='create-interrogation-view'),  # صفحه اصلی
 
     path('api/', include(router.urls)),
 

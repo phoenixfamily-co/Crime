@@ -74,11 +74,42 @@ def autopsy(request):
 
 
 @cache_page(60 * 15)
-def create_product(request):
+def create_case(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
 
-    return render(request, 'manager/create_product.html', {
+    return render(request, 'manager/create_case.html', {
+        'LANGUAGE_CODE': current_language,
+        'LANGUAGE_BIDI': is_bidi,
+    })
+
+
+@cache_page(60 * 15)
+def create_suspect(request):
+    current_language = get_language()
+    is_bidi = get_language_bidi()
+
+    return render(request, 'manager/create_suspect.html', {
+        'LANGUAGE_CODE': current_language,
+        'LANGUAGE_BIDI': is_bidi,
+    })
+
+
+def create_evidence(request):
+    current_language = get_language()
+    is_bidi = get_language_bidi()
+
+    return render(request, 'manager/create_evidence.html', {
+        'LANGUAGE_CODE': current_language,
+        'LANGUAGE_BIDI': is_bidi,
+    })
+
+
+def create_interrogation(request):
+    current_language = get_language()
+    is_bidi = get_language_bidi()
+
+    return render(request, 'manager/create_interrogation.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
     })
