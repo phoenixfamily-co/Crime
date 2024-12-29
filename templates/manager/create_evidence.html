@@ -109,7 +109,7 @@
 
   <div class="container my-5">
     <h2 class="text-center">ساخت مدرک</h2>
-      <form method="POST" enctype="multipart/form-data">
+      <form id="evidenceForm"  method="POST" enctype="multipart/form-data">
         <!-- انتخاب پرونده -->
         <div class="mb-3">
             <label for="case" class="form-label">انتخاب پرونده</label>
@@ -183,11 +183,11 @@
   </div>
 
   <script>
-    document.querySelector('form').addEventListener('submit', function (event) {
+    document.getElementById('evidenceForm').addEventListener('submit', function (event) {
         event.preventDefault(); // جلوگیری از رفتار پیش‌فرض ارسال فرم
 
         // انتخاب فرم
-        const form = event.target;
+        const form = document.getElementById('evidenceForm')
 
         // جمع‌آوری داده‌ها با استفاده از FormData
         const formData = new FormData(form);
