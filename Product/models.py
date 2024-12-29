@@ -115,9 +115,19 @@ class Evidence(models.Model):
 
     status = models.CharField(max_length=20, choices=[('Locked', 'Unlocked'), ('Locked', 'Unlocked')],
                               default='Unlocked')
+    password = models.CharField(
+        max_length=128,
+        verbose_name="رمز عبور",
+        null=True,
+        blank=True,
+        help_text="فقط برای مدارکی که قفل هستند استفاده می‌شود."
+    )
 
     def __str__(self):
-        return f"Evidence: {self.evidence_type} for case {self.case.title}"
+        return f"Evidence: {self.title} ({self.evidence_type})"
+
+    def is_locked(self):
+        return self.status == 'Locked'
 
 
 class Interrogation(models.Model):
