@@ -187,7 +187,7 @@
         event.preventDefault(); // جلوگیری از رفتار پیش‌فرض ارسال فرم
 
         // انتخاب فرم
-         const form = event.target;
+        const form = document.getElementById('evidenceForm');
         const formData = new FormData(form);
         console.log(formData);
 
