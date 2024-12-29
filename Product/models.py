@@ -17,7 +17,7 @@ class Case(models.Model):
     location = models.CharField(max_length=200, verbose_name="محل وقوع")
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ثبت پرونده")
     report = models.TextField(verbose_name="گزارش پلیس")
-    Video = models.FileField(upload_to='videos/', verbose_name="ویدیو پرونده")
+    Video = models.FileField(upload_to='videos/', verbose_name="ویدیو پرونده", null=True, blank=True)
     result = models.TextField(verbose_name="دادنامه پرونده")
     active = models.BooleanField(blank=True, null=True, verbose_name='فعال', default=True)
     price = models.IntegerField(verbose_name="قیمت")
@@ -43,8 +43,8 @@ class Case(models.Model):
         choices=[('easy', 'آسان'), ('medium', 'متوسط'), ('hard', 'سخت')],
         verbose_name="سطح سختی"
     )
-    score = models.IntegerField(default=0, verbose_name="امتیاز")
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="دسته‌بندی پرونده", null=True , blank=True)
+    score = models.IntegerField(default=0, verbose_name="امتیاز", blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="دسته‌بندی پرونده", null=True, blank=True)
 
     def __str__(self):
         return self.title
