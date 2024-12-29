@@ -18,8 +18,7 @@ class SuspectSerializer(serializers.ModelSerializer):
 class EvidenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Evidence
-        fields = ['id', 'crime_case', 'suspect', 'evidence_type', 'description', 'date_collected', 'file', 'status']
-
+        fields = ['id', 'case', 'suspect', 'evidence_type', 'title', 'description', 'file', 'status', 'password']
 
 
 class InterrogationSerializer(serializers.ModelSerializer):
