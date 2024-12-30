@@ -51,6 +51,7 @@ class Case(models.Model):
 
 
 class Suspect(models.Model):
+    case = models.ForeignKey(Case, related_name="suspect", on_delete=models.CASCADE)
     name = models.CharField(max_length=200, verbose_name="نام و نام خانوادگی")
     murderer = models.BooleanField(verbose_name='قاتل', default=False)
     job = models.CharField(max_length=200, verbose_name="َشغل" , blank=True, null=True)
@@ -78,8 +79,8 @@ class Suspect(models.Model):
         verbose_name="وضعیت تاهل"
     )
     relationship_with_victim = models.CharField(max_length=200, verbose_name="ارتباط با مقتول", blank=True, null=True)
-    excuse = models.TextField(verbose_name="بهانه یا توضیحات مظنون", blank=True, null=True)
-    last_seen = models.TextField(verbose_name="بهانه یا توضیحات مظنون", blank=True, null=True)
+    excuse = models.TextField(verbose_name="بهانه مظنون", blank=True, null=True)
+    last_seen = models.TextField(verbose_name="آخرین بازدید", blank=True, null=True)
 
     def __str__(self):
         return self.name

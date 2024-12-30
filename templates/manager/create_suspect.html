@@ -110,6 +110,18 @@
   <div class="container my-5">
     <h2 class="text-center">ساخت مظنون</h2>
     <form id="suspectForm" method="POST" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label for="case" class="form-label">انتخاب پرونده</label>
+            <select class="form-select" id="case" name="case" required>
+                <!-- اینجا لیستی از پرونده‌ها را باید از سرور بارگذاری کنید -->
+                <option value="">انتخاب کنید...</option>
+                {% for case in cases %}
+                <option value="{{ case.id }}">{{ case.title}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
         <!-- فیلد نام -->
         <div class="mb-3">
             <label for="name" class="form-label">نام و نام خانوادگی</label>

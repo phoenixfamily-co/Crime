@@ -26,12 +26,13 @@ def suspects(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
     product = Case.objects.get(id=pk)
-
+    suspects = Suspect.objects.filter(case=pk)
 
     return render(request, 'suspects.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
-        'case': product
+        'case': product,
+        'suspects': suspects,
 
     })
 
@@ -103,10 +104,13 @@ def create_case(request):
 def create_suspect(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
+    cases = Case.objects.all()
 
     return render(request, 'manager/create_suspect.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
+        'cases': cases,
+
     })
 
 
