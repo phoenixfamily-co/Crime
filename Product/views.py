@@ -22,13 +22,16 @@ def start(request, pk):
 
 
 @cache_page(60 * 15)
-def suspects(request):
+def suspects(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
+    product = Case.objects.filter(id=pk)
 
     return render(request, 'suspects.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
+        'case': product
+
     })
 
 
@@ -44,24 +47,30 @@ def interrogation(request):
 
 
 @cache_page(60 * 15)
-def evidence(request):
+def evidence(request,pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
+    product = Case.objects.filter(id=pk)
 
     return render(request, 'evidence.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
+        'case': product
+
     })
 
 
 @cache_page(60 * 15)
-def result(request):
+def result(request,pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
+    product = Case.objects.filter(id=pk)
 
     return render(request, 'result.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
+        'case': product
+
     })
 
 

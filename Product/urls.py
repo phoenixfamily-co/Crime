@@ -14,10 +14,10 @@ router.register(r'interrogations', InterrogationViewSet)
 
 urlpatterns = [
     path('start/<int:pk>/', views.start, name='start-view'),  # صفحه اصلی
-    path('suspects/', views.suspects, name='suspects-view'),  # صفحه اصلی
+    path('suspects/<int:pk>/', views.suspects, name='suspects-view'),  # صفحه اصلی
     path('interrogation/', views.interrogation, name='interrogation-view'),  # صفحه اصلی
-    path('evidence/', views.evidence, name='evidence-view'),  # صفحه اصلی
-    path('result/', views.result, name='result-view'),  # صفحه اصلی
+    path('evidence/<int:pk>/', views.evidence, name='evidence-view'),  # صفحه اصلی
+    path('result/<int:pk>/', views.result, name='result-view'),  # صفحه اصلی
     path('autopsy/', views.autopsy, name='autopsy-view'),  # صفحه اصلی
     path('manager/case/', views.create_case, name='create-case-view'),  # صفحه اصلی
     path('manager/suspect/', views.create_suspect, name='creat-suspect-view'),  # صفحه اصلی
