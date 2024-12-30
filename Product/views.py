@@ -25,7 +25,8 @@ def start(request, pk):
 def suspects(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
-    product = Case.objects.filter(id=pk)
+    product = Case.objects.get(id=pk)
+
 
     return render(request, 'suspects.html', {
         'LANGUAGE_CODE': current_language,
@@ -50,7 +51,7 @@ def interrogation(request):
 def evidence(request,pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
-    product = Case.objects.filter(id=pk)
+    product = Case.objects.get(id=pk)
 
     return render(request, 'evidence.html', {
         'LANGUAGE_CODE': current_language,
@@ -64,7 +65,7 @@ def evidence(request,pk):
 def result(request,pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
-    product = Case.objects.filter(id=pk)
+    product = Case.objects.get(id=pk)
 
     return render(request, 'result.html', {
         'LANGUAGE_CODE': current_language,
