@@ -178,7 +178,7 @@
     </header>
 
 
-<div class="container my-5">
+<div class="container my-5 pb-5">
     <!-- Search and Filter Bar -->
     <div class="d-flex justify-content-between align-items-center mb-3">
         <input type="text" class="form-control w-60" placeholder="Search Evidence...">
@@ -193,7 +193,7 @@
     </div>
 
     <!-- Evidence Cards -->
-    <div class="row">
+    <div class="row mt-4 mx-md-5">
 
         {% for evidence in evidences %}
             {% if evidence.status == "Locked" %}
