@@ -89,7 +89,7 @@ class Evidence(models.Model):
         ('PHOTO', 'Photo'),
         ('VIDEO', 'Video'),
         ('DOCUMENT', 'Document'),
-        ('Voice', 'Voice'),
+        ('VOICE', 'Voice'),
         ('OTHER', 'Other'),
     ]
 
@@ -113,7 +113,7 @@ class Evidence(models.Model):
     # فایل ضمیمه (مدرک تصویری، ویدئویی یا دیگر فایل‌ها)
     file = models.FileField(upload_to='evidences/', null=True, blank=True)
 
-    status = models.CharField(max_length=20, choices=[('Locked', 'Unlocked'), ('Locked', 'Unlocked')],
+    status = models.CharField(max_length=20, choices=[('Locked', 'locked'), ('Unlocked', 'Unlocked')],
                               default='Unlocked')
     password = models.CharField(
         max_length=128,
