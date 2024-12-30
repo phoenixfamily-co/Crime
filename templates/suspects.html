@@ -227,60 +227,30 @@
   <div class="row mt-4 mx-md-5">
     <!-- Blog Post Card -->
 
+      {% for x in suspects %}
     <div class="col-6 col-md-4 mb-4">
       <div class="card">
-        <img src="{% static 'images/suspect 1.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+          {% if x.image %}
+              <img src="{{ x.image.url }}" class="card-img-top" alt="{{ x.name }}" />
+             {% else %}
+             {% if x.gender == "مرد" %}
+                 <img src="{% static 'images/suspect 1.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+                 {% else %}
+                 <img src="{% static 'images/suspect 2.webp' %}" class="card-img-top" alt="{{ post.title }}" />
+                 {% endif %}
+             {% endif %}
+
         <div class="card-body">
-          <h5 class="card-title">John Doe</h5>
-          <p class="card-text">{% trans "سن:" %} 35 | {% trans "ارتباط:" %} شوهر</p>
+          <h5 class="card-title">{{ x.name }}</h5>
+          <p class="card-text">{% trans "جنسیت:" %} {{ x.gender }} | {% trans "ارتباط با مقتول:" %} {{ x.relationship_with_victim }}</p>
         </div>
         <div class="card-footer">
           <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'اتاق بازجویی' %}</a>
         </div>
       </div>
     </div>
+      {% endfor %}
 
-    <!-- Repeat similar cards -->
-     <div class="col-6 col-md-4 mb-4">
-      <div class="card">
-        <img src="{% static 'images/suspect 1.webp' %}" class="card-img-top" alt="{{ post.title }}" />
-        <div class="card-body">
-          <h5 class="card-title">John Doe</h5>
-          <p class="card-text">{% trans "سن:" %} 35 | {% trans "ارتباط:" %} شوهر</p>
-        </div>
-        <div class="card-footer">
-          <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'اتاق بازجویی' %}</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Continue for other cards -->
-
-      <div class="col-6 col-md-4 mb-4">
-      <div class="card">
-        <img src="{% static 'images/suspect 1.webp' %}" class="card-img-top" alt="{{ post.title }}" />
-        <div class="card-body">
-          <h5 class="card-title">John Doe</h5>
-          <p class="card-text">{% trans "سن:" %} 35 | {% trans "ارتباط:" %} شوهر</p>
-        </div>
-        <div class="card-footer">
-          <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'اتاق بازجویی' %}</a>
-        </div>
-      </div>
-    </div>
-
-        <div class="col-6 col-md-4 mb-4">
-      <div class="card">
-        <img src="{% static 'images/suspect 1.webp' %}" class="card-img-top" alt="{{ post.title }}" />
-        <div class="card-body">
-          <h5 class="card-title">John Doe</h5>
-          <p class="card-text">{% trans "سن:" %} 35 | {% trans "ارتباط:" %} شوهر</p>
-        </div>
-        <div class="card-footer">
-          <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'اتاق بازجویی' %}</a>
-        </div>
-      </div>
-    </div>
 
   </div>
 </div>
