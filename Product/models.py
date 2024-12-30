@@ -52,6 +52,7 @@ class Case(models.Model):
 
 class Suspect(models.Model):
     case = models.ForeignKey(Case, related_name="suspect", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="images/", verbose_name='عکس مظنون', null=True, blank=True)
     name = models.CharField(max_length=200, verbose_name="نام و نام خانوادگی")
     murderer = models.BooleanField(verbose_name='قاتل', default=False)
     job = models.CharField(max_length=200, verbose_name="َشغل" , blank=True, null=True)
