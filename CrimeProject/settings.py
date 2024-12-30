@@ -84,6 +84,9 @@ DATABASES = {
         'PASSWORD': 's=4deM.C}9O3',   # رمز عبور دیتابیس
         'HOST': 'localhost',           # آدرس سرور MySQL (یا آدرس دلخواه)
         'PORT': '3306',                # پورت MySQL (پورت پیش‌فرض: 3306)
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        },
     }
 }
 
