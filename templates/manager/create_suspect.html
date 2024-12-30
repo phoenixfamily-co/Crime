@@ -109,7 +109,7 @@
 
   <div class="container my-5">
     <h2 class="text-center">ساخت مظنون</h2>
-    <form method="POST" enctype="multipart/form-data">
+    <form id="suspectForm" method="POST" enctype="multipart/form-data">
         <!-- فیلد نام -->
         <div class="mb-3">
             <label for="name" class="form-label">نام و نام خانوادگی</label>
@@ -193,6 +193,38 @@
         <button type="submit" class="btn">ساخت مظنون</button>
     </form>
   </div>
+
+    <script>
+        document.getElementById('suspectForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // جلوگیری از رفتار پیش‌فرض ارسال فرم
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            // ارسال درخواست به API
+            fetch('{% url 'product:suspect-list' %}', {
+                method: 'POST',
+                body: formData,
+
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => {
+                    throw new Error(data.detail || 'خطا در ثبت مدرک');
+                });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('پرونده با موفقیت ساخته شد');
+                    console.log(data);
+                })
+                .catch(error => {
+                    alert('خطا: ' + error.message);
+                    console.error(error);
+                });
+        });
+    </script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
