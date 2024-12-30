@@ -52,11 +52,13 @@ def evidence(request,pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
     product = Case.objects.get(id=pk)
+    evidences = Evidence.objects.filter(case=pk)
 
     return render(request, 'evidence.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
-        'case': product
+        'case': product,
+        'evidences': evidences,
 
     })
 

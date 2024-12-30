@@ -194,30 +194,36 @@
 
     <!-- Evidence Cards -->
     <div class="row">
-        <!-- Example of an Unlocked Evidence -->
-        <div class="col-md-4 mb-3">
-            <div class="card bg-dark text-light">
-                <img src="evidence1.jpg" class="card-img-top" alt="Evidence Image">
-                <div class="card-body">
-                    <h5 class="card-title">Unlocked Evidence</h5>
-                    <p class="card-text">A suspicious letter found at the crime scene.</p>
-                    <button onclick="window.open('{% url 'product:autopsy-view' %}')" class="btn btn-success w-100">View Details</button>
-                </div>
-            </div>
-        </div>
 
-        <!-- Example of a Locked Evidence -->
-        <div class="col-md-4 mb-3">
-            <div class="card bg-dark text-light">
-                <img src="locked.jpg" class="card-img-top" alt="Locked Evidence">
-                <div class="card-body">
-                    <h5 class="card-title">Locked Evidence</h5>
-                    <p class="card-text">This evidence is locked. Enter the code to unlock.</p>
-                    <input type="text" class="form-control mb-2" placeholder="Enter Code">
-                    <button class="btn btn-warning w-100">Unlock</button>
+        {% for evidence in evidences %}
+            {% if evidence.status == "Locked" %}
+
+                <div class="col-md-4 mb-3">
+                    <div class="card bg-dark text-light">
+                        <img src="{{ evidence.file.url }}" class="card-img-top" alt="Locked Evidence">
+                        <div class="card-body">
+                            <h5 class="card-title">Locked Evidence</h5>
+                            <p class="card-text">This evidence is locked. Enter the code to unlock.</p>
+                            <input type="text" class="form-control mb-2" placeholder="Enter Code">
+                            <button class="btn btn-warning w-100">Unlock</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+            {% else %}
+                <div class="col-md-4 mb-3">
+                    <div class="card bg-dark text-light">
+                        <img src="{{ evidence.file.url }}" class="card-img-top" alt="Evidence">
+                        <div class="card-body">
+                            <h5 class="card-title">Unlocked Evidence</h5>
+                            <p class="card-text">A suspicious letter found at the crime scene.</p>
+                            <button onclick="window.open('{% url 'product:autopsy-view' %}')" class="btn btn-success w-100">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+        {% endfor %}
     </div>
 </div>
 
