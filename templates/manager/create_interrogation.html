@@ -109,7 +109,7 @@
 
   <div class="container my-5">
     <h2 class="text-center">ساخت مدارک و شواهد</h2>
-   <form method="POST" action="/create-interrogation">
+   <form id="interrogationForm" method="POST" action="/create-interrogation">
         <!-- انتخاب پرونده -->
         <div class="mb-3">
             <label for="case" class="form-label">انتخاب پرونده</label>
@@ -174,6 +174,38 @@
         <button type="submit" class="btn btn-primary w-100">ثبت بازجویی</button>
     </form>
   </div>
+
+  <script>
+        document.getElementById('interrogationForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // جلوگیری از رفتار پیش‌فرض ارسال فرم
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            // ارسال درخواست به API
+            fetch('{% url 'product:interrogation-list' %}', {
+                method: 'POST',
+                body: formData,
+
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => {
+                    throw new Error(data.detail || 'خطا در ثبت مدرک');
+                });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('بازجویی با موفقیت ساخته شد');
+                    console.log(data);
+                })
+                .catch(error => {
+                    alert('خطا: ' + error.message);
+                    console.error(error);
+                });
+        });
+    </script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
