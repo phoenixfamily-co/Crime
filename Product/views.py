@@ -9,13 +9,15 @@ from Product.serializers import CaseSerializer, SuspectSerializer, Interrogation
 
 
 @cache_page(60 * 15)
-def start(request):
+def start(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
+    product = Case.objects.filter(id=pk)
 
     return render(request, 'start.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
+        'case': product
     })
 
 
