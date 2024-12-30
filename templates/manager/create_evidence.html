@@ -187,10 +187,8 @@
         event.preventDefault(); // جلوگیری از رفتار پیش‌فرض ارسال فرم
 
         // انتخاب فرم
-        const form = document.getElementById('evidenceForm');
+        const form = event.target;
         const formData = new FormData(form);
-        console.log(formData);
-
 
         // ارسال درخواست به API
         fetch('{% url "product:evidence-list" %}', { // آدرس مناسب API را جایگزین کنید
