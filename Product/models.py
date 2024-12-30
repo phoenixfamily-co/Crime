@@ -78,7 +78,8 @@ class Suspect(models.Model):
         verbose_name="وضعیت تاهل"
     )
     relationship_with_victim = models.CharField(max_length=200, verbose_name="ارتباط با مقتول", blank=True, null=True)
-    alibi = models.TextField(verbose_name="بهانه یا توضیحات مظنون", blank=True, null=True)
+    excuse = models.TextField(verbose_name="بهانه یا توضیحات مظنون", blank=True, null=True)
+    last_seen = models.TextField(verbose_name="بهانه یا توضیحات مظنون", blank=True, null=True)
 
     def __str__(self):
         return self.name
