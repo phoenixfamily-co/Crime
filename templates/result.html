@@ -244,10 +244,9 @@
             <label for="suspect-select" class="form-label">{% trans "مظنون را انتخاب کنید" %}</label>
             <select class="form-select" id="suspect-select" required>
                 <option value="" disabled selected>{% trans "اننتخاب مظنون" %}</option>
-                <option value="1">Suspect 1: John Doe</option>
-                <option value="2">Suspect 2: Jane Smith</option>
-                <option value="3">Suspect 3: Michael Brown</option>
-                <!-- Add more suspects dynamically as needed -->
+                {% for x in suspect %}
+                <option value="{{ x.id }}">{{ x.name }}</option>
+                {% endfor %}
             </select>
         </div>
 

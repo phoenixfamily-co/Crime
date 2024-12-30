@@ -69,11 +69,13 @@ def result(request,pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
     product = Case.objects.get(id=pk)
+    suspect = Suspect.objects.filter(case=pk)
 
     return render(request, 'result.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
-        'case': product
+        'case': product,
+        'suspect': suspect
 
     })
 
