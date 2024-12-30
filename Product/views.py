@@ -12,7 +12,7 @@ from Product.serializers import CaseSerializer, SuspectSerializer, Interrogation
 def start(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
-    product = Case.objects.filter(id=pk)
+    product = Case.objects.get(id=pk)
 
     return render(request, 'start.html', {
         'LANGUAGE_CODE': current_language,
