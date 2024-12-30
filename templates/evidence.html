@@ -202,8 +202,8 @@
                     <div class="card bg-dark text-light">
                         <img src="{{ evidence.file.url }}" class="card-img-top" alt="Locked Evidence">
                         <div class="card-body">
-                            <h5 class="card-title">Locked Evidence</h5>
-                            <p class="card-text">This evidence is locked. Enter the code to unlock.</p>
+                            <h5 class="card-title">{{ evidence.title }}</h5>
+                            <p class="card-text">{{ evidence.description }}</p>
                             <input type="text" class="form-control mb-2" placeholder="Enter Code">
                             <button class="btn btn-warning w-100">Unlock</button>
                         </div>
@@ -215,8 +215,8 @@
                     <div class="card bg-dark text-light">
                         <img src="{{ evidence.file.url }}" class="card-img-top" alt="Evidence">
                         <div class="card-body">
-                            <h5 class="card-title">Unlocked Evidence</h5>
-                            <p class="card-text">A suspicious letter found at the crime scene.</p>
+                            <h5 class="card-title">{{ evidence.title }}</h5>
+                            <p class="card-text">{{ evidence.description }}</p>
                             <button onclick="window.open('{% url 'product:autopsy-view' %}')" class="btn btn-success w-100">View Details</button>
                         </div>
                     </div>
