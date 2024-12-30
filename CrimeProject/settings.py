@@ -78,10 +78,15 @@ WSGI_APPLICATION = 'CrimeProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'phoenixf_crime',  # نام دیتابیس
+        'USER': 'phoenixf_crime',       # نام کاربری دیتابیس
+        'PASSWORD': 's=4deM.C}9O3',   # رمز عبور دیتابیس
+        'HOST': 'localhost',           # آدرس سرور MySQL (یا آدرس دلخواه)
+        'PORT': '3306',                # پورت MySQL (پورت پیش‌فرض: 3306)
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
