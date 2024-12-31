@@ -35,11 +35,15 @@
         }
 
       body {
-            margin: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: Arial, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+          display: flex;
+          justify-content: center;  /* مرکز چین کردن افقی */
+          align-items: center;      /* مرکز چین کردن عمودی */
+          min-height: 100vh;        /* حداقل ارتفاع صفحه برابر با 100% ارتفاع صفحه */
+          margin: 0;                /* حذف فاصله‌های پیش‌فرض */
+          background-color: var(--bg-color);
+          color: var(--text-color);
+          font-family: Arial, sans-serif;
+          transition: background-color 0.3s, color 0.3s;
         }
 
         .input-group input {
