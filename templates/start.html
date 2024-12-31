@@ -310,7 +310,7 @@
     </a>
   </div>
   <div class="sub-button shadow">
-    <a href="google.com" target="_blank">
+    <a id="showFullTextBtn" target="_blank">
       <i class="fa-solid fa-stop" style="color: #ffffff;"></i>
     </a>
   </div>
@@ -340,6 +340,10 @@
         }
 
         typeText();
+        document.getElementById("showFullTextBtn").addEventListener("click", function() {
+            typingText.textContent = text; // نمایش کامل متن
+            index = text.length; // به روز رسانی ایندکس برای جلوگیری از تایپ دوباره
+             });
 
         // نمایش زمان
         function updateTimer() {
