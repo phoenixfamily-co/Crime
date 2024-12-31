@@ -59,59 +59,6 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .form-select {
-            background-color: var(--navbar-bg);
-            color: var(--text-color);
-            border: 1px solid var(--navbar-border);
-            direction: ltr !important;
-        }
-
-            /* تغییر رنگ حاشیه و سایه انتخاب شده */
-        select.form-select:focus {
-            border-color: #D32F2F !important; /* قرمز رنگ لوگو */
-            box-shadow: 0 0 0 0.25rem rgba(211, 47, 47, 0.5) !important; /* قرمز با شفافیت */
-        }
-
-        /* تغییر رنگ هاور برای گزینه‌ها */
-        select.form-select option:hover {
-            background-color: #FF6659 !important; /* قرمز روشن */
-            color: #fff !important; /* متن سفید */
-        }
-
-                /* تغییر رنگ سوییچ به رنگ قرمز */
-        .form-check-input {
-            background-color: #EBEBE4; /* رنگ دایره در حالت فعال */
-            border-color: #d32f2f!important; /* رنگ مرز (قرمز لوگو) */
-            box-shadow: 0 0 1px #d32f2f; /* سایه دور سوییچ */
-            transition: all 0.3s ease-in-out; /* انیمیشن تغییر */
-        }
-
-        /* تغییر رنگ هنگام فعال بودن (روشن) */
-        .form-check-input:checked {
-            background-color: #d32f2f; /* رنگ دایره در حالت فعال */
-            border-color: #d32f2f;
-            box-shadow: 0 0 1px #d32f2f; /* سایه بیشتر برای حالت روشن */
-        }
-
-
-        /* تغییر سایه و استایل هنگام فوکوس */
-        .form-check-input:focus {
-            box-shadow: 0 0 1px #ff0000; /* سایه هنگام فوکوس */
-            border-color: #d32f2f;
-
-        }
-
-         .form-check-input:checked:focus {
-             box-shadow: 0 0 1px #ff0000; /* سایه هنگام فوکوس */
-             border-color: #d32f2f;
-        }
-
-
-        .option-rtl{
-            text-align: right; /* یا گزینه‌ها به سمت راست تراز شوند */
-            padding-right: 10px; /* فاصله گزینه‌ها از راست */
-        }
-
     html[dir="rtl"] .contact-icon {
         margin-right: 0; /* حذف فاصله سمت راست برای زبان‌های راست‌به‌چپ */
         margin-left: 0.5rem; /* ایجاد فاصله از سمت چپ */
@@ -209,7 +156,6 @@
             align-items: center;
             width: 100px;
             height: 56px;
-            border-radius: 100px;
             cursor: pointer;
             font-weight: 400;
             text-decoration: none;
