@@ -22,6 +22,30 @@
             }
         };
     </script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const themeSwitch = document.getElementById("theme-switch");
+            const currentTheme = localStorage.getItem("theme") || "dark";
+
+      if (currentTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        themeSwitch.checked = true;
+      }
+
+      themeSwitch.addEventListener("change", function () {
+        if (this.checked) {
+          document.body.classList.add("dark-mode");
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.body.classList.remove("dark-mode");
+          localStorage.setItem("theme", "light");
+        }
+      });
+    });
+
+
+    </script>
 </head>
 <body>
     <!-- پخش موسیقی در تمام صفحات (با استفاده از جاوا اسکریپت) -->
