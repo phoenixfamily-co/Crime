@@ -38,13 +38,15 @@ def suspects(request, pk):
 
 
 @cache_page(60 * 15)
-def interrogation(request):
+def interrogation(request,pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
+    interrogations = Interrogation.objects.filter(suspect=pk)
 
     return render(request, 'interrogation.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
+        'interrogations': interrogations,
     })
 
 
@@ -131,10 +133,12 @@ def create_evidence(request):
 def create_interrogation(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
+    suspect = Suspect.objects.all
 
     return render(request, 'manager/create_interrogation.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
+        'suspect': suspect,
     })
 
 

@@ -134,7 +134,6 @@ class Evidence(models.Model):
 
 
 class Interrogation(models.Model):
-    case = models.ForeignKey(Case, on_delete=models.CASCADE, related_name="interrogations", verbose_name="پرونده")
     suspect = models.ForeignKey(Suspect, on_delete=models.CASCADE, related_name="interrogations", verbose_name="مظنون")
     question = models.TextField(verbose_name="سوال")
     answer = models.TextField(verbose_name="پاسخ")

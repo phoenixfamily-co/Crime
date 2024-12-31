@@ -110,16 +110,6 @@
   <div class="container my-5">
     <h2 class="text-center">ساخت مدارک و شواهد</h2>
    <form id="interrogationForm" method="POST" action="/create-interrogation">
-        <!-- انتخاب پرونده -->
-        <div class="mb-3">
-            <label for="case" class="form-label">انتخاب پرونده</label>
-            <select class="form-select" id="case" name="case" required>
-                <!-- لیستی از پرونده‌ها -->
-                <option value="">انتخاب کنید...</option>
-                <option value="1">پرونده ۱</option>
-                <option value="2">پرونده ۲</option>
-            </select>
-        </div>
 
         <!-- انتخاب مظنون -->
         <div class="mb-3">
@@ -127,8 +117,11 @@
             <select class="form-select" id="suspect" name="suspect" required>
                 <!-- لیستی از مظنونین -->
                 <option value="">انتخاب کنید...</option>
-                <option value="1">مظنون ۱</option>
-                <option value="2">مظنون ۲</option>
+
+                {% for x in suspect %}
+                <option value="{{ x.id }}">{{ x.name }}</option>
+                {% endfor %}
+
             </select>
         </div>
 

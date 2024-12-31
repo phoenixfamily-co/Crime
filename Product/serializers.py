@@ -25,4 +25,4 @@ class EvidenceSerializer(serializers.ModelSerializer):
 class InterrogationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Interrogation
-        fields = ['id', 'suspect', 'crime_case', 'question', 'answer', 'heart_rate', 'face_expression', 'truth_level']
+        fields = ['id', 'suspect', 'question', 'answer', 'heart_rate', 'face_expression', 'truth_level']
