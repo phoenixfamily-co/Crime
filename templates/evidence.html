@@ -140,6 +140,16 @@
              padding: 0 10px;
          }
 
+         .btn:hover .previous-icon {
+             transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}!important;
+             transition: transform 0.3s ease; /* انیمیشن روان */
+         }
+
+        .btn:hover .next-icon {
+            transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %}!important;
+            transition: transform 0.3s ease; /* انیمیشن روان */
+        }
+
         .btn:hover i {
             transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %};
             transition: transform 0.3s ease; /* انیمیشن روان */
