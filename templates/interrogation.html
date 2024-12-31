@@ -181,47 +181,47 @@
                 <div class="row g-3">
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>{% trans "نام:" %}</span> علی حسین زاده
+                            <span>{% trans "نام:" %}</span> {{ suspect.name }}
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>{% trans "سن:" %}</span> 35
+                            <span>{% trans "سن:" %}</span> {{ suspect.age }}
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>{% trans "جنسیت:" %}</span> Male
+                            <span>{% trans "جنسیت:" %}</span> {{ suspect.get_gender_display }}
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>{% trans "قد:" %}</span> 180 cm
+                            <span>{% trans "قد:" %}</span> {{ suspect.height }} cm
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>{% trans "وزن:" %}</span> 75 kg
+                            <span>{% trans "وزن:" %}</span> {{ suspect.weight }} kg
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>{% trans "گروه خونی:" %}</span> O+
+                            <span>{% trans "گروه خونی:" %}</span> {{ suspect.blood_type }}
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>{% trans "تاهل:" %}</span> Married
+                            <span>{% trans "تاهل:" %}</span> {{ suspect.get_marital_status_display }}
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>{% trans "شغل:" %}</span> Accountant
+                            <span>{% trans "شغل:" %}</span> {{ suspect.job }}
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="profile-item">
-                            <span>{% trans "ارتباط:" %}</span> Husband
+                            <span>{% trans "ارتباط:" %}</span> {{ suspect.relationship_with_victim }}
                         </div>
                     </div>
                 </div>
@@ -234,10 +234,12 @@
         <!-- بخش دوم: سوالات و پاسخ‌ها -->
         <div class="section">
             <h5>{% trans 'سوال و جواب' %}</h5>
+            {% for interrogation in interrogations %}
             <div id="question-card" class="card p-3">
-                <p><strong>{% trans 'سوال:' %}</strong> Where were you last night?</p>
-                <p><strong>{% trans 'جواب:' %}</strong> I was at home watching TV.</p>
+                <p><strong>{% trans 'سوال:' %}</strong></p>
+                <p><strong>{% trans 'جواب:' %}</strong></p>
             </div>
+            {% endfor %}
             <div class="d-flex justify-content-between">
                 <button class="btn" onclick="previousQuestion()">{% trans 'قبلی' %}</button>
                 <button class="btn" onclick="nextQuestion()">{% trans 'بعدی' %}</button>
@@ -250,23 +252,23 @@
         <!-- بخش سوم: تحلیل جسمی و احساسی -->
         <div class="section">
             <h5>{% trans 'آنالیز بدن' %}</h5>
-            <p><strong>{% trans 'ضربان قلب:' %}</strong> <span id="heart-rate">120 BPM</span></p>
+            <p><strong>{% trans 'ضربان قلب:' %}</strong> <span id="heart-rate"></span></p>
             <div class="indicator">
                 <div id="stress-bar" class="indicator-bar" style="width: 60%;"></div>
             </div>
-            <p><strong>{% trans 'سطح استرس:' %}</strong> <span id="stress-level">Moderate</span></p>
+            <p><strong>{% trans 'سطح استرس:' %}</strong> <span id="stress-level"></span></p>
             <div class="emotion-analysis">
                 <h6>{% trans 'حالت چهره' %}</h6>
-                <p><strong>Nervous</strong></p>
+                <p><strong></strong></p>
             </div>
         </div>
 </div>
 
     <script>
         let questions = [
-            { question: "Where were you last night?", answer: "I was at home watching TV.", heartRate: "120 BPM", stress: "60%", emotion: "Nervous" },
-            { question: "Do you know the victim?", answer: "Yes, he was my colleague.", heartRate: "130 BPM", stress: "70%", emotion: "Angry" },
-            { question: "Can anyone confirm your alibi?", answer: "No, I was alone.", heartRate: "140 BPM", stress: "80%", emotion: "Defensive" }
+            {% for interrogation in interrogations %}
+            { question: "{{ interrogation.question }}", answer: "{{ interrogation.answer }}", heartRate: "{{ interrogation.heart_rate }}BPM", stress: "{{ interrogation.truth_level }}%", emotion: "{{ interrogation.get_face_expression_display }}" },
+            {% endfor %}
         ];
         let currentQuestion = 0;
 
