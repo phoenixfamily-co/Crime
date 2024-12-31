@@ -245,7 +245,7 @@
           <p class="card-text">{% trans "سن:" %} {{ x.age }} | {% trans "جنسیت:" %} {{ x.get_gender_display }} | {% trans "ارتباط با مقتول:" %} {{ x.relationship_with_victim }}</p>
         </div>
         <div class="card-footer">
-          <a href="{% url 'product:interrogation-view' %}" target="_blank">{% trans 'اتاق بازجویی' %}</a>
+          <a href="{% url 'product:interrogation-view' x.id %}" target="_blank">{% trans 'اتاق بازجویی' %}</a>
         </div>
       </div>
     </div>
