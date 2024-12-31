@@ -154,4 +154,4 @@ class Interrogation(models.Model):
     )
 
     def __str__(self):
-        return f"بازجویی از {self.suspect.name} در پرونده {self.case.title}"
+        return f"بازجویی از {self.suspect.name}"
