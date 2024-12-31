@@ -166,7 +166,7 @@
     <div class="section profile-info">
         <div class="d-flex align-items-center justify-content-between mb-3">
         <h5 class="mb-0">{% trans "پروفایل مظنون" %}</h5>
-        <a href="{% url 'product:suspects-view' suspect.case.id %}" class="exit {% if LANGUAGE_BIDI %}me-auto{% else %}ms-auto{% endif %}">
+        <a href="{% url 'product:suspects-view' suspect.case.id %}" class="btn {% if LANGUAGE_BIDI %}me-auto{% else %}ms-auto{% endif %}">
             <span>{% trans "خروج" %}</span>
             <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
         </a>
