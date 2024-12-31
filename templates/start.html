@@ -326,7 +326,7 @@
 </footer>
 
     <script>
-        const text = "{{ case.description }}"
+        const text = "{{ case.report|escapejs }}"
         const typingText = document.getElementById("typingText");
         let index = 0;
 
