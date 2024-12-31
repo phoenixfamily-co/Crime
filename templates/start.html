@@ -376,6 +376,8 @@
 </head>
 <body>
 
+<iframe id="audio-player" src="audio-player.html" style="display: none;"></iframe>
+
 <header class="header mt-2">
         <h3>{% trans 'گزارش پلیس' %}</h3>
     </header>
@@ -392,7 +394,7 @@
     </div>
   </div>
   <div class="sub-button shadow">
-    <a target="_blank">
+    <a id="play-music" target="_blank">
         <i class="fa-solid fa-volume-high"></i>
     </a>
   </div>
@@ -450,6 +452,18 @@
     </script>
 
 
+
+<script>
+    // کنترل پخش و توقف آهنگ
+    const playButton = document.getElementById("play-music");
+    const audioIframe = document.getElementById("audio-player");
+
+    // ارسال پیام به iframe برای پخش و توقف موسیقی
+    playButton.addEventListener("click", () => {
+      audioIframe.contentWindow.postMessage("play", "*");
+    });
+
+  </script>
 
 
 <script>
