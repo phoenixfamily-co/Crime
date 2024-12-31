@@ -23,37 +23,17 @@
         <div class="typing-text" id="typingText"></div>
  </div>
 
-<div class="fab-container">
-  <div class="fab shadow">
-    <div class="fab-content">
-      <i class="fa-solid fa-gear"></i>
-    </div>
-  </div>
-  <div class="sub-button shadow">
-    <a id="play-music" target="_blank">
-        <i class="fa-solid fa-volume-high"></i>
-    </a>
-  </div>
-  <div class="sub-button shadow">
-    <a target="_blank">
-      <i class="fa-solid fa-file-lines"></i>
-    </a>
-  </div>
-  <div class="sub-button shadow">
-    <a id="showFullTextBtn" target="_blank">
-      <i class="fa-solid fa-stop"></i>
-    </a>
-  </div>
-</div>
 
 {% block footer_buttons %}
+
     <div class="container-fluid py-3 px-3">
         <a href="{% url 'product:suspects-view' case.id %}" class="btn {% if LANGUAGE_BIDI %}me-auto{% else %}ms-auto{% endif %}">
             <span>{% trans "مظنونین" %}</span>
             <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
         </a>
     </div>
-    {% endblock %}
+
+{% endblock %}
 
     <script>
         const text = "{{ case.report|escapejs }}"
