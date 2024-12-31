@@ -1,0 +1,348 @@
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --navbar-bg: #f8f9fa;
+            --navbar-border: #d32f2f;
+            --nav-link-color: #000000;
+            --nav-link-hover: #d32f2f;
+            --btn-bg: #d32f2f;
+            --btn-hover: #ff6659;
+            --btn-text: #ffffff;
+            --primary-light: #d32f2f; /* قرمز لوگو */
+            --primary-dark: #333;
+            --toggle-bg-light: var(--primary-light);
+            --toggle-bg-dark: #444;
+            --text-color-muted: #262626; /* رنگ خاکستری مشابه text-muted */
+             --navbar-toggler-border-color: #ccc; /* رنگ حاشیه برای حالت لایت */
+            --navbar-toggler-bg-color: #fff; /* رنگ پس‌زمینه برای حالت لایت */
+            --navbar-toggler-icon-color: #333; /* رنگ ایکون برای حالت لایت */
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --navbar-bg: #1e1e1e;
+            --navbar-border: #d32f2f;
+            --nav-link-color: #e0e0e0;
+            --nav-link-hover: #d32f2f;
+            --btn-bg: #d32f2f;
+            --btn-hover: #ff6659;
+            --btn-text: #ffffff;
+            --text-color-muted: #e1e1e1; /* رنگ خاکستری روشن‌تر برای حالت دارک */
+            --navbar-toggler-border-color-dark: #666; /* رنگ حاشیه برای حالت دارک */
+            --navbar-toggler-bg-color-dark: #333; /* رنگ پس‌زمینه برای حالت دارک */
+            --navbar-toggler-icon-color-dark: #fff; /* رنگ ایکون برای حالت دارک */
+        }
+
+      body {
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+    html[dir="rtl"] .contact-icon {
+        margin-right: 0; /* حذف فاصله سمت راست برای زبان‌های راست‌به‌چپ */
+        margin-left: 0.5rem; /* ایجاد فاصله از سمت چپ */
+    }
+
+        .input-group input {
+            background-color: transparent;
+            color: var(--text-color);
+            outline: none!important;
+            box-shadow: none;
+        }
+
+         .input-group input::placeholder {
+            color: var(--text-color);
+        }
+
+        .input-group input:focus {
+            background-color: transparent;
+            border-color: var(--primary-light)!important;
+            color: var(--text-color);
+            outline: none!important;
+            box-shadow: none;
+        }
+
+        .input-group button {
+            background-color: var(--btn-bg)!important;
+            border-radius: 0;
+            color: white;
+        }
+
+
+        .input-group button:hover {
+            background-color: var(--btn-bg)!important;
+            opacity: 0.7;
+
+        }
+         .input-group button:active {
+            background-color: var(--btn-bg) !important;
+
+        }
+
+          .input-group button:focus {
+            background-color: var(--btn-bg) !important;
+
+        }
+
+
+          .card-footer a {
+              width: 100%;
+              height: 100%;
+              line-height: 100%;
+              vertical-align: center;
+              text-align: center;
+              justify-content: center;
+              cursor: pointer;
+              display: inline-block;
+              color: var(--primary-light)!important;
+              text-decoration: none!important;
+
+          }
+
+        .card {
+            margin-top: 30px;
+            margin-bottom: 130px;
+            color: var(--text-color);
+            text-align: center;
+            align-content: center;
+            justify-content: center;
+            border: 2px solid var(--navbar-border)!important;;
+            max-width: 85%;
+            background-color: var(--navbar-bg);
+        }
+
+        .typing-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: start;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+         footer {
+             background-color: var(--navbar-bg);
+             color: var(--text-color);
+             position: fixed; /* برای جلوگیری از تداخل با بخش‌های دیگر */
+              border-top: 2px solid var(--navbar-border)!important;
+             bottom: 0;
+             width: 100%;
+          }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 56px;
+            cursor: pointer;
+            font-weight: 400;
+            text-decoration: none;
+            border: 2px solid var(--btn-bg);
+            color: var(--text-color);
+        }
+
+         span {
+             font-size: 20px;
+             padding: 0 10px;
+         }
+
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .header::before,
+        .header::after {
+            content: '';
+            flex: 1;
+            border-top: 2px solid var(--btn-bg); /* خط سفید */
+            margin: 0 10px;
+        }
+
+        .header h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase; /* حروف بزرگ */
+            letter-spacing: 2px; /* فاصله بین حروف */
+            margin: 0;
+        }
+
+        .fab-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            user-select: none;
+            position: fixed;
+            bottom: 100px;
+            right: 10px;
+        }
+        .fab-container:hover {
+          height: 100%;
+        }
+        .fab-container:hover .sub-button:nth-child(2) {
+          transform: translateY(-80px);
+        }
+        .fab-container:hover .sub-button:nth-child(3) {
+          transform: translateY(-140px);
+        }
+        .fab-container:hover .sub-button:nth-child(4) {
+          transform: translateY(-200px);
+        }
+        .fab-container:hover .sub-button:nth-child(5) {
+          transform: translateY(-260px);
+        }
+        .fab-container:hover .sub-button:nth-child(6) {
+          transform: translateY(-320px);
+        }
+        .fab-container .fab {
+            position: relative;
+            height: 50px;
+            width: 50px;
+            background-color: var(--navbar-bg);
+            border: 2px solid var(--btn-bg);
+            z-index: 2;
+        }
+        .fab-container .fab::before {
+          content: " ";
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          height: 35px;
+          width: 35px;
+          background-color: inherit;
+          border-radius: 0 0 10px 0;
+          z-index: -1;
+        }
+        .fab-container .fab .fab-content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          width: 100%;
+        }
+
+        .fab-container .sub-button {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom: 10px;
+            right: 5px;
+            height: 40px;
+            width: 40px;
+            background-color: transparent;
+            transition: all 0.3s ease;
+            border: 2px solid var(--btn-bg);
+        }
+
+        .fab-container .fab .fab-content i{
+            color: white;
+            font-size: 20px;
+
+        }
+
+
+        .fab-container .sub-button i{
+            color: white;
+            font-size: 18px;
+
+        }
+
+        .fab-container .sub-button:hover {
+          cursor: pointer;
+        }
+
+
+        @media screen and (max-width: 768px) {
+
+             .fab-container .fab .fab-content i {
+                 color: white;
+                 font-size: 16px;
+             }
+
+
+        .fab-container .sub-button i {
+            color: white;
+            font-size: 12px;
+        }
+
+             .card {
+                 margin-top: 30px;
+                 margin-bottom: 130px;
+                 color: var(--text-color);
+                 text-align: center;
+                 align-content: center;
+                 justify-content: center;
+                 border: 2px solid var(--navbar-border) !important;;
+                 max-width: 80%;
+                 background-color: var(--navbar-bg);
+             }
+            .fab-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                user-select: none;
+                position: fixed;
+                bottom: 100px;
+                right: 5px;
+            }
+            .fab-container .fab {
+                position: relative;
+                height: 30px;
+                width: 30px;
+                background-color: var(--navbar-bg);
+                border: 2px solid var(--btn-bg);
+                z-index: 2;
+            }
+
+             .fab-container .fab::before {
+                 content: " ";
+                 position: absolute;
+                 bottom: 0;
+                 right: 0;
+                 height: 25px;
+                 width: 25px;
+                 background-color: inherit;
+                 border-radius: 0 0 10px 0;
+                 z-index: -1;
+             }
+
+            .fab-container .sub-button {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                bottom: 10px;
+                right: 5px;
+                height: 20px;
+                width: 20px;
+                background-color: transparent;
+                transition: all 0.3s ease;
+                border: 2px solid var(--btn-bg);
+            }
+
+             .btn {
+                 display: flex;
+                 justify-content: center;
+                 align-items: center;
+                 width: 110px;
+                 height: 56px;
+                 cursor: pointer;
+                 font-weight: 300;
+                 text-decoration: none;
+                 border: 2px solid var(--btn-bg);
+                 color: var(--text-color);
+             }
+
+        }

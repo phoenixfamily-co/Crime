@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}عنوان پیش‌فرض{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script>
         // این اسکریپت برای حفظ وضعیت پخش موسیقی در زمان تغییر صفحه است
         window.onload = function() {
@@ -18,7 +19,6 @@
     </script>
 </head>
 <body>
-
     <!-- پخش موسیقی در تمام صفحات (با استفاده از جاوا اسکریپت) -->
     <audio id="background-music" autoplay loop>
         <source src="{% static 'audio/playback.mp3' %}" type="audio/mpeg">
