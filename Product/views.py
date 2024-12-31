@@ -42,11 +42,13 @@ def interrogation(request,pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
     interrogations = Interrogation.objects.filter(suspect=pk)
+    suspect = Suspect.objects.get(id=pk)
 
     return render(request, 'interrogation.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'interrogations': interrogations,
+        'suspect': suspect
     })
 
 
