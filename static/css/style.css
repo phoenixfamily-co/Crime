@@ -88,6 +88,12 @@
 
         }
 
+          .container {
+              width: 100%; /* اضافه کردن این خط */
+              display: flex;
+              justify-content: center;
+          }
+
           .card {
               margin-top: 30px;
               margin-bottom: 130px;
