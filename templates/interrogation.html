@@ -234,12 +234,9 @@
         <!-- بخش دوم: سوالات و پاسخ‌ها -->
         <div class="section">
             <h5>{% trans 'سوال و جواب' %}</h5>
-            {% for interrogation in interrogations %}
             <div id="question-card" class="card p-3">
-                <p><strong>{% trans 'سوال:' %}</strong></p>
-                <p><strong>{% trans 'جواب:' %}</strong></p>
+
             </div>
-            {% endfor %}
             <div class="d-flex justify-content-between">
                 <button class="btn" onclick="previousQuestion()">{% trans 'قبلی' %}</button>
                 <button class="btn" onclick="nextQuestion()">{% trans 'بعدی' %}</button>
@@ -272,6 +269,10 @@
         ];
         let currentQuestion = 0;
 
+          document.addEventListener("DOMContentLoaded", function () {
+              updateUI()
+          });
+
         function updateUI() {
             const questionCard = document.getElementById("question-card");
             const heartRate = document.getElementById("heart-rate");
@@ -280,8 +281,8 @@
             const emotionText = document.querySelector(".emotion-analysis p strong");
 
             questionCard.innerHTML = `
-                <p><strong>Question:</strong> ${questions[currentQuestion].question}</p>
-                <p><strong>Answer:</strong> ${questions[currentQuestion].answer}</p>
+                <p><strong>سوال:</strong> ${questions[currentQuestion].question}</p>
+                <p><strong>جواب:</strong> ${questions[currentQuestion].answer}</p>
             `;
             heartRate.textContent = questions[currentQuestion].heartRate;
             stressBar.style.width = questions[currentQuestion].stress;
