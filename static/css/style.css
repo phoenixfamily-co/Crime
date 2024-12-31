@@ -42,11 +42,6 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-    html[dir="rtl"] .contact-icon {
-        margin-right: 0; /* حذف فاصله سمت راست برای زبان‌های راست‌به‌چپ */
-        margin-left: 0.5rem; /* ایجاد فاصله از سمت چپ */
-    }
-
         .input-group input {
             background-color: transparent;
             color: var(--text-color);
@@ -88,6 +83,17 @@
 
         }
 
+          .card {
+            margin-top: 30px;
+            margin-bottom: 130px;
+            color: var(--text-color);
+            text-align: center;
+            align-content: center;
+            justify-content: center;
+            border: 2px solid var(--navbar-border)!important;;
+            max-width: 85%;
+            background-color: var(--navbar-bg);
+        }
 
           .card-footer a {
               width: 100%;
@@ -102,18 +108,6 @@
               text-decoration: none!important;
 
           }
-
-        .card {
-            margin-top: 30px;
-            margin-bottom: 130px;
-            color: var(--text-color);
-            text-align: center;
-            align-content: center;
-            justify-content: center;
-            border: 2px solid var(--navbar-border)!important;;
-            max-width: 85%;
-            background-color: var(--navbar-bg);
-        }
 
         .typing-text {
             font-size: 1.5rem;
