@@ -21,6 +21,7 @@ ALLOWED_HOSTS = [
     'www.crime.phoenixfamily.co'
 ]
 
+X_FRAME_OPTIONS = 'ALLOWALL'
 # Application definition
 
 INSTALLED_APPS = [
