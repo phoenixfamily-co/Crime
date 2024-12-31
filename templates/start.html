@@ -328,7 +328,7 @@
 
     <script>
         // تایپ تدریجی متن
-        const text = "{{ case.report|safe }}"
+        const text = "{{ case.report|escape }}"
         const typingText = document.getElementById("typingText");
         let index = 0;
 
