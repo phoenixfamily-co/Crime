@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-
 <!DOCTYPE html>
+
 <html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
 <head>
     <meta charset="UTF-8">
@@ -46,14 +46,14 @@
   </div>
 </div>
 
-<footer>
+{% block footer_buttons %}
     <div class="container-fluid py-3 px-3">
         <a href="{% url 'product:suspects-view' case.id %}" class="btn {% if LANGUAGE_BIDI %}me-auto{% else %}ms-auto{% endif %}">
             <span>{% trans "مظنونین" %}</span>
             <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
         </a>
     </div>
-</footer>
+    {% endblock %}
 
     <script>
         const text = "{{ case.report|escapejs }}"
