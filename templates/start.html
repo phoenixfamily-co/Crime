@@ -255,10 +255,7 @@
           height: 100%;
           width: 100%;
         }
-        .fab-container .fab .fab-content .material-icons {
-          color: white;
-          font-size: 48px;
-        }
+
         .fab-container .sub-button {
             position: absolute;
             display: flex;
@@ -278,6 +275,42 @@
         .fab-container .sub-button .material-icons {
           color: white;
           padding-top: 6px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .fab-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                user-select: none;
+                position: fixed;
+                bottom: 100px;
+                right: 5px;
+            }
+            .fab-container .fab {
+                position: relative;
+                height: 30px;
+                width: 30px;
+                background-color: var(--navbar-bg);
+                border: 2px solid var(--btn-bg);
+                z-index: 2;
+            }
+
+            .fab-container .sub-button {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                bottom: 10px;
+                right: 5px;
+                height: 25px;
+                width: 25px;
+                background-color: transparent;
+                transition: all 0.3s ease;
+                border: 2px solid var(--btn-bg);
+            }
+
         }
 
     </style>
