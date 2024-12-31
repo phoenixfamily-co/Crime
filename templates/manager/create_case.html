@@ -77,31 +77,21 @@
         }
 
           form .form-select{
-              background-color: transparent;
+              background-color: var(--navbar-bg);
               color: var(--text-color);
-              outline: none!important;
-              box-shadow: none;
+              border: 1px solid var(--navbar-border);
         }
 
         form .form-control:focus {
-            background-color: transparent;
-            border-color: var(--primary-light)!important;
-            color: var(--text-color);
-            outline: none!important;
-            box-shadow: none;
+            border-color: #D32F2F !important; /* قرمز رنگ لوگو */
+            box-shadow: 0 0 0 0.25rem rgba(211, 47, 47, 0.5) !important; /* قرمز با شفافیت */
         }
 
-       .form-select option {
-           background-color:  transparent !important;
-           color: black!important;
-       }
-         form .form-select:focus {
-            background-color: transparent;
-            border-color: var(--primary-light)!important;
-            color: var(--text-color);
-            outline: none!important;
-            box-shadow: none;
+         select.form-select option:hover {
+            background-color: #FF6659 !important; /* قرمز روشن */
+            color: #fff !important; /* متن سفید */
         }
+
 
     </style>
 </head>
