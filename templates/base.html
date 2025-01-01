@@ -16,9 +16,11 @@
         // این اسکریپت برای حفظ وضعیت پخش موسیقی در زمان تغییر صفحه است
         window.onload = function() {
             var audio = document.getElementById('background-music');
+            const toggleButton = document.getElementById("play-music");
             // اگر موسیقی در حال پخش است، آن را دوباره پخش کنیم
             if (audio.paused) {
                 audio.play();
+                toggleButton.textContent = '<i class="fa-solid fa-volume-high"></i>';
             }
         };
 
@@ -69,7 +71,7 @@
 
     <div class="sub-button shadow">
     <a id="play-music" target="_blank">
-        <i class="fa-solid fa-volume-high"></i>
+        <i class="fa-solid fa-volume-xmark"></i>;
     </a>
   </div>
 
@@ -84,13 +86,11 @@
          {% endblock %}
 
 </div>
-
  <!-- فوتر -->
     <footer>
             {% block footer_buttons %}
-                <!-- اینجا دکمه‌های فوتر قرار می‌گیرد -->
+
             {% endblock %}
     </footer>
-
 </body>
 </html>
