@@ -293,7 +293,7 @@
                  align-content: center;
                  justify-content: center;
                  border: 2px solid var(--navbar-border) !important;;
-                 max-width: 80%;
+                 max-width: 78%;
                  background-color: var(--navbar-bg);
              }
             .fab-container {
@@ -304,7 +304,7 @@
                 user-select: none;
                 position: fixed;
                 bottom: 90px;
-                right: 5px;
+                right: 3px;
             }
             .fab-container .fab {
                 position: relative;
@@ -333,7 +333,7 @@
                 align-items: center;
                 justify-content: center;
                 bottom: 10px;
-                right: 5px;
+                right: 3px;
                 height: 25px;
                 width: 25px;
                 background-color: transparent;
