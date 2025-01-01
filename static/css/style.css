@@ -138,24 +138,24 @@
         }
 
         .previous-icon.ltr:hover {
-            transform: translateX(-10px);
-            transition: transform 0.3s ease;
+            transform: translateX(-10px)!important;
+            transition: transform 0.3s ease!important;
         }
 
         .next-icon.ltr:hover {
-            transform: translateX(10px);
-            transition: transform 0.3s ease;
+            transform: translateX(10px)!important;
+            transition: transform 0.3s ease!important;
         }
 
         /* حالت RTL */
         .previous-icon.rtl:hover {
-            transform: translateX(10px);
-            transition: transform 0.3s ease;
+            transform: translateX(10px)!important;
+            transition: transform 0.3s ease!important;
         }
 
         .next-icon.rtl:hover {
-            transform: translateX(-10px);
-            transition: transform 0.3s ease;
+            transform: translateX(-10px)!important;
+            transition: transform 0.3s ease!important;
         }
 
         .header {
