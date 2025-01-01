@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
 <!DOCTYPE html>
@@ -206,9 +207,14 @@
 </head>
 <body>
 
- <header class="header mt-2">
-        <h3>مظنونین</h3>
-    </header>
+ {% block header %}
+
+     <h3>{% trans 'مظنونین' %}</h3>
+
+        {% endblock %}
+
+ {% block content %}
+
 
 {#<div class="container mt-3 mx-5">#}
 {#    <div class="input-group" dir="rtl">#}
@@ -255,42 +261,6 @@
 </div>
 
 
- <footer>
-    <div class="container-fluid d-flex align-items-center justify-content-between pb-2  py-3 px-3">
-        <a href="{% url 'product:start-view' case.id %}" class="btn" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr" {% endif %}>
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right previous-icon" {% else %}class="fa-solid fa-arrow-left previous-icon"{% endif %}></i>
-            <span>{% trans "گزارش" %}</span>
-        </a>
-
-     <a href="{% url 'product:evidence-view' case.id %}" class="btn">
-            <span>{% trans "مدارک" %}</span>
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left next-icon" {% else %}class="fa-solid fa-arrow-right next-icon"{% endif %}></i>
-        </a>
-    </div>
-</footer>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const themeSwitch = document.getElementById("theme-switch");
-        const currentTheme = localStorage.getItem("theme") || "dark";
-
-        if (currentTheme === "dark") {
-            document.body.classList.add("dark-mode");
-            themeSwitch.checked = true;
-        }
-
-        themeSwitch.addEventListener("change", function () {
-            if (this.checked) {
-                document.body.classList.add("dark-mode");
-                localStorage.setItem("theme", "dark");
-            } else {
-                document.body.classList.remove("dark-mode");
-                localStorage.setItem("theme", "light");
-            }
-        });
-    });
-</script>
-
 <script>
     function searchFunction() {
     var input, filter, posts, post, title, i, txtValue;
@@ -313,5 +283,40 @@
 }
 </script>
 
+ {% endblock %}
+
+ {% block fab_buttons %}
+  <div class="sub-button shadow">
+    <a id="showFullTextBtn" target="_blank">
+      <i class="fa-solid fa-stop"></i>
+    </a>
+  </div>
+
+    <script>
+    document.getElementById("showFullTextBtn").addEventListener("click", function() {
+            typingText.textContent = text; // نمایش کامل متن
+            index = text.length; // به روز رسانی ایندکس برای جلوگیری از تایپ دوباره
+             });
+    </script>
+
+        {% endblock %}
+
+
+{% block footer_buttons %}
+
+     <div class="container-fluid d-flex align-items-center justify-content-between pb-2  py-3 px-3">
+        <a href="{% url 'product:start-view' case.id %}" class="btn" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr" {% endif %}>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right previous-icon" {% else %}class="fa-solid fa-arrow-left previous-icon"{% endif %}></i>
+            <span>{% trans "گزارش" %}</span>
+        </a>
+
+     <a href="{% url 'product:evidence-view' case.id %}" class="btn">
+            <span>{% trans "مدارک" %}</span>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left next-icon" {% else %}class="fa-solid fa-arrow-right next-icon"{% endif %}></i>
+        </a>
+    </div>
+
+
+{% endblock %}
 </body>
 </html>
