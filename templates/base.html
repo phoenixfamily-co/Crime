@@ -32,8 +32,9 @@
         const audio = document.getElementById("background-music");
         const toggleButton = document.getElementById("play-music");
 
-        // بررسی وضعیت پخش موسیقی از localStorage
+        // بازیابی وضعیت پخش و زمان از localStorage
         const isPlaying = localStorage.getItem("audioPlaying") === "true";
+        audio.currentTime = localStorage.getItem("audioTime") || 0; // تنظیم زمان موسیقی به آخرین زمان ذخیره شده
 
         // اگر موسیقی قبلاً در حال پخش بود، آن را پخش کنید
         if (isPlaying) {
@@ -44,6 +45,7 @@
             toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
         }
 
+        // هنگام تغییر وضعیت موسیقی، زمان پخش و وضعیت آن را ذخیره کنید
         toggleButton.addEventListener("click", function () {
             if (audio.paused) {
                 audio.play(); // پخش صدا
@@ -54,6 +56,11 @@
                 toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
                 localStorage.setItem("audioPlaying", "false"); // ذخیره وضعیت توقف
             }
+
+            // ذخیره زمان کنونی پخش موسیقی در localStorage
+            audio.addEventListener('timeupdate', function () {
+                localStorage.setItem("audioTime", audio.currentTime);
+            });
         });
     });
 </script>
