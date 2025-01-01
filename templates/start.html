@@ -67,7 +67,7 @@
     <div class="container-fluid py-3 px-3">
         <a href="{% url 'product:suspects-view' case.id %}" class="btn {% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
             <span>{% trans "مظنونین" %}</span>
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %}></i>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" style=" transform: translateX(-10px); transition: transform 0.3s ease;" {% else %}class="fa-solid fa-arrow-right" style=" transform: translateX(10px); transition: transform 0.3s ease;"{% endif %}></i>
         </a>
     </div>
 

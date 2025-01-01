@@ -137,11 +137,6 @@
             border-color: transparent!important;
         }
 
-        .btn:hover i {
-            transform: translateX(10px); /* حرکت به جلو هنگام hover */
-            transition: transform 0.3s ease;
-            display: inline-block
-        }
 
         .header {
             display: flex;
