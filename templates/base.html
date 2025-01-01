@@ -21,7 +21,25 @@
                 audio.play();
             }
         };
+
     </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const audio = document.getElementById("background-music");
+        const toggleButton = document.getElementById("play-music");
+
+        toggleButton.addEventListener("click", function () {
+            if (audio.paused) {
+                audio.play(); // پخش صدا
+                toggleButton.textContent = "قطع صدا";
+            } else {
+                audio.pause(); // توقف صدا
+                toggleButton.textContent = "وصل صدا";
+            }
+        });
+    });
+</script>
 
     <style>
 
@@ -49,8 +67,19 @@
     </div>
   </div>
 
-         {% block fab_buttons %}
+    <div class="sub-button shadow">
+    <a id="play-music" target="_blank">
+        <i class="fa-solid fa-volume-high"></i>
+    </a>
+  </div>
 
+    <div class="sub-button shadow">
+    <a target="_blank">
+      <i class="fa-solid fa-file-lines"></i>
+    </a>
+  </div>
+
+         {% block fab_buttons %}
 
          {% endblock %}
 

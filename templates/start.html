@@ -43,17 +43,6 @@
 {% endblock %}
 
 {% block fab_buttons %}
-
-  <div class="sub-button shadow">
-    <a id="play-music" target="_blank">
-        <i class="fa-solid fa-volume-high"></i>
-    </a>
-  </div>
-  <div class="sub-button shadow">
-    <a target="_blank">
-      <i class="fa-solid fa-file-lines"></i>
-    </a>
-  </div>
   <div class="sub-button shadow">
     <a id="showFullTextBtn" target="_blank">
       <i class="fa-solid fa-stop"></i>
@@ -73,9 +62,9 @@
 {% block footer_buttons %}
 
     <div class="container-fluid py-3 px-3">
-        <a href="{% url 'product:suspects-view' case.id %}" class="btn {% if LANGUAGE_BIDI %}ms-auto{% else %}me-auto{% endif %}">
+        <a href="{% url 'product:suspects-view' case.id %}" class="btn">
             <span>{% trans "مظنونین" %}</span>
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right" {% else %}class="fa-solid fa-arrow-left"{% endif %}></i>
+            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %}></i>
         </a>
     </div>
 
