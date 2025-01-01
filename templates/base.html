@@ -24,6 +24,21 @@
     </script>
 
     <style>
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            height: 56px;
+            cursor: pointer;
+            font-weight: 200;
+            text-decoration: none;
+            border: 2px solid var(--btn-bg)!important;
+            color: var(--btn-text)!important;
+        }
+        .btn:hover{
+            border: none!important;
+        }
           .btn:hover .previous-icon {
                  transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}!important;
                  transition: transform 0.3s ease; /* انیمیشن روان */
