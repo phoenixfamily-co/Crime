@@ -132,6 +132,10 @@
             border: 2px solid var(--btn-bg)!important;
             color: var(--btn-text)!important;
         }
+        .btn:hover{
+            border:none !important;
+            color: transparent!important;
+        }
 
          span {
              font-size: 20px;
@@ -151,7 +155,7 @@
         .header::after {
             content: '';
             flex: 1;
-            border-top: 2px solid var(--btn-bg); /* خط سفید */
+            border-top: 2px solid var(--btn-bg)!important; /* خط سفید */
             margin: 0 10px;
         }
 
