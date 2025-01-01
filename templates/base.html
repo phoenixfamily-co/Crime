@@ -34,10 +34,10 @@
         toggleButton.addEventListener("click", function () {
             if (audio.paused) {
                 audio.play(); // پخش صدا
-                toggleButton.textContent = '<i class="fa-solid fa-volume-high"></i>';
+                toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
             } else {
                 audio.pause(); // توقف صدا
-                toggleButton.textContent = '<i class="fa-solid fa-volume-xmark"></i>';
+                toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
             }
         });
     });
