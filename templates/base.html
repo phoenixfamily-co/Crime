@@ -23,6 +23,19 @@
         };
     </script>
 
+    <style>
+          .btn:hover .previous-icon {
+                 transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}!important;
+                 transition: transform 0.3s ease; /* انیمیشن روان */
+             }
+
+            .btn:hover .next-icon {
+                transform: {% if LANGUAGE_BIDI %}translateX(-10px){% else %}translateX(10px){% endif %}!important;
+                transition: transform 0.3s ease; /* انیمیشن روان */
+            }
+
+    </style>
+
 </head>
 <body>
     <!-- پخش موسیقی در تمام صفحات (با استفاده از جاوا اسکریپت) -->
