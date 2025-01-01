@@ -137,8 +137,24 @@
             border-color: transparent!important;
         }
 
-        .btn:hover i {
-            transform: translateX(10px); /* حرکت به جلو هنگام hover */
+        .previous-icon.ltr:hover {
+            transform: translateX(-10px);
+            transition: transform 0.3s ease;
+        }
+
+        .next-icon.ltr:hover {
+            transform: translateX(10px);
+            transition: transform 0.3s ease;
+        }
+
+        /* حالت RTL */
+        .previous-icon.rtl:hover {
+            transform: translateX(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .next-icon.rtl:hover {
+            transform: translateX(-10px);
             transition: transform 0.3s ease;
         }
 
