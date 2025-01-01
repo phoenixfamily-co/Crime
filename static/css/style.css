@@ -120,6 +120,22 @@
              width: 100%;
           }
 
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            height: 56px;
+            cursor: pointer;
+            font-weight: 200;
+            text-decoration: none;
+            border: 2px solid var(--btn-bg)!important;
+            color: var(--btn-text)!important;
+        }
+        .btn:hover{
+            border-color: transparent!important;
+        }
+
         .header {
             display: flex;
             align-items: center;
