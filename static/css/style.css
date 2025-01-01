@@ -136,27 +136,30 @@
         .btn:hover{
             border-color: transparent!important;
         }
-
-        .previous-icon.ltr:hover {
-            transform: translateX(-10px)!important;
-            transition: transform 0.3s ease!important;
+        /* حالت اولیه */
+        .previous-icon, .next-icon {
+            transform: translateX(0)!important; /* حالت اولیه */
+            transition: transform 0.3s ease!important; /* انیمیشن */
         }
 
-        .next-icon.ltr:hover {
-            transform: translateX(10px)!important;
-            transition: transform 0.3s ease!important;
+        /* حالت LTR */
+        .btn:hover .previous-icon.ltr {
+            transform: translateX(-10px)!important; /* به سمت چپ حرکت کند */
+        }
+
+        .btn:hover .next-icon.ltr {
+            transform: translateX(10px)!important; /* به سمت راست حرکت کند */
         }
 
         /* حالت RTL */
-        .previous-icon.rtl:hover {
-            transform: translateX(10px)!important;
-            transition: transform 0.3s ease!important;
+        .btn:hover .previous-icon.rtl {
+            transform: translateX(10px)!important; /* به سمت راست حرکت کند */
         }
 
-        .next-icon.rtl:hover {
-            transform: translateX(-10px)!important;
-            transition: transform 0.3s ease!important;
+        .btn:hover .next-icon.rtl {
+            transform: translateX(-10px)!important; /* به سمت چپ حرکت کند */
         }
+
 
         .header {
             display: flex;
