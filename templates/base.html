@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 
 <html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
@@ -55,6 +56,12 @@
         <source src="{% static 'audio/playback.mp3' %}" type="audio/mpeg">
         مرورگر شما از تگ audio پشتیبانی نمی‌کند.
     </audio>
+
+    <header class="header mt-2">
+         {% block header %}
+
+        {% endblock %}
+    </header>
 
     <!-- محتوای متغیر -->
     <div id="content">

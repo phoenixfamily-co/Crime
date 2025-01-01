@@ -12,11 +12,14 @@
 
 </head>
 <body>
-{% block content %}
 
-<header class="header mt-2">
-        <h3>{% trans 'گزارش پلیس' %}</h3>
-    </header>
+ {% block header %}
+
+     <h3>{% trans 'گزارش پلیس' %}</h3>
+
+        {% endblock %}
+
+{% block content %}
 
 <div class="container card">
         <!-- تایپ تدریجی متن -->
