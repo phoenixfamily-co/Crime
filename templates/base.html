@@ -32,13 +32,27 @@
         const audio = document.getElementById("background-music");
         const toggleButton = document.getElementById("play-music");
 
+        // بررسی وضعیت پخش موسیقی از localStorage
+        const isPlaying = localStorage.getItem("audioPlaying") === "true";
+
+        // اگر موسیقی قبلاً در حال پخش بود، آن را پخش کنید
+        if (isPlaying) {
+            audio.play();
+            toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+        } else {
+            audio.pause();
+            toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+        }
+
         toggleButton.addEventListener("click", function () {
             if (audio.paused) {
                 audio.play(); // پخش صدا
                 toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+                localStorage.setItem("audioPlaying", "true"); // ذخیره وضعیت پخش
             } else {
                 audio.pause(); // توقف صدا
                 toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+                localStorage.setItem("audioPlaying", "false"); // ذخیره وضعیت توقف
             }
         });
     });
@@ -76,7 +90,7 @@
 
     <div class="sub-button shadow">
     <a id="play-music" target="_blank">
-        <i class="fa-solid fa-volume-high"></i>
+        <i class="fa-solid fa-volume-xmark"></i>
     </a>
   </div>
 
