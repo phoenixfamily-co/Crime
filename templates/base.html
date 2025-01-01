@@ -31,8 +31,11 @@
         مرورگر شما از تگ audio پشتیبانی نمی‌کند.
     </audio>
 
+    <!-- محتوای متغیر -->
+    <div id="content">
         {% block content %}
         {% endblock %}
+    </div>
 
     <div class="fab-container">
   <div class="fab shadow">
@@ -40,6 +43,11 @@
       <i class="fa-solid fa-gear"></i>
     </div>
   </div>
+
+         {% block fab_buttons %}
+
+
+         {% endblock %}
 
 </div>
 
