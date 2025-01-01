@@ -16,11 +16,8 @@
 
 
       body {
-          display: flex;
-          flex-direction: column; /* این خط رو اضافه کن */
           justify-content: center;
           align-items: center;
-          min-height: 100vh;
           margin: 0;
           background-color: #121212;
           color: #e0e0e0;
