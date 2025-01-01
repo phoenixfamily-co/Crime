@@ -136,6 +136,14 @@
             border-color: transparent!important;
         }
 
+        a.btn i {
+            transition: transform 0.3s ease; /* تعریف ترنزیشن برای حرکت نرم */
+            display: inline-block; /* لازم است برای اعمال transform */
+        }
+        a.btn:hover i {
+            transform: translateX(5px); /* حرکت به جلو هنگام hover */
+        }
+
         .header {
             display: flex;
             align-items: center;
