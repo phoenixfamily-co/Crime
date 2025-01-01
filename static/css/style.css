@@ -22,8 +22,8 @@
           align-items: center;
           min-height: 100vh;
           margin: 0;
-          background-color: var(--bg-color);
-          color: var(--text-color);
+          background-color: #121212;
+          color: #e0e0e0;
           font-family: Arial, sans-serif;
           transition: background-color 0.3s, color 0.3s;
       }
