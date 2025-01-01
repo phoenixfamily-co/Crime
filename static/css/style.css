@@ -127,7 +127,7 @@
             width: 100px;
             height: 56px;
             cursor: pointer;
-            font-weight: 400;
+            font-weight: 350;
             text-decoration: none;
             border: 2px solid var(--btn-bg)!important;
             color: var(--btn-text)!important;
