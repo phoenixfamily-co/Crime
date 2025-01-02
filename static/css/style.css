@@ -97,7 +97,8 @@
               justify-content: center;
               cursor: pointer;
               display: inline-block;
-              color: var(--navbar-border)!important;
+              color: var(--text-color)!important;
+              border: 2px solid var(--navbar-border) !important;
               text-decoration: none!important;
 
           }
