@@ -103,7 +103,7 @@
           }
 
            .card-footer{
-               color: var(--primary-light)!important;
+               color: var(--text-color)!important;
                background-color:var(--navbar-bg)!important; ;
                border-color:var(--primary-light)!important ;
           }
