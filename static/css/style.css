@@ -96,13 +96,13 @@
               justify-content: center;
               cursor: pointer;
               display: inline-block;
-              color: var(--navbar-border)!important;
+              color: var(--text-color);
               text-decoration: none!important;
           }
            .card-footer{
-               color: var(--navbar-border);
+               color: var(--text-color);
                background-color:var(--navbar-bg);
-               border-color:var(--navbar-border);
+               border: 2px solid var(--navbar-border) !important;
           }
 
 
