@@ -53,6 +53,7 @@ class Case(models.Model):
 class Suspect(models.Model):
     case = models.ForeignKey(Case, related_name="suspect", on_delete=models.CASCADE)
     image = models.ImageField(upload_to="images/", verbose_name='عکس مظنون', null=True, blank=True)
+    Video = models.FileField(upload_to='videos/', verbose_name="ویدیو بازجویی", null=True, blank=True)
     name = models.CharField(max_length=200, verbose_name="نام و نام خانوادگی")
     murderer = models.BooleanField(verbose_name='قاتل', default=False)
     job = models.CharField(max_length=200, verbose_name="َشغل" , blank=True, null=True)
@@ -115,7 +116,7 @@ class Evidence(models.Model):
 
     # فایل ضمیمه (مدرک تصویری، ویدئویی یا دیگر فایل‌ها)
     file = models.FileField(upload_to='evidences/', null=True, blank=True)
-
+    image = models.ImageField(upload_to="images/", verbose_name='عکس مدرک', null=True, blank=True)
     status = models.CharField(max_length=20, choices=[('Locked', 'locked'), ('Unlocked', 'Unlocked')],
                               default='Unlocked')
     password = models.CharField(

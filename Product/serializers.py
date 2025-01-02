@@ -6,20 +6,21 @@ class CaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Case
         fields = ['id', 'title', 'description', 'report', 'difficulty_number', 'difficulty_level', 'age_range', 'result'
-            ,'price']
+            , 'price', 'image', 'video']
 
 
 class SuspectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Suspect
         fields = ['id', 'name', 'age', 'height', 'weight', 'blood_type', 'marital_status', 'case', 'murderer', 'job',
-                  'gender', 'relationship_with_victim', 'excuse', 'last_seen']
+                  'gender', 'relationship_with_victim', 'excuse', 'last_seen', 'image', 'video']
 
 
 class EvidenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Evidence
-        fields = ['id', 'case', 'suspect', 'evidence_type', 'title', 'description', 'file', 'status', 'password']
+        fields = ['id', 'case', 'suspect', 'evidence_type', 'title', 'description', 'file', 'status', 'password',
+                  'image']
 
 
 class InterrogationSerializer(serializers.ModelSerializer):

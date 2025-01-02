@@ -148,10 +148,50 @@ class CaseViewSet(viewsets.ModelViewSet):
     queryset = Case.objects.all()
     serializer_class = CaseSerializer
 
+    def create(self, request, *args, **kwargs):
+        # دریافت داده‌ها از درخواست
+        data = request.data.copy()  # کپی داده‌های موجود
+        image = request.FILES.get('image')  # دریافت فایل از request.FILES
+        video = request.FILES.get('video')  # دریافت فایل از request.FILES
+
+        if image:
+            data['image'] = image
+
+        if video:
+            data['video'] = video
+
+        serializer = self.get_serializer(data=data)
+
+        # اعتبارسنجی و ذخیره داده‌ها
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)  # داده‌ها ذخیره شده و پاسخ برگشت می‌دهیم
+        return Response(serializer.errors, status=400)
+
 
 class SuspectViewSet(viewsets.ModelViewSet):
     queryset = Suspect.objects.all()
     serializer_class = SuspectSerializer
+
+    def create(self, request, *args, **kwargs):
+        # دریافت داده‌ها از درخواست
+        data = request.data.copy()  # کپی داده‌های موجود
+        image = request.FILES.get('image')  # دریافت فایل از request.FILES
+        video = request.FILES.get('video')  # دریافت فایل از request.FILES
+
+        if image:
+            data['image'] = image
+
+        if video:
+            data['video'] = video
+
+        serializer = self.get_serializer(data=data)
+
+        # اعتبارسنجی و ذخیره داده‌ها
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)  # داده‌ها ذخیره شده و پاسخ برگشت می‌دهیم
+        return Response(serializer.errors, status=400)
 
 
 class EvidenceViewSet(viewsets.ModelViewSet):
@@ -177,10 +217,14 @@ class EvidenceViewSet(viewsets.ModelViewSet):
         # دریافت داده‌ها از درخواست
         data = request.data.copy()  # کپی داده‌های موجود
         file = request.FILES.get('file')  # دریافت فایل از request.FILES
+        image = request.FILES.get('image')
 
         # اگر فایل وجود داشته باشد، آن را به داده‌ها اضافه می‌کنیم
         if file:
             data['file'] = file
+
+        if image:
+            data['image'] = image
 
         serializer = self.get_serializer(data=data)
 
