@@ -105,6 +105,10 @@
                border: 2px solid var(--navbar-border) !important;
           }
 
+        .card-footer:hover{
+            border-color: transparent!important;
+          }
+
 
           .card-body {
               background-color:transparent;!important;
