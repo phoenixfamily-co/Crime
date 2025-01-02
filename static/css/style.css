@@ -73,9 +73,8 @@
               justify-content: center;
           }
 
+
           .card {
-              margin-top: 30px;
-              margin-bottom: 130px;
               color: var(--text-color)!important;
               text-align: center;
               align-content: center;
@@ -97,16 +96,13 @@
               justify-content: center;
               cursor: pointer;
               display: inline-block;
-              color: var(--text-color)!important;
-              border: 2px solid var(--navbar-border) !important;
+              color: var(--navbar-border)!important;
               text-decoration: none!important;
-
           }
-
            .card-footer{
-               color: var(--text-color)!important;
-               background-color:var(--navbar-bg)!important; ;
-               border-color:var(--primary-light)!important ;
+               color: var(--navbar-border);
+               background-color:var(--navbar-bg);
+               border-color:var(--navbar-border);
           }
 
 
