@@ -288,20 +288,18 @@
 
         @media screen and (max-width: 768px) {
 
-             .fab-container .fab .fab-content i {
-                 color: white;
-                 font-size: 16px;
-             }
+            .fab-container .fab .fab-content i {
+                color: white;
+                font-size: 16px;
+            }
 
 
-        .fab-container .sub-button i {
-            color: white;
-            font-size: 12px;
-        }
+            .fab-container .sub-button i {
+                color: white;
+                font-size: 12px;
+            }
 
              .card {
-                 margin-top: 30px;
-                 margin-bottom: 130px;
                  color: var(--text-color);
                  text-align: center;
                  align-content: center;
@@ -310,6 +308,7 @@
                  max-width: 78%;
                  background-color: var(--navbar-bg);
              }
+
             .fab-container {
                 display: flex;
                 flex-direction: column;
