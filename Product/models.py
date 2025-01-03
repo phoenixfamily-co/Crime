@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils import timezone
-from User.models import User
 
+from Category.models import CaseCategory
+from User.models import User
 
 
 class Case(models.Model):
@@ -38,8 +39,8 @@ class Case(models.Model):
         verbose_name="سطح سختی"
     )
     score = models.IntegerField(default=0, verbose_name="امتیاز", blank=True, null=True)
-    # category = models.ForeignKey(CaseCategory, on_delete=models.CASCADE, verbose_name="دسته‌بندی پرونده", null=True,
-    #                              blank=True)
+    category = models.ForeignKey(CaseCategory, on_delete=models.CASCADE, verbose_name="دسته‌بندی پرونده", null=True,
+                                 blank=True)
 
     def __str__(self):
         return self.title
