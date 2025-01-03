@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 from User.models import User
 
-from Category.models import CaseCategory
 
 
 class Case(models.Model):
