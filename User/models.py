@@ -28,7 +28,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50)
 
     # ایمیل
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, blank=True, null=True)
 
     # شماره تلفن (اعتبارسنجی شماره تلفن)
     phone_regex = RegexValidator(
@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         message="Phone number must be entered in a valid international format. Examples: '+1234567890', "
                 "'+1 (234) 567-8901', or '+44-20-1234-5678'."
     )
-    number = models.CharField(validators=[phone_regex], max_length=15, blank=True, null=True)
+    number = models.CharField(unique=True, validators=[phone_regex], max_length=15)
 
     # تاریخ تولد
     birth_date = models.DateField(blank=True, null=True)
