@@ -1,15 +1,8 @@
 from django.db import models
 from django.utils import timezone
-
 from User.models import User
 
-
-class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name="نام دسته‌بندی")
-    description = models.TextField(verbose_name="توضیحات دسته‌بندی", blank=True, null=True)
-
-    def __str__(self):
-        return self.name
+from Category.models import CaseCategory
 
 
 class Case(models.Model):
@@ -46,89 +39,11 @@ class Case(models.Model):
         verbose_name="سطح سختی"
     )
     score = models.IntegerField(default=0, verbose_name="امتیاز", blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="دسته‌بندی پرونده", null=True,
+    category = models.ForeignKey(CaseCategory, on_delete=models.CASCADE, verbose_name="دسته‌بندی پرونده", null=True,
                                  blank=True)
 
     def __str__(self):
         return self.title
-
-
-class Cart(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Cart of {self.user.number}"
-
-    def total_price(self):
-        return sum(item.total_price() for item in self.cartitem_set.all())
-
-
-class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    case = models.ForeignKey(Case, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(default=1)
-
-    def __str__(self):
-        return f"{self.quantity} of {self.case.title} in cart {self.cart.id}"
-
-    def total_price(self):
-        return self.case.price * self.quantity
-
-
-# Model for Orders
-class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    total_price = models.DecimalField(max_digits=10, decimal_places=2)
-    is_paid = models.BooleanField(default=False)
-
-    def __str__(self):
-        return f"Order {self.id} by {self.user.number}"
-
-
-class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    case = models.ForeignKey(Case, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
-
-    def __str__(self):
-        return f"{self.quantity} of {self.case.title} in order {self.order.id}"
-
-    def total_price(self):
-        return self.case.price * self.quantity
-
-
-class GamePlay(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    OrderItem = models.ForeignKey(OrderItem, on_delete=models.CASCADE)
-    started_at = models.DateTimeField(auto_now_add=True)
-    completed_at = models.DateTimeField(null=True, blank=True)
-    status = models.CharField(max_length=50, choices=[('in_progress', 'In Progress'), ('completed', 'Completed'),
-                                                      ('cancelled', 'Cancelled')],
-                              default='in_progress')
-
-    def __str__(self):
-        return f"GamePlay of {self.OrderItem.case.title} by {self.user.number}"
-
-
-class GameParticipant(models.Model):
-    gameplay = models.ForeignKey(GamePlay, on_delete=models.CASCADE)
-    participant = models.ForeignKey(User, on_delete=models.CASCADE)
-    joined_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Participant {self.participant.number} in GamePlay {self.gameplay.id}"
-
-
-class GameResult(models.Model):
-    gameplay = models.OneToOneField(GamePlay, on_delete=models.CASCADE)
-    score = models.PositiveIntegerField(null=True, blank=True)
-    comment = models.TextField(null=True, blank=True)
-    status = models.CharField(max_length=50, choices=[('success', 'Success'), ('failed', 'Failed')])
-
-    def __str__(self):
-        return f"Result of GamePlay {self.gameplay.id}"
 
 
 class Suspect(models.Model):
