@@ -51,13 +51,18 @@ class Suspect(models.Model):
     image = models.ImageField(upload_to="images/", verbose_name='عکس مظنون', null=True, blank=True)
     video = models.FileField(upload_to='videos/', verbose_name="ویدیو بازجویی", null=True, blank=True)
     name = models.CharField(max_length=200, verbose_name="نام و نام خانوادگی")
-    murderer = models.BooleanField(verbose_name='قاتل', default=False)
+    role = models.CharField(
+        max_length=10,
+        choices=[('murderer', 'قاتل'), ('murdered', 'مقتول'), ('innocent', 'بی گناه')],
+        verbose_name="نقش",
+        default='innocent'
+    )
     job = models.CharField(max_length=200, verbose_name="َشغل", blank=True, null=True)
     age = models.IntegerField(verbose_name="سن")
     gender = models.CharField(
         max_length=10,
         choices=[('male', 'مرد'), ('female', 'زن')],
-        verbose_name="جنسیت"
+        verbose_name="جنسیت",
     )
     # قد
     height = models.FloatField(verbose_name="قد (سانتی‌متر)")

@@ -134,10 +134,14 @@
             <label for="murderer" class="form-check-label">آیا این فرد قاتل است؟</label>
         </div>
 
-        <!-- فیلد سن -->
+      <!-- فیلد مقتول -->
         <div class="mb-3">
-            <label for="age" class="form-label">سن</label>
-            <input type="number" class="form-control" id="age" name="age" required>
+            <label for="role" class="form-label">نقش</label>
+            <select class="form-select" id="role" name="role" required>
+                <option value="murderer">قتل</option>
+                <option value="murdered">مقتول</option>
+                <option value="innocent">بی گناه</option>
+            </select>
         </div>
 
         <!-- فیلد جنسیت -->
