@@ -89,12 +89,13 @@ def result(request, pk):
 def autopsy(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
-    suspect = get_object_or_404(Suspect, case=pk, role='murdered')
-
+    report = get_object_or_404(Evidence, id=pk)
+    suspect = get_object_or_404(Suspect, case=report.case.pk, role='murdered')
     return render(request, 'autopsy.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
-        'suspect': suspect
+        'suspect': suspect,
+        'evidence': report
     })
 
 
