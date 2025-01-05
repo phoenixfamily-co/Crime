@@ -30,15 +30,14 @@
  {% block content %}
 
 
-<div class="container my-5 pb-5">
+<div class="container">
     <!-- Evidence Cards -->
-    <div class="row mt-4 mx-md-5">
+  <div class="row mt-2 mx-md-5 justify-content-center">
 
         {% for evidence in evidences %}
             {% if evidence.status == "Locked" %}
-
-                <div class="col-6 col-md-4 mb-4">
-                    <div class="card bg-dark text-light">
+                <div class="col-12 col-md-4 mt-5 d-flex justify-content-center">
+                    <div class="card">
                         <img src="{{ evidence.image.url }}" class="card-img-top" alt="Locked Evidence">
                         <div class="card-body">
                             <h5 class="card-title">{{ evidence.title }}</h5>
@@ -50,8 +49,8 @@
                 </div>
 
             {% else %}
-                <div class="col-6 col-md-4 mb-4">
-                    <div class="card bg-dark text-light">
+                <div class="col-12 col-md-4 mt-5 d-flex justify-content-center">
+                    <div class="card">
                         <img src="{{ evidence.image.url }}" class="card-img-top" alt="Evidence">
                         <div class="card-body">
                             <h5 class="card-title">{{ evidence.title }}</h5>
