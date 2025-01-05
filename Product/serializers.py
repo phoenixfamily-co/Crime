@@ -20,7 +20,7 @@ class EvidenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Evidence
         fields = ['id', 'case', 'evidence_type', 'title', 'description', 'file', 'status', 'password',
-                  'image']
+                  'image', 'details']
 
 
 class InterrogationSerializer(serializers.ModelSerializer):

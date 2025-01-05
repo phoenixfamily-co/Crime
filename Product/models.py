@@ -108,7 +108,9 @@ class Evidence(models.Model):
     title = models.CharField(max_length=200, verbose_name="عنوان مدرک")
 
     # توضیحات درباره مدرک
-    description = models.TextField()
+    description = models.TextField(verbose_name="توضیحات مدرک")
+    details = models.TextField(blank=True,null=True, verbose_name='جزییات مدرک')
+
 
     # تاریخ و زمان ثبت مدرک
     date_collected = models.DateTimeField(default=timezone.now)
