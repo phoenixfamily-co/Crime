@@ -77,7 +77,7 @@
 
           .card {
               color: var(--text-color)!important;
-              text-align: center;
+              text-align: start;
               align-content: center;
               justify-content: center;
               display: flex; /* اضافه کردن این خط */
