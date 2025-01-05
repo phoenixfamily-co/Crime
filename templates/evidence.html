@@ -226,7 +226,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ evidence.title }}</h5>
                             <p class="card-text">{{ evidence.description }}</p>
-                            <button onclick="window.open('{% url 'product:autopsy-view' %}')" class="btn btn-success w-100">View Details</button>
+                            <button onclick="window.open('{% url 'product:autopsy-view' evidence.case.id %}')" class="btn btn-success w-100">View Details</button>
                         </div>
                     </div>
                 </div>
