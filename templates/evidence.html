@@ -41,7 +41,7 @@
                         <img src="{{ evidence.image.url }}" class="card-img-top" alt="Locked Evidence">
                         <div class="card-body">
                             <h5 class="card-title">{{ evidence.title }}</h5>
-                            <p class="card-text">{{ evidence.description }}</p>
+                            <p class="card-text">{{ evidence.description | truncatechars:100 }}</p>
                             <input type="text" class="form-control mb-2" placeholder="Enter Code">
                         </div>
                          <div class="card-footer">
