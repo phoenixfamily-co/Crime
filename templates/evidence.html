@@ -59,7 +59,11 @@
                             <p class="card-text">{{ evidence.description }}</p>
                         </div>
                         <div class="card-footer">
+                            {% if evidence.evidence_type == 'AUTOPSY' %}
                             <a href="{% url 'product:autopsy-view' evidence.id %}" target="_blank">{% trans 'مشاهده جزییات' %}</a>
+                                {% elif evidence.evidence_type == 'OTHER' %}
+                                <a href="//{{ evidence.details }}" target="_blank">{% trans 'مشاهده جزییات' %}</a>
+                                {% endif %}
                         </div>
                     </div>
                 </div>
