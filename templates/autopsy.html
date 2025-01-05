@@ -165,7 +165,7 @@
     <!-- بخش اول: پروفایل مظنون -->
     <div class="section profile-info">
         <div class="d-flex align-items-center justify-content-between mb-3">
-        <h5 class="mb-0">{% trans "پروفایل مظنون" %}</h5>
+        <h5 class="mb-0">{% trans "پروفایل مقتول" %}</h5>
         <a href="{% url 'product:evidence-view' suspect.case.id %}" class="btn {% if LANGUAGE_BIDI %}me-auto{% else %}ms-auto{% endif %}">
             <span>{% trans "خروج" %}</span>
             <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left" {% else %}class="fa-solid fa-arrow-right"{% endif %} ></i>
@@ -244,9 +244,10 @@
         <!-- بخش دوم: سوالات و پاسخ‌ها -->
         <div class="section">
 
-            <div class="card mt-3">
-                {{ evidence.description }}
-            </div>
+          <div class="container card mt-3">
+        <!-- تایپ تدریجی متن -->
+        <div class="typing-text" id="typingText"></div>
+ </div>
 
 </div>
 
@@ -266,48 +267,21 @@
         </div>
 </div>
 
-    <script>
-        let questions = [
-            {% for interrogation in interrogations %}
-            { question: "{{ interrogation.question }}", answer: "{{ interrogation.answer }}", heartRate: "{{ interrogation.heart_rate }}BPM", stress: "{{ interrogation.truth_level }}%", emotion: "{{ interrogation.get_face_expression_display }}" },
-            {% endfor %}
-        ];
-        let currentQuestion = 0;
+   <script>
+        const text = "{{ evidence.description|escapejs }}"
+        const typingText = document.getElementById("typingText");
+        let index = 0;
 
-          document.addEventListener("DOMContentLoaded", function () {
-              updateUI()
-          });
-
-        function updateUI() {
-            const questionCard = document.getElementById("question-card");
-            const heartRate = document.getElementById("heart-rate");
-            const stressBar = document.getElementById("stress-bar");
-            const stressLevel = document.getElementById("stress-level");
-            const emotionText = document.querySelector(".emotion-analysis p strong");
-
-            questionCard.innerHTML = `
-                <p><strong>سوال:</strong> ${questions[currentQuestion].question}</p>
-                <p><strong>جواب:</strong> ${questions[currentQuestion].answer}</p>
-            `;
-            heartRate.textContent = questions[currentQuestion].heartRate;
-            stressBar.style.width = questions[currentQuestion].stress;
-            stressLevel.textContent = questions[currentQuestion].stress === "60%" ? "بالا" : "پایین";
-            emotionText.textContent = questions[currentQuestion].emotion;
-        }
-
-        function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                updateUI();
+        function typeText() {
+            if (index < text.length) {
+                typingText.textContent += text[index];
+                index++;
+                setTimeout(typeText, 50); // سرعت تایپ (به میلی‌ثانیه)
             }
         }
 
-        function previousQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                updateUI();
-            }
-        }
+        typeText();
+
     </script>
 
 <script>
