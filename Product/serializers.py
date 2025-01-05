@@ -12,7 +12,7 @@ class CaseSerializer(serializers.ModelSerializer):
 class SuspectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Suspect
-        fields = ['id', 'name', 'age', 'height', 'weight', 'blood_type', 'marital_status', 'case', 'role',
+        fields = ['id', 'name', 'age', 'height', 'weight', 'blood_type', 'marital_status', 'case',
                   'job', 'gender', 'relationship_with_victim', 'excuse', 'last_seen', 'image', 'video']
 
 
