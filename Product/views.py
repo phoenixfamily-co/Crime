@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.cache import cache_page
 from django.utils.translation import get_language, get_language_bidi
 from rest_framework import viewsets
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
 from Product.models import Case, Suspect, Interrogation, Evidence
@@ -12,7 +13,7 @@ from Product.serializers import CaseSerializer, SuspectSerializer, Interrogation
 def start(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
-    product = Case.objects.get(id=pk)
+    product = get_object_or_404(Case, id=pk)
 
     return render(request, 'start.html', {
         'LANGUAGE_CODE': current_language,
@@ -25,7 +26,7 @@ def start(request, pk):
 def suspects(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
-    product = Case.objects.get(id=pk)
+    product = get_object_or_404(Case, id=pk)
     suspect = Suspect.objects.filter(case=pk)
 
     return render(request, 'suspects.html', {
@@ -38,11 +39,11 @@ def suspects(request, pk):
 
 
 @cache_page(60 * 15)
-def interrogation(request,pk):
+def interrogation(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
     interrogations = Interrogation.objects.filter(suspect=pk)
-    suspect = Suspect.objects.get(id=pk)
+    suspect = get_object_or_404(Suspect, id=pk)
 
     return render(request, 'interrogation.html', {
         'LANGUAGE_CODE': current_language,
@@ -53,10 +54,10 @@ def interrogation(request,pk):
 
 
 @cache_page(60 * 15)
-def evidence(request,pk):
+def evidence(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
-    product = Case.objects.get(id=pk)
+    product = get_object_or_404(Case, id=pk)
     evidences = Evidence.objects.filter(case=pk)
 
     return render(request, 'evidence.html', {
@@ -69,7 +70,7 @@ def evidence(request,pk):
 
 
 @cache_page(60 * 15)
-def result(request,pk):
+def result(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
     product = Case.objects.get(id=pk)
@@ -85,13 +86,15 @@ def result(request,pk):
 
 
 @cache_page(60 * 15)
-def autopsy(request):
+def autopsy(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
+    suspect = get_object_or_404(Suspect, case=pk, role='murdered')
 
     return render(request, 'autopsy.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
+        'suspect': suspect
     })
 
 
