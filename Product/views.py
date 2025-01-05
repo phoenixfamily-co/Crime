@@ -27,7 +27,7 @@ def suspects(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
     product = get_object_or_404(Case, id=pk)
-    suspect = Suspect.objects.filter(case=pk)
+    suspect = Suspect.objects.filter(case=pk).exclude(role='murdered')
 
     return render(request, 'suspects.html', {
         'LANGUAGE_CODE': current_language,
