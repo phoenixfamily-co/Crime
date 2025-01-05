@@ -95,14 +95,12 @@ class Evidence(models.Model):
         ('VIDEO', 'Video'),
         ('DOCUMENT', 'Document'),
         ('VOICE', 'Voice'),
+        ('AUTOPSY', 'Autopsy'),
         ('OTHER', 'Other'),
     ]
 
     # ارتباط Evidence با CrimeCase
     case = models.ForeignKey(Case, related_name="evidences", on_delete=models.CASCADE)
-
-    # ارتباط Evidence با Suspect
-    suspect = models.ForeignKey(Suspect, related_name="evidences", on_delete=models.CASCADE, null=True, blank=True)
 
     # نوع مدرک
     evidence_type = models.CharField(max_length=10, choices=TYPE_CHOICES)

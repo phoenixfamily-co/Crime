@@ -120,17 +120,6 @@
             </select>
         </div>
 
-        <!-- انتخاب مظنون -->
-        <div class="mb-3">
-            <label for="suspect" class="form-label">انتخاب مظنون (اختیاری)</label>
-            <select class="form-select" id="suspect" name="suspect">
-                <!-- اینجا لیستی از مظنونین را باید از سرور بارگذاری کنید -->
-                <option value="">انتخاب کنید...</option>
-                <option value="1">مظنون ۱</option>
-                <option value="2">مظنون ۲</option>
-            </select>
-        </div>
-
         <!-- نوع مدرک -->
         <div class="mb-3">
             <label for="evidence_type" class="form-label">نوع مدرک</label>
@@ -139,6 +128,7 @@
                 <option value="VIDEO">ویدیو</option>
                 <option value="DOCUMENT">سند</option>
                 <option value="VOICE">صدا</option>
+                <option value="AUTOPSY">کالبدشکافی</option>
                 <option value="OTHER">سایر</option>
             </select>
         </div>
@@ -153,6 +143,12 @@
         <div class="mb-3">
             <label for="description" class="form-label">توضیحات</label>
             <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+        </div>
+
+        <!-- فایل ضمیمه -->
+        <div class="mb-3">
+            <label for="image" class="form-label">عکس مدرک</label>
+            <input type="file" class="form-control" id="image" name="image">
         </div>
 
         <!-- فایل ضمیمه -->
