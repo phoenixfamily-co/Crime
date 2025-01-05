@@ -91,7 +91,7 @@
 
         .card {
             color: var(--text-color)!important;
-            text-align: center;
+            text-align: start;
             align-content: center;
             justify-content: center;
             display: flex; /* اضافه کردن این خط */
@@ -266,7 +266,7 @@
 </div>
 
    <script>
-        const text = "{{ evidence.description|escapejs }}"
+        const text = "{{ evidence.details|escapejs }}"
         const typingText = document.getElementById("typingText");
         let index = 0;
 
