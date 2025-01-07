@@ -291,6 +291,10 @@
               color: white;  /* رنگ متن */
           }
 
+           .modal-header {
+               border-bottom: 2px solid #d32f2f!important;  /* رنگ خط مرزی بین هدر و بدنه */
+           }
+
         @media screen and (max-width: 768px) {
 
             .fab-container .fab .fab-content i {
