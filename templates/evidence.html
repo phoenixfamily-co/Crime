@@ -65,7 +65,7 @@
                             {% elif evidence.evidence_type == 'OTHER' %}
                                 <a href="//{{ evidence.details }}" target="_blank">{% trans 'مشاهده جزییات' %}</a>
                                 {% elif evidence.evidence_type == 'PHOTO'  %}
-                                <a data-bs-toggle="modal" data-bs-target="#imageModal"  data-src="{{ evidence.file.url }}">
+                                <a onclick="openModal('{{ evidence.file.url }}')">
                                     {% trans 'مشاهده جزییات' %}
                                 </a>
                             {% endif %}
@@ -91,17 +91,17 @@
          </div>
      </div>
 
-     <script>
-          // تغییر تصویر و کپشن modal با استفاده از داده‌های HTML
-          var modal = document.getElementById('imageModal');
-          modal.addEventListener('show.bs.modal', function (event) {
-            var button = event.relatedTarget; // دکمه‌ای که modal را فعال می‌کند
-            var imgSrc = button.getAttribute('data-img'); // URL تصویر
+    <script>
+        // فانکشن برای باز کردن modal
+        function openModal(imgSrc) {
+            // تنظیم تصویر و کپشن برای modal
+            document.getElementById('modalImage').src = imgSrc;
 
-            var modalImage = modal.querySelector('#modalImage');
+            // نمایش modal
+            var myModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            myModal.show();
+  }
 
-            modalImage.src = imgSrc;
-          });
 </script>
 
  {% endblock %}
