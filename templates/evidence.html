@@ -67,7 +67,7 @@
                                 <a href="{% url 'product:autopsy-view' evidence.id %}" target="_blank">{% trans 'مشاهده جزییات' %}</a>
                             {% elif evidence.evidence_type == 'OTHER' %}
                                 <a href="//{{ evidence.details }}" target="_blank">{% trans 'مشاهده جزییات' %}</a>
-                                {% elif evidence.evidence_type == 'IMAGE'  %}
+                                {% elif evidence.evidence_type == 'PHOTO'  %}
                                 <a href="{{ evidence.file.url }}" data-lightbox="image-1">{% trans 'مشاهده جزییات' %}</a>
                             {% endif %}
                         </div>
