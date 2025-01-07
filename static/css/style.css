@@ -286,6 +286,10 @@
           cursor: pointer;
         }
 
+          .modal-content {
+              background-color: #333;  /* رنگ پس‌زمینه خود modal */
+              color: white;  /* رنگ متن */
+          }
 
         @media screen and (max-width: 768px) {
 
