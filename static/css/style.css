@@ -404,5 +404,11 @@
                 color: var(--text-color);
             }
 
+             .modal-content {
+                margin: auto;
+                display: block;
+                width: 80%;
+            }
+
         }
 
