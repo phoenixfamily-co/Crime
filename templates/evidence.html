@@ -65,7 +65,7 @@
                             {% elif evidence.evidence_type == 'OTHER' %}
                                 <a href="//{{ evidence.details }}" target="_blank">{% trans 'مشاهده جزییات' %}</a>
                                 {% elif evidence.evidence_type == 'PHOTO'  %}
-                                <a onclick="openModal('{{ evidence.file.url }}')">
+                                <a data-bs-toggle="modal" data-bs-target="#imageModal"  data-src="{{ evidence.file.url }}">
                                     {% trans 'مشاهده جزییات' %}
                                 </a>
                             {% endif %}
@@ -78,25 +78,31 @@
     </div>
 </div>
 
-     <div id="myModal" class="modal">
-         <span class="close" onclick="closeModal()">&times;</span>
-         <img class="modal-content" id="modalImage">
-         <div class="caption">علی رضایی در دفتر کار</div>
+     <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <div class="modal-body">
+                     <img class="img-fluid" id="modalImage" alt="evidence" src="">
+                 </div>
+             </div>
+         </div>
      </div>
 
      <script>
-        // باز کردن Modal
-        function openModal(src) {
-            document.getElementById("myModal").style.display = "block";
-            document.getElementById("modalImage").src = src;
-        }
+          // تغییر تصویر و کپشن modal با استفاده از داده‌های HTML
+          var modal = document.getElementById('imageModal');
+          modal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget; // دکمه‌ای که modal را فعال می‌کند
+            var imgSrc = button.getAttribute('data-img'); // URL تصویر
 
-        // بستن Modal
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
+            var modalImage = modal.querySelector('#modalImage');
 
-     </script>
+            modalImage.src = imgSrc;
+          });
+</script>
 
  {% endblock %}
 
