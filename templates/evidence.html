@@ -68,7 +68,9 @@
                             {% elif evidence.evidence_type == 'OTHER' %}
                                 <a href="//{{ evidence.details }}" target="_blank">{% trans 'مشاهده جزییات' %}</a>
                                 {% elif evidence.evidence_type == 'PHOTO'  %}
-                                <a href="{{ evidence.file.url }}" data-lightbox="image-1">{% trans 'مشاهده جزییات' %}</a>
+                                <a href="{{ evidence.file.url }}" data-lightbox="image-1" data-title="{{ evidence.title}}">
+                                    {% trans 'مشاهده جزییات' %}
+                                </a>
                             {% endif %}
                         </div>
                     </div>
