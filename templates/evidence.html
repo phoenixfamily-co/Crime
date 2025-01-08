@@ -110,7 +110,7 @@
 {% block footer_buttons %}
 
      <div class="container-fluid d-flex align-items-center justify-content-between pb-2  py-3 px-3">
-        <a href="{% url 'product:suspects-view' case.id %}" class="btn" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr" {% endif %}>
+        <a href="{% url 'product:suspects-view' case.id %}" class="btn {% if LANGUAGE_BIDI %}float-end{% else %}float-start{% endif %}">
             <i class="fa-solid previous-icon {% if LANGUAGE_BIDI %} fa-arrow-right rtl {% else %} fa-arrow-left ltr{% endif %}"></i>
             <span>{% trans "مظنونین" %}</span>
         </a>
