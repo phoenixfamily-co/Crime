@@ -146,6 +146,7 @@
             text-decoration: none;
             border: 2px solid var(--btn-bg)!important;
             color: var(--btn-text)!important;
+            flex-direction: row;
         }
 
         .btn:hover{
