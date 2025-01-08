@@ -118,7 +118,7 @@
             <span>{% trans "گزارش" %}</span>
         </a>
 
-     <a href="{% url 'product:evidence-view' case.id %}" class="btn my-3 {% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
+     <a href="{% url 'product:evidence-view' case.id %}" class="btn{% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
             <span>{% trans "مدارک" %}</span>
             <i class="fa-solid next-icon {% if LANGUAGE_BIDI %} fa-arrow-left rtl {% else %} fa-arrow-right ltr{% endif %}"></i>
         </a>
