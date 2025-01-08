@@ -332,6 +332,11 @@
             margin-right: 5px; /* فاصله برای زیبایی بیشتر */
         }
 
+        .autopsy-text{
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
         @media screen and (max-width: 768px) {
 
             .fab-container .fab .fab-content i {
