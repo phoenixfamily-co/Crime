@@ -115,7 +115,7 @@
             <span>{% trans "مظنونین" %}</span>
         </a>
 
-     <a href="{% url 'product:result-view' case.id %}" class="btn{% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
+     <a href="{% url 'product:result-view' case.id %}" class="btn {% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
             <span>{% trans "جواب" %}</span>
             <i class="fa-solid next-icon {% if LANGUAGE_BIDI %} fa-arrow-left rtl {% else %} fa-arrow-right ltr{% endif %}"></i>
         </a>
