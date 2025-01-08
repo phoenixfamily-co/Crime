@@ -149,6 +149,11 @@
             flex-direction: row;
         }
 
+        .btn span, .btn i {
+            display: flex;
+            align-items: center;
+        }
+
         .btn:hover{
             border-color: transparent!important;
         }
