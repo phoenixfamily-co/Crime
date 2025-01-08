@@ -137,7 +137,7 @@
 
         .btn {
             display: flex;
-            justify-content: center!important;
+            justify-content: center;
             align-items: center;
             width: auto;
             line-height: 56px;
@@ -151,7 +151,7 @@
         }
 
         .btn span, .btn i {
-            justify-content: center!important;
+            margin-top: 5px;
         }
 
         .btn:hover{
