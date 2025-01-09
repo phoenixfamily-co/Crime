@@ -136,7 +136,7 @@
     <script>
         let questions = [
             {% for interrogation in interrogations %}
-            { question: "{{ interrogation.question }}", answer: "{{ interrogation.answer }}", heartRate: "{{ interrogation.heart_rate }}BPM", stress: "{{ interrogation.truth_level }}%", emotion: "{{ interrogation.get_face_expression_display }}" },
+            { question: "{{ interrogation.question }}", answer: "{{ interrogation.answer }}", heartRate: "{{ interrogation.heart_rate }}BPM", stress: "{{ interrogation.truth_level }}", emotion: "{{ interrogation.get_face_expression_display }}" },
             {% endfor %}
         ];
         let currentQuestion = 0;
@@ -157,7 +157,7 @@
                 <p><strong>جواب:</strong> ${questions[currentQuestion].answer}</p>
             `;
             heartRate.textContent = questions[currentQuestion].heartRate;
-            stressBar.style.width = questions[currentQuestion].stress;
+            stressBar.style.width = (questions[currentQuestion].stress * 10)+'%'
             stressLevel.textContent = questions[currentQuestion].stress === "60%" ? "بالا" : "پایین";
             emotionText.textContent = questions[currentQuestion].emotion;
         }
