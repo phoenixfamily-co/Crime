@@ -157,7 +157,7 @@
                 <p><strong>جواب:</strong> ${questions[currentQuestion].answer}</p>
             `;
             heartRate.textContent = questions[currentQuestion].heartRate;
-            stressBar.style.width = (questions[currentQuestion].stress * 10)+'%'
+            stressBar.style.width = "50%"
             stressLevel.textContent = questions[currentQuestion].stress === "60%" ? "بالا" : "پایین";
             emotionText.textContent = questions[currentQuestion].emotion;
         }
