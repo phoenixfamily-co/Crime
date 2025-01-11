@@ -378,6 +378,7 @@
             height: auto;
             transform: rotate(-5deg);
             margin-top: 100px;
+             animation: tape-slide 2s ease-in-out forwards;
         }
 
         .yellow-tape .img-responsive {
