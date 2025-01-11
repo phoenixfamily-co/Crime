@@ -20,7 +20,7 @@
 
 
      <div id="cautionTape" class="yellow-tape">
-      <img class="img-responsive" src="{% static 'images/caution.png' %}" alt="">
+      <img id="tapeImage" class="img-responsive" src="{% static 'images/caution.png' %}" alt="">
   </div>
 
 {% endblock %}
@@ -36,8 +36,8 @@
     <script>
 
     function animate() {
-        const cautionTape = document.getElementById('cautionTape');
-        cautionTape.classList.add('animate-out');
+          const tapeImage = document.getElementById('tapeImage');
+    tapeImage.classList.add('animate-out');
     }
 
     </script>
