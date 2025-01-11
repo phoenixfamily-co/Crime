@@ -40,6 +40,10 @@
         const cautionTape = document.getElementById('cautionTape');
          cautionTape.classList.add('animate-out');
 
+          cautionTape.addEventListener("animationend", () => {
+            window.location.href = "{% url 'product:start-view' case.id  %}"; // لینک صفحه مقصد
+        });
+
     }
 
     </script>
