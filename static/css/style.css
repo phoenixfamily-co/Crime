@@ -379,7 +379,7 @@
 
         @keyframes tape-slide {
             to {
-                transform: translatey(100%);
+                transform: translatey(-100%);
             }
         }
 
