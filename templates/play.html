@@ -30,16 +30,17 @@
 {% block footer_buttons %}
 
     <div class="container-fluid footer-buttons-centered">
-        <a href="{% url 'product:start-view' case.id %}" class="btn my-2">
+        <a onclick="animate()" class="btn my-2">
             <span class="mt-3">{% trans "شروع تحقیقات" %}</span>
         </a>
     </div>
 
     <script>
-        document.getElementById('animate-btn').addEventListener('click', function () {
-            const cautionTape = document.getElementById('yellow-tape');
-            cautionTape.classList.add('animate-out');
-        });
+
+    function animate() {
+        const cautionTape = document.getElementById('yellow-tape');
+        cautionTape.classList.add('animate-out');
+    }
 
     </script>
 
