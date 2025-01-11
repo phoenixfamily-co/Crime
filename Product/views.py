@@ -10,6 +10,19 @@ from Product.serializers import CaseSerializer, SuspectSerializer, Interrogation
 
 
 @cache_page(60 * 15)
+def play(request, pk):
+    current_language = get_language()
+    is_bidi = get_language_bidi()
+    product = get_object_or_404(Case, id=pk)
+
+    return render(request, 'play.html', {
+        'LANGUAGE_CODE': current_language,
+        'LANGUAGE_BIDI': is_bidi,
+        'case': product
+    })
+
+
+@cache_page(60 * 15)
 def start(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
