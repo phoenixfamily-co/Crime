@@ -28,16 +28,16 @@
 {% block footer_buttons %}
 
     <div class="container-fluid footer-buttons-centered">
-        <a onclick="animate()" class="btn my-2">
+        <a onclick="runAnimation()" class="btn my-2">
             <span class="mt-3">{% trans "شروع تحقیقات" %}</span>
         </a>
     </div>
 
     <script>
 
-    function animate() {
+    function runAnimation() {
 
-        const tapeImage = document.getElementById('cautionTape');
+        const tapeImage = document.getElementById('tapeImage');
 
         tapeImage.style.transition = "transform 2s ease-in-out";
         tapeImage.style.transform = "translateY(-100%)";
