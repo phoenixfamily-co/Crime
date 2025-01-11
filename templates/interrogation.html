@@ -104,14 +104,15 @@
 
             </div>
             <div class="d-flex justify-content-between mt-2">
-                <a onclick="previousQuestion()" class="btn" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr" {% endif %}>
-                    <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right previous-icon" {% else %}class="fa-solid fa-arrow-left previous-icon"{% endif %}></i>
-                    <span>{% trans "قبلی" %}</span>
-                </a>
-                 <a onclick="nextQuestion()" class="btn">
-                     <span>{% trans "بعدی" %}</span>
-                     <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-left next-icon" {% else %}class="fa-solid fa-arrow-right next-icon"{% endif %}></i>
+                 <a onclick="previousQuestion()" class="btn {% if LANGUAGE_BIDI %}float-end{% else %}float-start{% endif %}">
+                     <i class="fa-solid previous-icon {% if LANGUAGE_BIDI %} fa-arrow-right rtl {% else %} fa-arrow-left ltr{% endif %}"></i>
+                     <span>{% trans "قبلی" %}</span>
                  </a>
+
+                <a onclick="nextQuestion()" class="btn {% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
+                    <span>{% trans "بعدی" %}</span>
+                    <i class="fa-solid next-icon {% if LANGUAGE_BIDI %} fa-arrow-left rtl {% else %} fa-arrow-right ltr{% endif %}"></i>
+                </a>
             </div>
         </div>
 
