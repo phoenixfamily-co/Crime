@@ -13,7 +13,7 @@ router.register(r'evidences', EvidenceViewSet)
 router.register(r'interrogations', InterrogationViewSet)
 
 urlpatterns = [
-    path('play/<int:pk>/', views.start, name='play-view'),  # صفحه اصلی
+    path('play/<int:pk>/', views.play, name='play-view'),  # صفحه اصلی
     path('start/<int:pk>/', views.start, name='start-view'),  # صفحه اصلی
     path('suspects/<int:pk>/', views.suspects, name='suspects-view'),  # صفحه اصلی
     path('interrogation/<int:pk>/', views.interrogation, name='interrogation-view'),  # صفحه اصلی
