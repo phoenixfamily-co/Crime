@@ -1,62 +1,23 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
 <head>
 
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow"> <!-- اجازه ایندکس و دنبال کردن لینک‌ها -->
     <title>{% block title %}{% trans 'شروع' %}{% endblock %}</title> <!-- عنوان صفحه -->
 
 
-    <style>
 
-        #crime-scene {
-          position: relative;
-          width: 100%;
-          height: 100vh;
-          background-color: black;
-          overflow: hidden;
-        }
-
-        .yellow-tape {
-            position: absolute;
-            width: 100%;
-            height: auto;
-            font-weight: bold;
-            text-align: center;
-            top: 90px;
-            transform: rotate(-15deg);
-        }
-
-
-        #crime-scene-background {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background: #1e1e1e no-repeat center center;
-          background-size: cover;
-          opacity: 0;
-          animation: fade-in 5s forwards 5s;
-        }
-
-        @keyframes tape-slide {
-          to {
-            transform: translateX(100%);
-          }
-        }
-
-        @keyframes fade-in {
-          to {
-            opacity: 1;
-          }
-        }
-
-    </style>
 </head>
 <body>
+
+ {% block content %}
+
 
 <div id="crime-scene">
   <div class="yellow-tape">
@@ -71,6 +32,8 @@
 
 
 </script>
+
+{% endblock %}
 
 
 </body>
