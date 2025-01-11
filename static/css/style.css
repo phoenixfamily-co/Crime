@@ -299,9 +299,8 @@
            .modal-header {
                border-bottom: 2px solid #d32f2f!important;  /* رنگ خط مرزی بین هدر و بدنه */
            }
-
-           .btn-close{
-               color:#d32f2f ;
+           .modal-header button {
+               color: #d32f2f!important;
            }
 
             .section {
