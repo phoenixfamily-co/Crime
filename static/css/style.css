@@ -378,7 +378,7 @@
 
             .card {
                 color: var(--text-color);
-                text-align: center;
+                text-align: start;
                 align-content: center;
                 justify-content: center;
                 border: 2px solid var(--navbar-border) !important;;
