@@ -363,6 +363,13 @@
             margin-bottom: 10px;
         }
 
+        .footer-buttons-centered {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%; /* تمام عرض فوتر */
+        }
+
         .yellow-tape {
             position: relative;
             display: flex;

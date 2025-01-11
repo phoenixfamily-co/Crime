@@ -31,8 +31,8 @@
 
 {% block footer_buttons %}
 
-    <div class="container-fluid">
-        <a href="{% url 'product:suspects-view' case.id %}" class="btn my-2 text-center">
+    <div class="container-fluid footer-buttons-centered">
+        <a href="{% url 'product:start-view' case.id %}" class="btn my-2">
             <span>{% trans "شروع تحقیقات" %}</span>
         </a>
     </div>
