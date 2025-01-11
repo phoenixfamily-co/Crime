@@ -158,7 +158,12 @@
             `;
             heartRate.textContent = questions[currentQuestion].heartRate;
             stressBar.style.width = (questions[currentQuestion].stress * 10)+'%'
-            stressLevel.textContent = (questions[currentQuestion].stress * 10)+'%' === "50%" ? "بالا" : "پایین";
+            if(questions[currentQuestion].stress > 5 ){
+                stressLevel.textContent = "زیاد"
+            }else{
+                stressLevel.textContent = "عادی"
+            }
+
             emotionText.textContent = questions[currentQuestion].emotion;
         }
 
