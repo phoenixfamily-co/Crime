@@ -19,11 +19,9 @@
  {% block content %}
 
 
-<div id="crime-scene">
-  <div class="yellow-tape">
+     <div id="cautionTape" class="yellow-tape">
       <img class="img-responsive" src="{% static 'images/caution.png' %}" alt="">
   </div>
-</div>
 
 {% endblock %}
 
@@ -38,7 +36,7 @@
     <script>
 
     function animate() {
-        const cautionTape = document.getElementById('crime-scene');
+        const cautionTape = document.getElementById('cautionTape');
         cautionTape.classList.add('animate-out');
     }
 
