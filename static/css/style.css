@@ -367,8 +367,7 @@
             position: absolute;
             width: 100%;
             height: auto;
-            transform: rotate(-5deg);
-            top: 100px;
+            transform: rotate(-10deg);
         }
 
         .yellow-tape .img-responsive {
