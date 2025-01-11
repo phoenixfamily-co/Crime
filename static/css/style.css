@@ -385,6 +385,9 @@
             height: auto;
         }
 
+       .yellow-tape.animate-out {
+           animation: tape-slide 2s ease-in-out forwards;
+       }
 
         @keyframes tape-slide {
             to {
