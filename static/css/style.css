@@ -300,12 +300,16 @@
                border-bottom: 2px solid #d32f2f!important;  /* رنگ خط مرزی بین هدر و بدنه */
            }
 
+           .btn-close{
+               color:#d32f2f ;
+           }
+
             .section {
-            background-color: #2c2c2e;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+                background-color: #2c2c2e;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
         .section h5 {
             color: #d32f2f;
             margin-bottom: 15px;
