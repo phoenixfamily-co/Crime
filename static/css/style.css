@@ -363,6 +363,26 @@
             margin-bottom: 10px;
         }
 
+
+        .yellow-tape {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            transform: rotate(-10deg);
+            animation: tape-slide 5s forwards ;
+        }
+
+        .yellow-tape .img-responsive {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @keyframes tape-slide {
+            to {
+                transform: translatey(100%);
+            }
+        }
+
         @media screen and (max-width: 768px) {
 
             .fab-container .fab .fab-content i {
