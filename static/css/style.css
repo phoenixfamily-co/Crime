@@ -365,10 +365,11 @@
 
         .yellow-tape {
             position: relative;
+            display: flex;
+            justify-content: center;
             width: 100%;
             height: auto;
             transform: rotate(-5deg);
-            margin-top: 100px;
         }
 
         .yellow-tape .img-responsive {
