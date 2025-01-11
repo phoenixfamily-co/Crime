@@ -368,8 +368,7 @@
             position: absolute;
             width: 100%;
             height: auto;
-            transform: rotate(-10deg);
-            animation: tape-slide 5s forwards ;
+            transform: rotate(-5deg);
         }
 
         .yellow-tape .img-responsive {
