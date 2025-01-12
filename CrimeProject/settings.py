@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_user_agents',
     'rest_framework',
+    'django_extensions',
     'Home',
     'Product',
     'User',
