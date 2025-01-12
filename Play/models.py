@@ -29,7 +29,7 @@ class CaeParticipant(models.Model):
 
 class GameResult(models.Model):
     gameplay = models.OneToOneField(CasePlay, on_delete=models.CASCADE)
-    suspect = models.ForeignKey(Suspect, on_delete=models.CASCADE)
+    suspect = models.ForeignKey(Suspect, on_delete=models.CASCADE, blank=True, null=True)
     reason = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=50, choices=[('success', 'Success'), ('failed', 'Failed')])
 
