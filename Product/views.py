@@ -7,7 +7,7 @@ from rest_framework.response import Response
 
 from Product.models import Case, Suspect, Interrogation, Evidence
 from Product.serializers import CaseSerializer, SuspectSerializer, InterrogationSerializer, EvidenceSerializer
-from User.views import get_or_create_temporary_user
+from User.views import get_or_create_temporary_user, save_user_device_info
 
 
 @cache_page(60 * 15)
@@ -27,6 +27,7 @@ def play(request, pk):
 def start(request, pk):
     current_language = get_language()
     user = get_or_create_temporary_user(request)
+    save_user_device_info(request, user)
 
     is_bidi = get_language_bidi()
     product = get_object_or_404(Case, id=pk)
