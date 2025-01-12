@@ -70,7 +70,7 @@
 
           try {
               // ارسال درخواست به سرور
-              const response = await fetch('{% url 'play:result' %}', {
+              const response = await fetch('{% url 'play:result-list' %}', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
