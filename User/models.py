@@ -40,9 +40,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         regex=r'^\+?(\d[\d-.() ]+)?(\d{9,15})$',
         message="Phone number must be entered in a valid international format. Examples: '+1234567890', "
                 "'+1 (234) 567-8901', or '+44-20-1234-5678'."
-        ,blank=True, null=True
     )
-    number = models.CharField(unique=True, validators=[phone_regex], max_length=15,blank=True, null=True)
+    number = models.CharField(unique=True, validators=[phone_regex], max_length=15, blank=True, null=True)
 
     # تاریخ تولد
     birth_date = models.DateField(blank=True, null=True)
