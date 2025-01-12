@@ -370,6 +370,40 @@
             width: 100%; /* تمام عرض فوتر */
         }
 
+                form .form-control {
+            background-color: transparent;
+            color: var(--text-color);
+            outline: none!important;
+            box-shadow: none;
+        }
+        form .form-control:focus {
+            background-color: transparent;
+            border-color: var(--primary-light) !important;
+            color: var(--text-color);
+            outline: none !important;
+            box-shadow: none;
+        }
+
+        .form-select {
+            background-color: var(--navbar-bg);
+            color: var(--text-color);
+        }
+
+        .form-select:focus {
+            box-shadow: 0 0 0 0.25rem rgba(211, 47, 47, 0.5) !important; /* قرمز با شفافیت */
+            border: 1px solid var(--navbar-border);
+        }
+
+        /* تغییر رنگ هاور برای گزینه‌ها */
+        .form-select option:hover {
+            background-color: #FF6659 !important; /* قرمز روشن */
+            color: #fff !important; /* متن سفید */
+        }
+
+        textarea::placeholder{
+            color: var(--text-color)!important;
+        }
+
         .yellow-tape {
             position: relative;
             display: flex;
