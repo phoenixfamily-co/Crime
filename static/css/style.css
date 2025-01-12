@@ -407,6 +407,7 @@
             position: relative;
             display: flex;
             justify-content: center;
+            overflow: hidden;
             width: 100%;
             height: auto;
             transform: rotate(-5deg);
@@ -424,7 +425,7 @@
 
         @keyframes tape-slide {
             to {
-                transform: translatey(-100%);
+                transform: translatey(-100vh);
             }
         }
 
@@ -516,6 +517,7 @@
                   position: relative;
                   display: flex;
                   justify-content: center;
+                  overflow: hidden;
                   width: 100%;
                   height: auto;
                   transform: rotate(-5deg);
