@@ -38,7 +38,7 @@ class GameResultViewSet(viewsets.ModelViewSet):
         except Suspect.DoesNotExist:
             return Response({"detail": "suspect not found."}, status=status.HTTP_404_NOT_FOUND)
 
-        status_result = 'success' if suspect.murder else 'failed'
+        status_result = 'success' if suspect.role == 'murderer' else 'failed'
 
         game_play_data = {
             'gameplay': case_play_id,
