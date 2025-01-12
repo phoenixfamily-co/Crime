@@ -119,7 +119,7 @@ class UserDeviceInfo(models.Model):
 
 class UserActivityLog(models.Model):
     # اطلاعات کاربر (اگر کاربر احراز هویت شده باشد)
-    user = models.ForeignKey(UserDeviceInfo, on_delete=models.CASCADE, related_name='UserActivityLog')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='UserActivityLog')
 
     # صفحه بازدید شده
     visited_page = models.URLField()

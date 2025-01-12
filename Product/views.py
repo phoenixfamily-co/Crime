@@ -28,7 +28,7 @@ def start(request, pk):
     current_language = get_language()
     user = get_or_create_temporary_user(request)
     save_user_device_info(request, user)
-    log = log_user_activity(request, request.build_absolute_uri())
+    log = log_user_activity(request, request.build_absolute_uri(), user)
     is_bidi = get_language_bidi()
     product = get_object_or_404(Case, id=pk)
 

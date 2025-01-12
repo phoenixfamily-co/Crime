@@ -60,17 +60,12 @@ def save_user_device_info(request, user):
         )
 
 
-def log_user_activity(request, visited_page):
+def log_user_activity(request, visited_page, user):
 
-    # شناسایی کاربر و دستگاه
-    if request.user.is_authenticated:
-        user_device_info = UserDeviceInfo.objects.filter(user=request.user).first()
-    else:
-        user_device_info = get_or_create_temporary_user(request)
 
     # ثبت لاگ فعالیت
     activity_log = UserActivityLog.objects.create(
-        user=user_device_info,
+        user=user,
         visited_page=visited_page,
         entry_time=now(),
     )
