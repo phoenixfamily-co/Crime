@@ -385,7 +385,7 @@
         }
 
         .form-select {
-            background-color: var(--navbar-bg);
+            background-color: transparent;
             color: var(--text-color);
         }
 
