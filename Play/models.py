@@ -6,7 +6,7 @@ from User.models import User
 
 class CasePlay(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    orderItem = models.ForeignKey(OrderItem, on_delete=models.CASCADE)
+    orderItem = models.ForeignKey(OrderItem, on_delete=models.CASCADE, blank=True, null=True)
     started_at = models.DateTimeField(auto_now_add=True)
     completed_at = models.DateTimeField(null=True, blank=True)
     status = models.CharField(max_length=50, choices=[('in_progress', 'In Progress'), ('completed', 'Completed'),

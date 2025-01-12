@@ -1,6 +1,10 @@
+import json
+
+from django.http import JsonResponse
+from django.utils.timezone import now
 from django_user_agents.utils import get_user_agent
 
-from User.models import User, UserDeviceInfo
+from User.models import User, UserDeviceInfo, UserActivityLog
 
 
 def get_or_create_temporary_user(request):
@@ -25,7 +29,7 @@ def get_device_info(request):
         'browser_version': user_agent.browser.version_string,
         'ip_address': ip_address,
         'country': None,  # این بخش در مرحله بعد اضافه می‌شود
-        'city': None,     # این بخش در مرحله بعد اضافه می‌شود
+        'city': None,  # این بخش در مرحله بعد اضافه می‌شود
     }
 
 
@@ -54,3 +58,35 @@ def save_user_device_info(request, user):
             country=device_info['country'],
             city=device_info['city'],
         )
+
+
+def log_user_activity(request, visited_page):
+    # شناسایی کاربر و دستگاه
+    user_device_info = None
+    if request.user.is_authenticated:
+        user_device_info = UserDeviceInfo.objects.filter(user=request.user).first()
+
+    # ثبت لاگ فعالیت
+    activity_log = UserActivityLog.objects.create(
+        user=user_device_info,
+        visited_page=visited_page,
+        entry_time=now(),
+    )
+    return activity_log
+
+
+def log_exit_time(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        activity_log_id = data.get('activity_log_id')
+        exit_time = data.get('exit_time')
+
+        try:
+            log = UserActivityLog.objects.get(id=activity_log_id)
+            log.exit_time = exit_time
+            log.save()
+            return JsonResponse({'status': 'success'})
+        except UserActivityLog.DoesNotExist:
+            return JsonResponse({'status': 'error', 'message': 'Log not found'}, status=404)
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
