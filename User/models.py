@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.validators import RegexValidator
 from django.db import models
@@ -22,10 +24,13 @@ class CustomAccountManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    is_temporary = models.BooleanField(default=True)  # مشخص می‌کند کاربر موقت است یا نه
+
     # نام
-    first_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50,blank=True, null=True)
     # نام خانوادگی
-    last_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50, blank=True, null=True)
 
     # ایمیل
     email = models.EmailField(unique=True, blank=True, null=True)
@@ -35,8 +40,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         regex=r'^\+?(\d[\d-.() ]+)?(\d{9,15})$',
         message="Phone number must be entered in a valid international format. Examples: '+1234567890', "
                 "'+1 (234) 567-8901', or '+44-20-1234-5678'."
+        ,blank=True, null=True
     )
-    number = models.CharField(unique=True, validators=[phone_regex], max_length=15)
+    number = models.CharField(unique=True, validators=[phone_regex], max_length=15,blank=True, null=True)
 
     # تاریخ تولد
     birth_date = models.DateField(blank=True, null=True)
