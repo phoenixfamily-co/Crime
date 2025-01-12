@@ -370,23 +370,22 @@
             width: 100%; /* تمام عرض فوتر */
         }
 
-                form .form-control {
+        form .form-control {
             background-color: transparent;
-            color: var(--text-color);
-            outline: none!important;
+            color: white;
+            outline: none;
             box-shadow: none;
         }
         form .form-control:focus {
             background-color: transparent;
-            border-color: var(--primary-light) !important;
-            color: var(--text-color);
-            outline: none !important;
+            border-color:#d32f2f;
+            outline: none;
             box-shadow: none;
         }
 
         .form-select {
             background-color: transparent!important;
-            color: var(--text-color);
+            color: white;
         }
 
         .form-select:focus {
