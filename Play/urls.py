@@ -5,7 +5,6 @@ from .views import GameResultViewSet
 
 app_name = 'play'
 
-
 router = DefaultRouter()
 router.register(r'result', GameResultViewSet)
 
