@@ -33,6 +33,7 @@ urlpatterns += i18n_patterns(
     path('', include('Home.urls', namespace='home')),  # مسیر URLهای اپلیکیشن Home
     path('home/', include('Home.urls', namespace='home')),  # مسیر URLهای اپلیکیشن Home
     path('product/', include('Product.urls', namespace='product')),  # مسیر URLهای اپلیکیشن Home
+    path('play/', include('Play.urls', namespace='play')),  # مسیر URLهای اپلیکیشن Home
     path('user/', include('User.urls', namespace='user')),  # مسیر URLهای اپلیکیشن Home
 
 )

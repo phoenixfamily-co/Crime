@@ -52,15 +52,46 @@
 </div>
      <script>
 
-      document.addEventListener("DOMContentLoaded", function () {
-          const selectElement = document.getElementById('mySelect');
-          const selectedValue = selectElement.value;
+         document.addEventListener("DOMContentLoaded", function () {
+             const selectElement = document.getElementById('mySelect');
+             const selectedValue = selectElement.value;
+             const reason = document.getElementById('reason-text')
+              // گرفتن فرم از DOM
+              const form = document.getElementById("submit-answer-form");
 
+              // افزودن listener برای ارسال فرم
+            form.addEventListener("submit", async function (event) {
+                event.preventDefault(); // جلوگیری از رفتار پیش‌فرض سابمیت
 
-      });
+           const data = {
+               suspect: selectedValue,
+               reason: reason.value
+           };
 
+          try {
+              // ارسال درخواست به سرور
+              const response = await fetch('{% url 'play:result' %}', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data),
+              });
 
-
+              if (response.ok) {
+                  const result = await response.json();
+                  console.log(result.status)
+              } else {
+                  const errorData = await response.json();
+                  alert('پاسخ معتبر نیست')
+                  console.error(errorData.detail || response.statusText);
+              }
+          } catch (error) {
+              alert("سرور پاسخ نمیدهد لطفا بعدا دوباره تلاش کنید")
+              console.error(error);
+          }
+            });
+          });
      </script>
 
          {% endblock %}

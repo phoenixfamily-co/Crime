@@ -1,6 +1,7 @@
 from django.db import models
 
 from Order.models import OrderItem
+from Product.models import Suspect
 from User.models import User
 
 
@@ -28,8 +29,8 @@ class CaeParticipant(models.Model):
 
 class GameResult(models.Model):
     gameplay = models.OneToOneField(CasePlay, on_delete=models.CASCADE)
-    score = models.PositiveIntegerField(null=True, blank=True)
-    comment = models.TextField(null=True, blank=True)
+    suspect = models.ForeignKey(Suspect, on_delete=models.CASCADE)
+    reason = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=50, choices=[('success', 'Success'), ('failed', 'Failed')])
 
     def __str__(self):
