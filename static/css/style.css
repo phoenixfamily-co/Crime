@@ -385,7 +385,7 @@
         }
 
         .form-select {
-            background-color: transparent;
+            background-color: transparent!important;
             color: var(--text-color);
         }
 
