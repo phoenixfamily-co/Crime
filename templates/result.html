@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
 <!DOCTYPE html>
@@ -8,229 +9,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow"> <!-- اجازه ایندکس و دنبال کردن لینک‌ها -->
-    <title>{{ page_title }}</title> <!-- عنوان صفحه -->
+    <title>{% block title %}{% trans 'جواب نهایی' %}{% endblock %}</title> <!-- عنوان صفحه -->
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/4a2a05a158.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --navbar-bg: #f8f9fa;
-            --navbar-border: #d32f2f;
-            --nav-link-color: #000000;
-            --nav-link-hover: #d32f2f;
-            --btn-bg: #d32f2f;
-            --btn-hover: #ff6659;
-            --btn-text: #ffffff;
-            --primary-light: #d32f2f; /* قرمز لوگو */
-            --primary-dark: #333;
-            --toggle-bg-light: var(--primary-light);
-            --toggle-bg-dark: #444;
-            --text-color-muted: #262626; /* رنگ خاکستری مشابه text-muted */
-             --navbar-toggler-border-color: #ccc; /* رنگ حاشیه برای حالت لایت */
-            --navbar-toggler-bg-color: #fff; /* رنگ پس‌زمینه برای حالت لایت */
-            --navbar-toggler-icon-color: #333; /* رنگ ایکون برای حالت لایت */
-        }
-
-        body.dark-mode {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --navbar-bg: #1e1e1e;
-            --navbar-border: #d32f2f;
-            --nav-link-color: #e0e0e0;
-            --nav-link-hover: #d32f2f;
-            --btn-bg: #d32f2f;
-            --btn-hover: #ff6659;
-            --btn-text: #ffffff;
-            --text-color-muted: #e1e1e1; /* رنگ خاکستری روشن‌تر برای حالت دارک */
-            --navbar-toggler-border-color-dark: #666; /* رنگ حاشیه برای حالت دارک */
-            --navbar-toggler-bg-color-dark: #333; /* رنگ پس‌زمینه برای حالت دارک */
-            --navbar-toggler-icon-color-dark: #fff; /* رنگ ایکون برای حالت دارک */
-        }
-
-        body {
-            margin: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: Arial, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .input-group input {
-            background-color: transparent;
-            color: var(--text-color);
-            outline: none!important;
-            box-shadow: none;
-        }
-
-         .input-group input::placeholder {
-            color: var(--text-color);
-        }
-
-        .input-group input:focus {
-            background-color: transparent;
-            border-color: var(--primary-light)!important;
-            color: var(--text-color);
-            outline: none!important;
-            box-shadow: none;
-        }
-
-        .input-group button {
-            background-color: var(--btn-bg)!important;
-            border-radius: 0;
-            color: white;
-        }
-
-
-        .input-group button:hover {
-            background-color: var(--btn-bg)!important;
-            opacity: 0.7;
-
-        }
-         .input-group button:active {
-            background-color: var(--btn-bg) !important;
-
-        }
-
-          .input-group button:focus {
-            background-color: var(--btn-bg) !important;
-
-        }
-
-
-          .card-footer a {
-              width: 100%;
-              height: 100%;
-              line-height: 100%;
-              vertical-align: center;
-              text-align: center;
-              justify-content: center;
-              cursor: pointer;
-              display: inline-block;
-              color: var(--primary-light)!important;
-              text-decoration: none!important;
-
-          }
-
-
-        .btn-primary {
-          background-color: var(--btn-bg);
-          border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--btn-bg)!important;
-            opacity: 0.7;
-        }
-
-          form .form-control {
-            background-color: transparent;
-            color: var(--text-color);
-            outline: none!important;
-            box-shadow: none;
-        }
-
-             form .form-control:focus {
-                 background-color: transparent;
-                 border-color: var(--primary-light) !important;
-                 color: var(--text-color);
-                 outline: none !important;
-                 box-shadow: none;
-             }
-
-          .form-select {
-            background-color: var(--navbar-bg);
-            color: var(--text-color);
-        }
-
-            /* تغییر رنگ حاشیه و سایه انتخاب شده */
-        .form-select:focus {
-            box-shadow: 0 0 0 0.25rem rgba(211, 47, 47, 0.5) !important; /* قرمز با شفافیت */
-            border: 1px solid var(--navbar-border);
-        }
-
-        /* تغییر رنگ هاور برای گزینه‌ها */
-        .form-select option:hover {
-            background-color: #FF6659 !important; /* قرمز روشن */
-            color: #fff !important; /* متن سفید */
-        }
-
-
-
-        textarea::placeholder{
-            color: var(--text-color)!important;
-        }
-
-
-         footer {
-             background-color: var(--navbar-bg);
-             color: var(--text-color);
-             position: fixed; /* برای جلوگیری از تداخل با بخش‌های دیگر */
-             border-top: 2px solid var(--navbar-border)!important;
-             bottom: 0;
-             width: 100%;
-          }
-
-        .btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100px;
-            height: 56px;
-            cursor: pointer;
-            font-weight: 400;
-            text-decoration: none;
-            border: 2px solid var(--btn-bg);
-            color: var(--text-color);
-        }
-
-         span {
-             font-size: 20px;
-             padding: 0 10px;
-         }
-
-        .btn:hover i {
-            transform: {% if LANGUAGE_BIDI %}translateX(10px){% else %}translateX(-10px){% endif %}!important;
-            transition: transform 0.3s ease; /* انیمیشن روان */
-
-        }
-
-
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 0;
-            position: relative;
-        }
-
-        .header::before,
-        .header::after {
-            content: '';
-            flex: 1;
-            border-top: 2px solid var(--btn-bg); /* خط سفید */
-            margin: 0 10px;
-        }
-
-        .header h3 {
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-transform: uppercase; /* حروف بزرگ */
-            letter-spacing: 2px; /* فاصله بین حروف */
-            margin: 0;
-        }
-
-    </style>
 </head>
 <body>
 
- <header class="header mt-2">
-        <h3>{% trans "جواب نهایی" %}</h3>
-    </header>
+
+ {% block header %}
+     <div class="header mt-2">
+     <h3>{% trans 'جواب نهایی' %}</h3>
+     </div>
+        {% endblock %}
+
+ {% block content %}
+
+
 
 <div class="container mt-3">
 
@@ -261,43 +54,20 @@
     </form>
 </div>
 
- <footer>
-    <div class="container-fluid py-3 px-3">
-        <a href="{% url 'product:evidence-view' case.id %}" class="btn {% if LANGUAGE_BIDI %}ms-auto{% else %}me-auto{% endif %}">
-            <i {% if LANGUAGE_BIDI %}class="fa-solid fa-arrow-right" {% else %}class="fa-solid fa-arrow-left"{% endif %}></i>
-            <span>{% trans "مدارک" %}</span>
+         {% endblock %}
 
+
+{% block footer_buttons %}
+
+    <div class="container-fluid">
+        <a href="{% url 'product:suspects-view' case.id %}" class="btn my-2 {% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
+            <span>{% trans "مظنونین" %}</span>
+            <i class="fa-solid next-icon {% if LANGUAGE_BIDI %} fa-arrow-left rtl {% else %} fa-arrow-right ltr{% endif %}"></i>
         </a>
     </div>
-</footer>
 
 
-
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-  const themeSwitch = document.getElementById("theme-switch");
-  const currentTheme = localStorage.getItem("theme") || "dark";
-
-  if (currentTheme === "dark") {
-    document.body.classList.add("dark-mode");
-    themeSwitch.checked = true;
-  }
-
-  themeSwitch.addEventListener("change", function () {
-    if (this.checked) {
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
-  });
-});
-    </script>
-
-
+{% endblock %}
 
 </body>
 </html>
