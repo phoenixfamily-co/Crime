@@ -385,7 +385,7 @@
 
         .form-select {
             background-color: transparent!important;
-            color: white;
+            color: white!important;
         }
 
         .form-select:focus {
