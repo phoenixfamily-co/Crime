@@ -15,7 +15,6 @@ class CasePlay(models.Model):
                               default='in_progress')
 
 
-
 class CaeParticipant(models.Model):
     gameplay = models.ForeignKey(CasePlay, on_delete=models.CASCADE)
     participant = models.ForeignKey(User, on_delete=models.CASCADE)
