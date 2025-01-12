@@ -28,10 +28,10 @@ class CaeParticipant(models.Model):
 
 
 class GameResult(models.Model):
-    gameplay = models.ForeignKey(CasePlay, on_delete=models.CASCADE, blank=True, null=True)
+    # gameplay = models.ForeignKey(CasePlay, on_delete=models.CASCADE, blank=True, null=True)
     suspect = models.ForeignKey(Suspect, on_delete=models.CASCADE, blank=True, null=True)
     reason = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=50, choices=[('success', 'Success'), ('failed', 'Failed')])
 
     def __str__(self):
-        return f"Result of GamePlay {self.gameplay.id}"
+        return f"Result of GamePlay"
