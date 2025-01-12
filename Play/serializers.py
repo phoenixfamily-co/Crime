@@ -6,4 +6,4 @@ from Play.models import GameResult
 class GameResultSerializer(serializers.ModelSerializer):
     class Meta:
         model = GameResult
-        fields = ['suspect', 'reason', 'status']
+        fields = ['gameplay', 'suspect', 'reason', 'status']
