@@ -18,7 +18,6 @@
 
  {% block content %}
 
-
      <div id="cautionTape" class="yellow-tape">
       <img id="tapeImage" class="img-responsive" src="{% static 'images/caution.png' %}" alt="">
   </div>
@@ -43,7 +42,6 @@
           cautionTape.addEventListener("animationend", () => {
             window.location.href = "{% url 'product:start-view' case.id  %}"; // لینک صفحه مقصد
         });
-
     }
 
     </script>
