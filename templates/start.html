@@ -59,6 +59,16 @@
              });
     </script>
 
+    <script>
+    window.addEventListener('beforeunload', function (event) {
+        // ارسال زمان خروج به سرور
+        navigator.sendBeacon("{% url 'log_exit_time' %}", JSON.stringify({
+            activity_log_id: {{ activity_log_id }},
+            exit_time: new Date().toISOString()
+        }));
+    });
+</script>
+
         {% endblock %}
 
 
