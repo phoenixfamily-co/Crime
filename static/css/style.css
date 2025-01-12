@@ -404,7 +404,7 @@
         }
 
         .yellow-tape {
-            position: relative;
+            position: absolute;
             display: flex;
             justify-content: center;
             overflow: hidden;
@@ -514,7 +514,7 @@
             }
 
               .yellow-tape {
-                  position: relative;
+                  position: absolute;
                   display: flex;
                   justify-content: center;
                   overflow: hidden;
