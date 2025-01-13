@@ -39,12 +39,28 @@
         const cautionTape = document.getElementById('cautionTape');
          cautionTape.classList.add('animate-out');
 
-          cautionTape.addEventListener("animationend", () => {
-            window.location.href = "{% url 'product:start-view' case.id  %}"; // لینک صفحه مقصد
-        });
+          cautionTape.addEventListener("animationend", async () => {
+
+              const response = await fetch({% url 'product:start-view' %}, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+              }
+          );
+              if (response.ok) {
+                  window.location.href = "{% url 'product:start-view' case.id  %}"; // لینک صفحه مقصد
+                  console.log(result.status)
+              } else {
+                  const errorData = await response.json();
+                  alert('پرونده معتبر نیست')
+                  console.error(errorData.detail || response.statusText);
+              }
+          });
     }
 
     </script>
+
 
 {% endblock %}
 

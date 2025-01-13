@@ -1,24 +1,30 @@
 from django.utils import timezone
-from django.utils.timezone import now
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
 from Play.models import CasePlay, GameResult
-from Play.serializers import GameResultSerializer
+from Play.serializers import GameResultSerializer, CasePlaySerializer
 from Product.models import Suspect
 
 
-def start_case_play(request, user):
-    # ثبت لاگ فعالیت
-    case_play = CasePlay.objects.create(
-        user=user,
-        started_at=now(),
-        status='in_progress'
-    )
+class CasePlayViewSet(viewsets.ModelViewSet):
+    queryset = CasePlay.objects.all()
+    serializer_class = CasePlaySerializer
 
-    request.session['case_play_id'] = case_play.id
+    def create(self, request, *args, **kwargs):
 
-    return case_play
+        case_play_data = {
+            'user': self.request.user,
+            'status': 'in_progress',
+        }
+
+        serializer = self.serializer_class(data=case_play_data)
+        if serializer.is_valid(raise_exception=True):
+            saved_instance = serializer.save()
+
+            request.session['case_play_id'] = saved_instance.id
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class GameResultViewSet(viewsets.ModelViewSet):
