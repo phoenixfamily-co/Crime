@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.views.decorators.cache import cache_page
 from django.utils.translation import get_language, get_language_bidi
 from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
@@ -30,7 +29,6 @@ def play(request, pk):
     })
 
 
-@cache_page(60 * 15)
 def start(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -47,7 +45,6 @@ def start(request, pk):
     })
 
 
-@cache_page(60 * 15)
 def suspects(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -66,7 +63,6 @@ def suspects(request, pk):
     })
 
 
-@cache_page(60 * 15)
 def interrogation(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -85,7 +81,6 @@ def interrogation(request, pk):
     })
 
 
-@cache_page(60 * 15)
 def evidence(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -104,7 +99,6 @@ def evidence(request, pk):
     })
 
 
-@cache_page(60 * 15)
 def result(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -123,7 +117,6 @@ def result(request, pk):
     })
 
 
-@cache_page(60 * 15)
 def autopsy(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -142,7 +135,6 @@ def autopsy(request, pk):
     })
 
 
-@cache_page(60 * 15)
 def create_case(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -153,7 +145,6 @@ def create_case(request):
     })
 
 
-@cache_page(60 * 15)
 def create_suspect(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
