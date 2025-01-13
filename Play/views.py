@@ -14,7 +14,7 @@ class CasePlayViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
 
         case_play_data = {
-            'user': self.request.user,
+            'user': self.request.user.id,
             'status': 'in_progress',
         }
 
