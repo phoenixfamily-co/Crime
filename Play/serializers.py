@@ -5,7 +5,11 @@ from User.models import User
 
 
 class CasePlaySerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    user = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        required=False,  # فیلد اختیاری
+        allow_null=True
+    )
 
     class Meta:
         model = CasePlay
