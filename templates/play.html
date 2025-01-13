@@ -41,7 +41,7 @@
 
           cautionTape.addEventListener("animationend", async () => {
 
-              const response = await fetch({% url 'product:start-view' %}, {
+              const response = await fetch({% url 'product:caseplay-list' %}, {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
