@@ -12,13 +12,17 @@ from User.views import get_or_create_temporary_user, save_user_device_info, log_
 @cache_page(60 * 15)
 def play(request, pk):
     current_language = get_language()
+    user = get_or_create_temporary_user(request)
+    save_user_device_info(request, user)
     is_bidi = get_language_bidi()
     product = get_object_or_404(Case, id=pk)
 
     return render(request, 'play.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
-        'case': product
+        'case': product,
+        'user': user,
+
     })
 
 

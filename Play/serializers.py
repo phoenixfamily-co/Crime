@@ -1,9 +1,12 @@
 from rest_framework import serializers
 
 from Play.models import GameResult, CasePlay
+from User.models import User
 
 
 class GameResultSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
     class Meta:
         model = GameResult
         fields = ['gameplay', 'suspect', 'reason', 'status']
