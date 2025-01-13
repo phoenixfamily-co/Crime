@@ -28,7 +28,7 @@ class CasePlayViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         saved_instance = serializer.save()
 
-        request.session['case_play_id'] = saved_instance.id
+        request.session['play_id'] = saved_instance.id
         request.session.modified = True
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -43,7 +43,7 @@ class GameResultViewSet(viewsets.ModelViewSet):
         متد شخصی‌سازی شده برای ایجاد GameResult و پایان بازی.
         """
         # دریافت اطلاعات از درخواست
-        case_play_id = request.session.get('case_play_id')  # ID بازی که می‌خواهیم نتیجه‌اش را ثبت کنیم
+        play_id = request.session.get('play_id')  # ID بازی که می‌خواهیم نتیجه‌اش را ثبت کنیم
         suspect_id = request.data.get('suspect')
 
         try:
@@ -54,7 +54,7 @@ class GameResultViewSet(viewsets.ModelViewSet):
         status_result = 'success' if suspect.role == 'murderer' else 'failed'
 
         game_play_data = {
-            'gameplay': case_play_id,
+            'gameplay': play_id,
             'suspect': request.data.get('suspect'),
             'reason': request.data.get('reason'),
             'status': status_result
@@ -62,7 +62,7 @@ class GameResultViewSet(viewsets.ModelViewSet):
 
         try:
             # بازی را پیدا کنید
-            case_play = CasePlay.objects.get(id=case_play_id)
+            case_play = CasePlay.objects.get(id=play_id)
         except CasePlay.DoesNotExist:
             return Response({"detail": "Game not found."}, status=status.HTTP_404_NOT_FOUND)
 
