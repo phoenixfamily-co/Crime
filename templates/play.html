@@ -49,7 +49,7 @@
               }
           );
               if (response.ok) {
-                  window.location.href = "{% url 'product:start-view' case.id  %}"; // لینک صفحه مقصد
+                  window.location.href = "{% url 'play:start-view' case.id  %}"; // لینک صفحه مقصد
                   console.log(result.status)
               } else {
                   const errorData = await response.json();
