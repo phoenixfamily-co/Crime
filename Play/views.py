@@ -25,10 +25,11 @@ class CasePlayViewSet(viewsets.ModelViewSet):
         }
 
         serializer = self.serializer_class(data=case_play_data)
-        if serializer.is_valid(raise_exception=True):
-            saved_instance = serializer.save()
+        serializer.is_valid(raise_exception=True)
+        saved_instance = serializer.save()
 
-            request.session['case_play_id'] = saved_instance.id
+        request.session['case_play_id'] = saved_instance.id
+        request.session.modified = True
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
