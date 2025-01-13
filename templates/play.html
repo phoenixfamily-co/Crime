@@ -24,15 +24,36 @@
 
 
      <script>
-         const activityLogId = "{{ activity_log_id }}"; // مقدار باید وجود داشته باشد
-         window.addEventListener('beforeunload', function () {
-             navigator.sendBeacon("{% url 'user:log_exit_time' %}", JSON.stringify({
-                 activity_log_id: activityLogId,
-                 exit_time: new Date().toISOString()
-             }));
-         });
+    const activityLogId = "{{ activity_log_id|default:'' }}"; // مطمئن شوید این مقدار در تمپلیت مقداردهی شده است
 
-     </script>
+    window.addEventListener('beforeunload', function (event) {
+        if (activityLogId) {
+            const data = {
+                activity_log_id: activityLogId,
+                exit_time: new Date().toISOString(),
+            };
+
+            // ارسال داده با fetch به جای sendBeacon
+            fetch("{% url 'user:log_exit_time' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}", // اضافه کردن CSRF Token
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    console.error("Failed to log exit time:", response.statusText);
+                }
+            })
+            .catch(error => console.error("Error logging exit time:", error));
+        } else {
+            console.warn("Activity log ID is missing; exit time not logged.");
+        }
+    });
+</script>
+
 
 {% endblock %}
 
