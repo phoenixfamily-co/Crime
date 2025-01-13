@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from Play.models import CasePlay, GameResult
 from Play.serializers import GameResultSerializer, CasePlaySerializer
 from Product.models import Suspect
+from User.views import get_or_create_temporary_user
 
 
 class CasePlayViewSet(viewsets.ModelViewSet):
@@ -14,7 +15,7 @@ class CasePlayViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
 
         case_play_data = {
-            'user': self.request.user,
+            'user': get_or_create_temporary_user(request),
             'status': 'in_progress',
         }
 
