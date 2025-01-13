@@ -19,15 +19,18 @@ def get_or_create_temporary_user(request):
             is_active=True,
         )
         request.session['user_id'] = str(user.id)  # ذخیره شناسه کاربر در سشن
+
         login(request, user)  # لاگین کاربر موقت
+
+        return user
     else:
-        user_id = request.session['user_id']
         try:
-            user = User.objects.get(id=user_id, is_temporary=True)
-            login(request, user)  # اطمینان از لاگین کاربر موقت
+            user = User.objects.get(id=request.session['user_id'], is_temporary=True)
+            return user
         except User.DoesNotExist:
-            user = get_or_create_temporary_user(request)  # در صورت عدم وجود، کاربر جدید ایجاد می‌شود
-    return user
+            # اگر کاربر وجود ندارد، باید مشکل را لاگ کرده و کاربر جدید ایجاد کنید
+            del request.session['user_id']
+            return get_or_create_temporary_user(request)
 
 
 def get_device_info(request):
