@@ -41,7 +41,7 @@
 
           cautionTape.addEventListener("animationend", async () => {
 
-              const response = await fetch({% url 'product:caseplay-list' %}, {
+              const response = await fetch({% url 'play:caseplay-list' %}, {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
@@ -49,7 +49,7 @@
               }
           );
               if (response.ok) {
-                  window.location.href = "{% url 'play:start-view' case.id  %}"; // لینک صفحه مقصد
+                  window.location.href = "{% url 'product:start-view' case.id  %}"; // لینک صفحه مقصد
                   console.log(result.status)
               } else {
                   const errorData = await response.json();
