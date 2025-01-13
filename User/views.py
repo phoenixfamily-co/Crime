@@ -1,18 +1,32 @@
 import json
-
+import uuid
 from django.http import JsonResponse
 from django.utils.timezone import now
 from django_user_agents.utils import get_user_agent
-
 from User.models import User, UserDeviceInfo, UserActivityLog
+from django.contrib.auth import login
+from django.utils.crypto import get_random_string
 
 
 def get_or_create_temporary_user(request):
-    if not request.session.get('user_id'):  # بررسی اینکه آیا کاربر قبلاً شناسایی شده است
-        user = User.objects.create()  # ایجاد کاربر موقت
+
+    if not request.session.get('user_id'):  # بررسی اینکه آیا کاربر موقت در سشن ذخیره شده است
+        user = User.objects.create(
+            id=uuid.uuid4(),
+            first_name='Temporary',
+            last_name=f'User-{get_random_string(6)}',
+            is_temporary=True,
+            is_active=True,
+        )
         request.session['user_id'] = str(user.id)  # ذخیره شناسه کاربر در سشن
+        login(request, user)  # لاگین کاربر موقت
     else:
-        user = User.objects.get(id=request.session['user_id'])
+        user_id = request.session['user_id']
+        try:
+            user = User.objects.get(id=user_id, is_temporary=True)
+            login(request, user)  # اطمینان از لاگین کاربر موقت
+        except User.DoesNotExist:
+            user = get_or_create_temporary_user(request)  # در صورت عدم وجود، کاربر جدید ایجاد می‌شود
     return user
 
 
