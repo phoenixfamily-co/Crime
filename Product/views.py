@@ -36,7 +36,7 @@ def start(request, pk):
     is_bidi = get_language_bidi()
     product = get_object_or_404(Case, id=pk)
 
-    log = log_user_activity(request, request.build_absolute_uri(), request.user.id)
+    log = log_user_activity(request, request.build_absolute_uri(), request.user)
 
     return render(request, 'start.html', {
         'LANGUAGE_CODE': current_language,
