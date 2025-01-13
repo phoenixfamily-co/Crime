@@ -9,7 +9,6 @@ from Product.serializers import CaseSerializer, SuspectSerializer, Interrogation
 from User.views import get_or_create_temporary_user, log_user_activity
 
 
-@cache_page(60 * 15)
 def play(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -37,10 +36,14 @@ def start(request, pk):
     is_bidi = get_language_bidi()
     product = get_object_or_404(Case, id=pk)
 
+    log = log_user_activity(request, request.build_absolute_uri(), request.user)
+
     return render(request, 'start.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
+        'activity_log_id': log.id,
+
     })
 
 
@@ -51,11 +54,14 @@ def suspects(request, pk):
     product = get_object_or_404(Case, id=pk)
     suspect = Suspect.objects.filter(case=pk).exclude(role='murdered')
 
+    log = log_user_activity(request, request.build_absolute_uri(), request.user)
+
     return render(request, 'suspects.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
         'suspects': suspect,
+        'activity_log_id': log.id,
 
     })
 
@@ -67,11 +73,15 @@ def interrogation(request, pk):
     interrogations = Interrogation.objects.filter(suspect=pk)
     suspect = get_object_or_404(Suspect, id=pk)
 
+    log = log_user_activity(request, request.build_absolute_uri(), request.user)
+
     return render(request, 'interrogation.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'interrogations': interrogations,
-        'suspect': suspect
+        'suspect': suspect,
+        'activity_log_id': log.id,
+
     })
 
 
@@ -82,11 +92,14 @@ def evidence(request, pk):
     product = get_object_or_404(Case, id=pk)
     evidences = Evidence.objects.filter(case=pk)
 
+    log = log_user_activity(request, request.build_absolute_uri(), request.user)
+
     return render(request, 'evidence.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
         'evidences': evidences,
+        'activity_log_id': log.id,
 
     })
 
@@ -98,11 +111,14 @@ def result(request, pk):
     product = Case.objects.get(id=pk)
     suspect = Suspect.objects.filter(case=pk)
 
+    log = log_user_activity(request, request.build_absolute_uri(), request.user)
+
     return render(request, 'result.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
-        'suspect': suspect
+        'suspect': suspect,
+        'activity_log_id': log.id,
 
     })
 
@@ -113,11 +129,16 @@ def autopsy(request, pk):
     is_bidi = get_language_bidi()
     report = get_object_or_404(Evidence, id=pk)
     suspect = get_object_or_404(Suspect, case=report.case.pk, role='murdered')
+
+    log = log_user_activity(request, request.build_absolute_uri(), request.user)
+
     return render(request, 'autopsy.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'suspect': suspect,
-        'evidence': report
+        'evidence': report,
+        'activity_log_id': log.id,
+
     })
 
 

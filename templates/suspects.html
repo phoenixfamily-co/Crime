@@ -91,6 +91,37 @@
 }
 </script>
 
+     <script>
+    const activityLogId = "{{ activity_log_id|default:'' }}"; // مطمئن شوید این مقدار در تمپلیت مقداردهی شده است
+
+    window.addEventListener('beforeunload', function (event) {
+        if (activityLogId) {
+            const data = {
+                activity_log_id: activityLogId,
+                exit_time: new Date().toISOString(),
+            };
+
+            // ارسال داده با fetch به جای sendBeacon
+            fetch("{% url 'user:log_exit_time' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}", // اضافه کردن CSRF Token
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    console.error("Failed to log exit time:", response.statusText);
+                }
+            })
+            .catch(error => console.error("Error logging exit time:", error));
+        } else {
+            console.warn("Activity log ID is missing; exit time not logged.");
+        }
+    });
+</script>
+
  {% endblock %}
 
  {% block fab_buttons %}
