@@ -34,13 +34,12 @@
 
     <script>
 
-        document.getElementById("run-animation-link").addEventListener("click", runAnimation);
-
-
-    function runAnimation() {
-
         const cautionTape = document.getElementById('cautionTape');
-         cautionTape.classList.add('animate-out');
+
+
+        document.getElementById("run-animation-link").addEventListener("click",function () {
+            cautionTape.classList.add('animate-out');
+        });
 
           cautionTape.addEventListener("animationend", async () => {
 
@@ -59,8 +58,7 @@
                   alert('پرونده معتبر نیست')
                   console.error(errorData.detail || response.statusText);
               }
-          });
-    }
+    });
 
     </script>
 
