@@ -20,7 +20,7 @@ class CasePlayViewSet(viewsets.ModelViewSet):
             user = get_or_create_temporary_user(request)
 
         case_play_data = {
-            'user': user,
+            'user': user.id,
             'status': 'in_progress',
         }
 
