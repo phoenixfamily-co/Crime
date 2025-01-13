@@ -22,6 +22,17 @@
       <img id="tapeImage" class="img-responsive" src="{% static 'images/caution.png' %}" alt="">
   </div>
 
+
+     <script>
+         window.addEventListener('beforeunload', function () {
+             // ارسال زمان خروج به سرور
+             navigator.sendBeacon("{% url 'user:log_exit_time' %}", JSON.stringify({
+                 activity_log_id: {{ activity_log_id }},
+                 exit_time: new Date().toISOString()
+             }));
+         });
+</script>
+
 {% endblock %}
 
 {% block footer_buttons %}

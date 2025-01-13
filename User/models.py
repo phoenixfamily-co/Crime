@@ -28,7 +28,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_temporary = models.BooleanField(default=True)  # مشخص می‌کند کاربر موقت است یا نه
 
     # نام
-    first_name = models.CharField(max_length=50,blank=True, null=True)
+    first_name = models.CharField(max_length=50, blank=True, null=True)
     # نام خانوادگی
     last_name = models.CharField(max_length=50, blank=True, null=True)
 

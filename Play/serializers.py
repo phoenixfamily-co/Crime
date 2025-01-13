@@ -27,5 +27,3 @@ class GameResultSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return GameResult.objects.create(**validated_data)
-
-

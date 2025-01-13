@@ -6,22 +6,26 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from Product.models import Case, Suspect, Interrogation, Evidence
 from Product.serializers import CaseSerializer, SuspectSerializer, InterrogationSerializer, EvidenceSerializer
-from User.views import get_or_create_temporary_user, save_user_device_info, log_user_activity
+from User.views import get_or_create_temporary_user, log_user_activity
 
 
 @cache_page(60 * 15)
 def play(request, pk):
     current_language = get_language()
-    user = get_or_create_temporary_user(request)
-    save_user_device_info(request, user)
     is_bidi = get_language_bidi()
     product = get_object_or_404(Case, id=pk)
+    if request.user.is_authenticated:
+        user = request.user
+    else:
+        user = get_or_create_temporary_user(request)
+
+    log = log_user_activity(request, request.build_absolute_uri(), user)
 
     return render(request, 'play.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
-        'user': user,
+        'activity_log_id': log.id,
 
     })
 
@@ -29,9 +33,6 @@ def play(request, pk):
 @cache_page(60 * 15)
 def start(request, pk):
     current_language = get_language()
-    user = get_or_create_temporary_user(request)
-    save_user_device_info(request, user)
-    log = log_user_activity(request, request.build_absolute_uri(), user)
     is_bidi = get_language_bidi()
     product = get_object_or_404(Case, id=pk)
 
@@ -39,8 +40,6 @@ def start(request, pk):
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
-        'user': user,
-        'activity_log_id': log.id,
     })
 
 

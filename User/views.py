@@ -21,7 +21,8 @@ def get_device_info(request):
     ip_address = get_client_ip(request)
 
     return {
-        'device_type': 'Mobile' if user_agent.is_mobile else 'Tablet' if user_agent.is_tablet else 'Desktop' if user_agent.is_pc else 'Unknown',
+        'device_type': 'Mobile' if user_agent.is_mobile else 'Tablet' if user_agent.is_tablet else 'Desktop' if
+        user_agent.is_pc else 'Unknown',
         'device_model': user_agent.device.family,
         'operating_system': user_agent.os.family,
         'os_version': user_agent.os.version_string,
@@ -61,8 +62,6 @@ def save_user_device_info(request, user):
 
 
 def log_user_activity(request, visited_page, user):
-
-
     # ثبت لاگ فعالیت
     activity_log = UserActivityLog.objects.create(
         user=user,
