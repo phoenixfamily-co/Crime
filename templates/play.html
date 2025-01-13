@@ -27,42 +27,40 @@
 {% block footer_buttons %}
 
     <div class="container-fluid footer-buttons-centered">
-        <a id="run-animation-link" class="btn my-2">
+        <a onclick="runAnimation()" class="btn my-2">
             <span class="mt-3">{% trans "شروع تحقیقات" %}</span>
         </a>
     </div>
 
     <script>
 
-     document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
+    function runAnimation() {
         const cautionTape = document.getElementById('cautionTape');
+        cautionTape.classList.add('animate-out');
 
+        cautionTape.addEventListener("animationend", async () => {
+            const response = await fetch("{% url 'play:caseplay-list' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
 
-        document.getElementById("run-animation-link").addEventListener("click",function () {
-            console.log('test')
-            cautionTape.classList.add('animate-out');
+            if (response.ok) {
+                window.location.href = "{% url 'product:start-view' case.id %}"; // لینک صفحه مقصد
+            } else {
+                const errorData = await response.json();
+                alert('پرونده معتبر نیست');
+                console.error(errorData.detail || response.statusText);
+            }
         });
+    }
 
-          cautionTape.addEventListener("animationend", async () => {
+    window.runAnimation = runAnimation; // تعریف تابع در فضای عمومی
+});
 
-              const response = await fetch({% url 'play:caseplay-list' %}, {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                  },
-              }
-          );
-              if (response.ok) {
-                  window.location.href = "{% url 'product:start-view' case.id  %}"; // لینک صفحه مقصد
-                  console.log(result.status)
-              } else {
-                  const errorData = await response.json();
-                  alert('پرونده معتبر نیست')
-                  console.error(errorData.detail || response.statusText);
-              }
-          });
-     });
 
     </script>
 
