@@ -34,6 +34,8 @@
 
     <script>
 
+     document.addEventListener("DOMContentLoaded", function () {
+
         const cautionTape = document.getElementById('cautionTape');
 
 
@@ -59,7 +61,8 @@
                   alert('پرونده معتبر نیست')
                   console.error(errorData.detail || response.statusText);
               }
-    });
+          });
+     });
 
     </script>
 
