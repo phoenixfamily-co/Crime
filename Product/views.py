@@ -14,6 +14,7 @@ def play(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
     product = get_object_or_404(Case, id=pk)
+
     if request.user.is_authenticated:
         user = request.user
     else:

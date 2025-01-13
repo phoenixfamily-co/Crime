@@ -24,14 +24,15 @@
 
 
      <script>
+         const activityLogId = "{{ activity_log_id }}"; // مقدار باید وجود داشته باشد
          window.addEventListener('beforeunload', function () {
-             // ارسال زمان خروج به سرور
              navigator.sendBeacon("{% url 'user:log_exit_time' %}", JSON.stringify({
-                 activity_log_id: {{ activity_log_id }},
+                 activity_log_id: activityLogId,
                  exit_time: new Date().toISOString()
              }));
          });
-</script>
+
+     </script>
 
 {% endblock %}
 
