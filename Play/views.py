@@ -14,13 +14,13 @@ class CasePlayViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
 
-        if not request.user.is_authenticated:
-            return Response({"detail": "User is not authenticated."}, status=status.HTTP_401_UNAUTHORIZED)
+        if self.request.user.is_authenticated:
+            user = self.request.user
         else:
-            get_or_create_temporary_user(request)
+            user = get_or_create_temporary_user(request)
 
         case_play_data = {
-            'user': self.request.user.id,
+            'user': user,
             'status': 'in_progress',
         }
 
