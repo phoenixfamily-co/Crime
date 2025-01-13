@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from Play.models import CasePlay, GameResult
 from Play.serializers import GameResultSerializer, CasePlaySerializer
 from Product.models import Suspect
+from User.views import get_or_create_temporary_user
 
 
 class CasePlayViewSet(viewsets.ModelViewSet):
@@ -12,6 +13,11 @@ class CasePlayViewSet(viewsets.ModelViewSet):
     serializer_class = CasePlaySerializer
 
     def create(self, request, *args, **kwargs):
+
+        if not request.user.is_authenticated:
+            return Response({"detail": "User is not authenticated."}, status=status.HTTP_401_UNAUTHORIZED)
+        else:
+            get_or_create_temporary_user(request)
 
         case_play_data = {
             'user': self.request.user.id,
