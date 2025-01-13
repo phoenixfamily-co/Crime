@@ -38,6 +38,7 @@
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}", // اضافه کردن CSRF Token
                 },
                 body: JSON.stringify(data),
             })
@@ -77,6 +78,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    "X-CSRFToken": "{{ csrf_token }}"
                 },
             });
 
