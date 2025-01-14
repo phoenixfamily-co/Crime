@@ -1,5 +1,6 @@
 from django.utils import timezone
 from rest_framework import viewsets, status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from Play.models import CasePlay, GameResult
@@ -11,6 +12,7 @@ from User.views import get_or_create_temporary_user, save_user_device_info
 class CasePlayViewSet(viewsets.ModelViewSet):
     queryset = CasePlay.objects.all()
     serializer_class = CasePlaySerializer
+    permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
 
@@ -39,6 +41,7 @@ class CasePlayViewSet(viewsets.ModelViewSet):
 class GameResultViewSet(viewsets.ModelViewSet):
     queryset = GameResult.objects.all()
     serializer_class = GameResultSerializer
+    permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
         """

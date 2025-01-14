@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from Product.models import Case, Suspect, Interrogation, Evidence
 from Product.serializers import CaseSerializer, SuspectSerializer, InterrogationSerializer, EvidenceSerializer
 from User.views import get_or_create_temporary_user, log_user_activity
+from CrimeProject.decorators import *
+from CrimeProject.permissions import *
 
 
 def play(request, pk):
@@ -29,6 +31,7 @@ def play(request, pk):
     })
 
 
+@session_auth_required
 def start(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -45,6 +48,7 @@ def start(request, pk):
     })
 
 
+@session_auth_required
 def suspects(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -63,6 +67,7 @@ def suspects(request, pk):
     })
 
 
+@session_auth_required
 def interrogation(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -81,6 +86,7 @@ def interrogation(request, pk):
     })
 
 
+@session_auth_required
 def evidence(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -99,6 +105,7 @@ def evidence(request, pk):
     })
 
 
+@session_auth_required
 def result(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -117,6 +124,7 @@ def result(request, pk):
     })
 
 
+@session_auth_required
 def autopsy(request, pk):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -135,6 +143,7 @@ def autopsy(request, pk):
     })
 
 
+@session_admin_required
 def create_case(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -145,6 +154,7 @@ def create_case(request):
     })
 
 
+@session_admin_required
 def create_suspect(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -158,6 +168,7 @@ def create_suspect(request):
     })
 
 
+@session_admin_required
 def create_evidence(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -170,6 +181,7 @@ def create_evidence(request):
     })
 
 
+@session_admin_required
 def create_interrogation(request):
     current_language = get_language()
     is_bidi = get_language_bidi()
@@ -185,6 +197,7 @@ def create_interrogation(request):
 class CaseViewSet(viewsets.ModelViewSet):
     queryset = Case.objects.all()
     serializer_class = CaseSerializer
+    permission_classes = [IsAdminOrStaff]
 
     def create(self, request, *args, **kwargs):
         # دریافت داده‌ها از درخواست
@@ -210,6 +223,7 @@ class CaseViewSet(viewsets.ModelViewSet):
 class SuspectViewSet(viewsets.ModelViewSet):
     queryset = Suspect.objects.all()
     serializer_class = SuspectSerializer
+    permission_classes = [IsAdminOrStaff]
 
     def create(self, request, *args, **kwargs):
         # دریافت داده‌ها از درخواست
@@ -235,6 +249,7 @@ class SuspectViewSet(viewsets.ModelViewSet):
 class EvidenceViewSet(viewsets.ModelViewSet):
     queryset = Evidence.objects.all()
     serializer_class = EvidenceSerializer
+    permission_classes = [IsAdminOrStaff]
 
     def get_queryset(self):
         queryset = Evidence.objects.all()
@@ -276,3 +291,4 @@ class EvidenceViewSet(viewsets.ModelViewSet):
 class InterrogationViewSet(viewsets.ModelViewSet):
     queryset = Interrogation.objects.all()
     serializer_class = InterrogationSerializer
+    permission_classes = [IsAdminOrStaff]
