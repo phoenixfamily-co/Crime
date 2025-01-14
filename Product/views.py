@@ -305,12 +305,14 @@ class CommentViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         # دریافت داده‌ها از درخواست
         data = request.data.copy()  # کپی داده‌های موجود
+
         user = User.objects.get(id=self.request.user.id)
         user.first_name = data['name']
         user.last_name = data['family']
         user.number = data['number']
         user.save()
-        data['user'] = user
+
+        data['user'] = user.id
         serializer = self.get_serializer(data=data)
 
         # اعتبارسنجی و ذخیره داده‌ها
