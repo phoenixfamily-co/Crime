@@ -1,12 +1,54 @@
+from django.shortcuts import render
 from django.utils import timezone
+from django.utils.translation import get_language, get_language_bidi
 from rest_framework import viewsets, status
+from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from CrimeProject.decorators import session_auth_required
 from Play.models import CasePlay, GameResult
 from Play.serializers import GameResultSerializer, CasePlaySerializer
-from Product.models import Suspect
-from User.views import get_or_create_temporary_user, save_user_device_info
+from Product.models import Suspect, Case, Evidence
+from User.views import get_or_create_temporary_user, save_user_device_info, log_user_activity
+
+
+@session_auth_required
+def success(request, pk):
+    current_language = get_language()
+    is_bidi = get_language_bidi()
+    product = get_object_or_404(Case, id=pk)
+    evidences = Evidence.objects.filter(case=pk)
+
+    log = log_user_activity(request, request.build_absolute_uri(), request.user)
+
+    return render(request, 'success.html', {
+        'LANGUAGE_CODE': current_language,
+        'LANGUAGE_BIDI': is_bidi,
+        'case': product,
+        'evidences': evidences,
+        'activity_log_id': log.id,
+
+    })
+
+
+@session_auth_required
+def failed(request, pk):
+    current_language = get_language()
+    is_bidi = get_language_bidi()
+    product = get_object_or_404(Case, id=pk)
+    evidences = Evidence.objects.filter(case=pk)
+
+    log = log_user_activity(request, request.build_absolute_uri(), request.user)
+
+    return render(request, 'failed.html', {
+        'LANGUAGE_CODE': current_language,
+        'LANGUAGE_BIDI': is_bidi,
+        'case': product,
+        'evidences': evidences,
+        'activity_log_id': log.id,
+
+    })
 
 
 class CasePlayViewSet(viewsets.ModelViewSet):
