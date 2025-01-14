@@ -34,7 +34,7 @@
              align-items: center;
              margin: 0;
              background-color: var(--bg-color)!important;
-             color: var(--btn-text)!important;
+             color: var(--text-color)!important;
              font-family: Arial, sans-serif;
              transition: background-color 0.3s, color 0.3s;
 
@@ -71,28 +71,28 @@
     <div class="container py-5">
         <!-- Header -->
         <div class="text-center mb-4">
-            <h1 id="result-message" class="fw-bold">اشتباه حدس زدید، اما عالی تلاش کردید! 🔍</h1>
-            <p id="result-description" class="fs-5">سعی کنید در پرونده بعدی سرنخ‌های بیشتری را بررسی کنید</p>
+            <h1 id="result-message" class="fw-bold">تبریک شما درست جواب دادید 🎉</h1>
+            <p id="result-description" class="fs-5">شما این پرونده رو با موفقیت حل کردید</p>
         </div>
 
         <!-- Feedback Form -->
        <div class="card text-light mb-4">
             <div class="card-body">
                 <h5 class="card-title text-center">مشتاقانه منتظر شنیدن نظرهایتان هستیم 😍</h5>
-                <form id="feedback-form">
+                <form id="commentForm">
                     <div class="mb-3">
-                        <label for="userName" class="form-label">نام</label>
-                        <input type="text" class="form-control" id="userName" placeholder="نام خود را وارد کنید" required>
+                        <label for="name" class="form-label">نام</label>
+                        <input type="text" class="form-control" id="name" placeholder="نام خود را وارد کنید" required>
                     </div>
 
                      <div class="mb-3">
-                        <label for="userName" class="form-label">نام خانوادگی</label>
-                        <input type="text" class="form-control" id="userName" placeholder="نام خانوادگی خود را وارد کنید" required>
+                        <label for="family" class="form-label">نام خانوادگی</label>
+                        <input type="text" class="form-control" id="family" placeholder="نام خانوادگی خود را وارد کنید" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="userName" class="form-label">شماره تماس</label>
-                        <input type="text" class="form-control" id="userName" placeholder="شماره تلفن همراه خود را وارد کنید" required>
+                        <label for="number" class="form-label">شماره تماس</label>
+                        <input type="text" class="form-control" id="number" placeholder="شماره تلفن همراه خود را وارد کنید" required>
                     </div>
 
                     <div class="mb-3">
@@ -115,11 +115,54 @@
 
         <!-- Action Buttons -->
         <div class="text-center">
-            <a href="play-again.html" class="btn btn-success me-2">بازی دوباره</a>
-            <a href="index.html" class="btn btn-outline-light">صفحه اصلی</a>
+            <a href="{% url 'product:play-view' case.id %}" class="btn btn-success me-2">بازی دوباره</a>
+            <a href="{% url 'home:home-view' %}" class="btn btn-outline-light">صفحه اصلی</a>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+         document.getElementById('commentForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // جلوگیری از رفتار پیش‌فرض ارسال فرم
+
+           const commentData = {
+               name: document.getElementById('name').value,
+               family: document.getElementById('family').value,
+               number: document.getElementById('number').value,
+               description: document.getElementById('userFeedback').value,
+               score: 5, // امتیاز
+               case: '{{ case.id }}' // آی‌دی مورد (یا مقدار واقعی را جایگزین کنید)
+           };
+
+            // ارسال درخواست به API
+            fetch('{% url 'product:comment-list' %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                  body: JSON.stringify(commentData),
+
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => {
+                    throw new Error(data.detail || 'خطا در ثبت نظر');
+                });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('نظر شما با موفقیت ثبت شد');
+                })
+                .catch(error => {
+                    alert('خطا: ' + error.message);
+                    console.error(error);
+                });
+        });
+
+    </script>
 </body>
 </html>

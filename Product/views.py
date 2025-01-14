@@ -183,7 +183,6 @@ def create_evidence(request):
         'cases': cases,
     })
 
-
 @session_admin_required
 def create_interrogation(request):
     current_language = get_language()
