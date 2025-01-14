@@ -2,9 +2,12 @@ from django.shortcuts import render
 from django.utils.translation import get_language, get_language_bidi
 from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from Product.models import Case, Suspect, Interrogation, Evidence
-from Product.serializers import CaseSerializer, SuspectSerializer, InterrogationSerializer, EvidenceSerializer
+from Product.models import Case, Suspect, Interrogation, Evidence, Comment
+from Product.serializers import CaseSerializer, SuspectSerializer, InterrogationSerializer, EvidenceSerializer, \
+    CommentSerializer
+from User.models import User
 from User.views import get_or_create_temporary_user, log_user_activity
 from CrimeProject.decorators import *
 from CrimeProject.permissions import *
@@ -292,3 +295,26 @@ class InterrogationViewSet(viewsets.ModelViewSet):
     queryset = Interrogation.objects.all()
     serializer_class = InterrogationSerializer
     permission_classes = [IsAdminOrStaff]
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request, *args, **kwargs):
+        # دریافت داده‌ها از درخواست
+        data = request.data.copy()  # کپی داده‌های موجود
+        user = User.objects.get(id=self.request.user.id)
+        user.first_name = data['name']
+        user.last_name = data['family']
+        user.number = data['number']
+        user.save()
+        data['user'] = user
+        serializer = self.get_serializer(data=data)
+
+        # اعتبارسنجی و ذخیره داده‌ها
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=201)  # داده‌ها ذخیره شده و پاسخ برگشت می‌دهیم
+        return Response(serializer.errors, status=400)

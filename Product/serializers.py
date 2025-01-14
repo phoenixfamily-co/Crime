@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Case, Suspect, Interrogation, Evidence
+from .models import Case, Suspect, Interrogation, Evidence, Comment
 
 
 class CaseSerializer(serializers.ModelSerializer):
@@ -27,3 +27,10 @@ class InterrogationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Interrogation
         fields = ['id', 'suspect', 'question', 'answer', 'heart_rate', 'face_expression', 'truth_level']
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['id', 'user', 'description', 'score', 'case']
+

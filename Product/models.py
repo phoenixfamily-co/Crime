@@ -157,3 +157,11 @@ class Interrogation(models.Model):
 
     def __str__(self):
         return f"بازجویی از {self.suspect.name}"
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.TextField()
+    case = models.ForeignKey(Case, related_name="Comment", on_delete=models.CASCADE)
+    score = models.IntegerField(default=0, verbose_name="امتیاز", blank=True, null=True)
+

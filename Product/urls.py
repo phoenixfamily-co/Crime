@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from . import views
-from .views import SuspectViewSet, CaseViewSet, InterrogationViewSet, EvidenceViewSet
+from .views import SuspectViewSet, CaseViewSet, InterrogationViewSet, EvidenceViewSet, CommentViewSet
 
 app_name = 'product'
 
@@ -11,6 +11,8 @@ router.register(r'cases', CaseViewSet)
 router.register(r'suspects', SuspectViewSet)
 router.register(r'evidences', EvidenceViewSet)
 router.register(r'interrogations', InterrogationViewSet)
+router.register(r'comments', CommentViewSet)
+
 
 urlpatterns = [
     path('play/<int:pk>/', views.play, name='play-view'),  # صفحه اصلی
