@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from .views import GameResultViewSet, CasePlayViewSet, success , failed
+from .views import GameResultViewSet, CasePlayViewSet, success, failed
 
 app_name = 'play'
 

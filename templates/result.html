@@ -85,9 +85,12 @@
                   const result = await response.json();
                   if (result.status === 'success'){
                       document.location.assign('{% url 'play:success-view' %}')
+                      console.log(result.gameplay.id)
                   }
                   else {
                       document.location.assign('{% url 'play:failed-view' %}')
+                      console.log(result.gameplay.id)
+
                   }
               } else {
                   const errorData = await response.json();
