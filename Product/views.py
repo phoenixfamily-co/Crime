@@ -313,6 +313,11 @@ class CommentViewSet(viewsets.ModelViewSet):
         user.save()
 
         data['user'] = user.id
+
+        data.pop('name')
+        data.pop('family')
+        data.pop('number')
+
         serializer = self.get_serializer(data=data)
 
         # اعتبارسنجی و ذخیره داده‌ها
