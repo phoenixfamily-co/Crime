@@ -56,7 +56,6 @@
              const selectElement = document.getElementById('suspect-select');
              const selectedValue = selectElement.value;
              const reason = document.getElementById('reason-text')
-             const casePlayId = sessionStorage.getItem('case_play_id');
 
               // گرفتن فرم از DOM
               const form = document.getElementById("submit-answer-form");
@@ -65,11 +64,12 @@
             form.addEventListener("submit", async function (event) {
                 event.preventDefault(); // جلوگیری از رفتار پیش‌فرض سابمیت
 
-                console.log(casePlayId)
            const data = {
                suspect: selectedValue,
                reason: reason.value
            };
+
+           console.log(data)
 
           try {
               // ارسال درخواست به سرور
