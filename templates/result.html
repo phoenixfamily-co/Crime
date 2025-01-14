@@ -85,10 +85,10 @@
               if (response.ok) {
                   const result = await response.json();
                   if (result.status === 'success'){
-                      document.location.assign('{% url 'plat:success-view' %}')
+                      document.location.assign('{% url 'play:success-view' %}')
                   }
                   else {
-                      document.location.assign('{% url 'plat:failed-view' %}')
+                      document.location.assign('{% url 'play:failed-view' %}')
                   }
               } else {
                   const errorData = await response.json();
