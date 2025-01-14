@@ -1,6 +1,5 @@
 {% load static %}
 {% load i18n %}
-
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
 <head>
@@ -10,21 +9,46 @@
     <meta name="robots" content="index, follow"> <!-- اجازه ایندکس و دنبال کردن لینک‌ها -->
     <title>{% trans 'جواب درست' %}</title> <!-- عنوان صفحه -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+
+         :root {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --navbar-bg: #1e1e1e;
+            --navbar-border: #d32f2f;
+            --nav-link-color: #e0e0e0;
+            --nav-link-hover: #d32f2f;
+            --btn-bg: #d32f2f;
+            --btn-hover: #ff6659;
+            --btn-text: #ffffff;
+            --text-color-muted: #e1e1e1; /* رنگ خاکستری روشن‌تر برای حالت دارک */
+            --navbar-toggler-border-color-dark: #666; /* رنگ حاشیه برای حالت دارک */
+            --navbar-toggler-bg-color-dark: #333; /* رنگ پس‌زمینه برای حالت دارک */
+            --navbar-toggler-icon-color-dark: #fff; /* رنگ ایکون برای حالت دارک */
+        }
+
+         body {
+             justify-content: center;
+             align-items: center;
+             margin: 0;
+             background-color: var(--bg-color)!important;
+             color: var(--text-color)!important;
+             font-family: Arial, sans-serif;
+             transition: background-color 0.3s, color 0.3s;
+
+      }
+
+
+    </style>
 </head>
-<body class="bg-dark text-light">
+<body>
     <div class="container py-5">
         <!-- Header -->
         <div class="text-center mb-4">
             <h1 id="result-message" class="fw-bold">تبریک شما درست جواب دادید 🎉</h1>
             <p id="result-description" class="fs-5">شما این پرونده رو با موفقیت حل کردید</p>
-        </div>
-
-        <!-- Case Summary -->
-        <div class="card bg-secondary text-light mb-4">
-            <div class="card-body">
-                <h5 class="card-title">خلاصه دادنامه</h5>
-                <p id="case-details" class="card-text">جواب:مهدی رستمی قاتل بود</p>
-            </div>
         </div>
 
         <!-- Feedback Form -->
@@ -33,15 +57,35 @@
                 <h5 class="card-title">اشتراک افکار</h5>
                 <form id="feedback-form">
                     <div class="mb-3">
-                        <label for="userName" class="form-label">نام و نام خانوادگی</label>
-                        <input type="text" class="form-control" id="userName" placeholder="نام و ناو خانوادگی خود را وارد کنید" required>
+                        <label for="userName" class="form-label">نام</label>
+                        <input type="text" class="form-control" id="userName" placeholder="نام خود را وارد کنید" required>
                     </div>
+
+                     <div class="mb-3">
+                        <label for="userName" class="form-label">نام خانوادگی</label>
+                        <input type="text" class="form-control" id="userName" placeholder="نام خانوادگی خود را وارد کنید" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="userName" class="form-label">شماره تماس</label>
+                        <input type="text" class="form-control" id="userName" placeholder="شماره تلفن همراه خود را وارد کنید" required>
+                    </div>
+
                     <div class="mb-3">
                         <label for="userFeedback" class="form-label">نظر شما</label>
                         <textarea class="form-control" id="userFeedback" rows="3" placeholder="افکارت رو به اشتراک بزار" required></textarea>
                     </div>
+
                     <button type="submit" class="btn btn-primary w-100">ارسال بازخورد</button>
                 </form>
+            </div>
+        </div>
+
+         <!-- Case Summary -->
+        <div class="card bg-secondary text-light mb-4">
+            <div class="card-body">
+                <h5 class="card-title">خلاصه دادنامه</h5>
+                <p id="case-details" class="card-text">جواب:مهدی رستمی قاتل بود</p>
             </div>
         </div>
 
