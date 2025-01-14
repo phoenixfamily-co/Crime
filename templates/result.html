@@ -54,7 +54,6 @@
 
          document.addEventListener("DOMContentLoaded", function () {
              const selectElement = document.getElementById('suspect-select');
-             const selectedValue = selectElement.value;
              const reason = document.getElementById('reason-text')
 
               // گرفتن فرم از DOM
@@ -64,12 +63,12 @@
             form.addEventListener("submit", async function (event) {
                 event.preventDefault(); // جلوگیری از رفتار پیش‌فرض سابمیت
 
+                const selectedValue = selectElement.value;
+
            const data = {
                suspect: selectedValue,
                reason: reason.value
            };
-
-           console.log(data)
 
           try {
               // ارسال درخواست به سرور
