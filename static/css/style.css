@@ -460,6 +460,10 @@
             opacity: 0;
         }
 
+        .hidden {
+            display: none !important;
+        }
+
 
         @keyframes tape-slide {
             to {

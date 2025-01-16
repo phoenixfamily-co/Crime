@@ -88,6 +88,10 @@
             crimeSceneBackground.classList.add("zoomed");
         }, 1000); // تأخیر برای زوم پس از حرکت نوار زرد
 
+         // مخفی کردن آیکون
+    const playIcon = document.getElementById("playIcon");
+    playIcon.classList.add("hidden");
+
         crimeSceneBackground.addEventListener("animationend", async () => {
             const response = await fetch("{% url 'play:caseplay-list' %}", {
                 method: 'POST',
