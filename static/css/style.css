@@ -408,9 +408,13 @@
             justify-content: center;
             top:25%;
             transform: rotate(-2deg);
+            transition: transform 1s ease-in-out;
 
         }
 
+        .yellow-tape.animate-out {
+           animation: tape-slide 2s ease-in-out forwards;
+       }
 
         .crime-scene-background {
             background-image: url('/static/images/crime_scene.png');
@@ -418,9 +422,6 @@
             background-position: center;
         }
 
-       .yellow-tape.animate-out {
-           animation: tape-slide 2s ease-in-out forwards;
-       }
 
         @keyframes tape-slide {
             to {
