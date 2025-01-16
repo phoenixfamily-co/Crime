@@ -408,7 +408,7 @@
             justify-content: center;
             top:25%;
             transform: rotate(-2deg);
-            transition: transform 1.5s ease-in-out!important;
+            transition: transform 1.5s ease-in-out, top 1.5s ease-in-out !important;
             z-index: 2;
 
 
