@@ -405,6 +405,9 @@
 
 
         .yellow-tape {
+            justify-content: center;
+            transform: rotate(-5deg);
+
         }
 
 
@@ -509,14 +512,7 @@
             }
 
               .yellow-tape {
-                  position: absolute;
-                  display: flex;
-                  justify-content: center;
-                  overflow: hidden;
-                  width: 100%;
-                  height: auto;
-                  transform: rotate(-5deg);
-                  margin-top: 300px;
+
               }
 
 
