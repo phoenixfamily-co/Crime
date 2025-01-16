@@ -501,7 +501,7 @@
                 display: flex; /* اضافه کردن این خط */
                 flex-direction: column; /* اضافه کردن این خط */
                 border: 2px solid var(--navbar-border) !important;;
-                max-width: 78%;
+                max-width: 85%;
                 background-color: var(--navbar-bg);
             }
 
