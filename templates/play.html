@@ -28,11 +28,11 @@
     <!-- پس‌زمینه صحنه جرم -->
     <div class="crime-scene-background position-absolute top-0 start-0 w-100 h-100"></div>
 
-
+    <!--  سایه پس‌زمینه -->
     <div class="background-overlay position-absolute top-0 start-0 w-100 h-100"></div>
 
     <!-- دکمه شروع -->
-    <i class="fa-regular fa-circle-play position-absolute top-50 start-50 translate-middle play-icon" style="color: #ffffff;"></i>
+    <i onclick="runAnimation()" class="fa-regular fa-circle-play position-absolute top-50 start-50 translate-middle play-icon" style="color: #ffffff;"></i>
 
 </div>
 
@@ -78,7 +78,17 @@
         const cautionTape = document.getElementById('yellow-tape');
         cautionTape.classList.add('animate-out');
 
-        cautionTape.addEventListener("animationend", async () => {
+          // محو شدن سایه پس‌زمینه
+        const backgroundOverlay = document.getElementById("backgroundOverlay");
+        backgroundOverlay.classList.add("faded");
+
+        // زوم شدن پس‌زمینه
+        const crimeSceneBackground = document.querySelector(".crime-scene-background");
+        setTimeout(() => {
+            crimeSceneBackground.classList.add("zoomed");
+        }, 1000); // تأخیر برای زوم پس از حرکت نوار زرد
+
+        crimeSceneBackground.addEventListener("animationend", async () => {
             const response = await fetch("{% url 'play:caseplay-list' %}", {
                 method: 'POST',
                 headers: {

@@ -422,11 +422,14 @@
             background-image: url('/static/images/crime_scene.png');
             background-size: cover;
             background-position: center;
+            transition: transform 2s ease-in-out;
+
             z-index: 1;
         }
 
         .background-overlay {
             background-color: rgba(0, 0, 0, 0.6) !important; /* رنگ مشکی با شفافیت 50% */
+            transition: opacity 1s ease;
             z-index: 3;
         }
 
@@ -436,6 +439,7 @@
             color: #ffffff; /* رنگ سفید */
             font-size: 72px!important; /* اندازه بزرگ */
             z-index: 4;
+             transition: transform 0.3s ease;
         }
 
         /* افکت هاور */
@@ -443,6 +447,17 @@
             color: var(--navbar-border); /* تغییر رنگ به زرد */
             transform: scale(1.2); /* بزرگ شدن آیکون */
             text-shadow: 0 0 10px rgb(211, 47, 47,0.7); /* اضافه کردن سایه */
+        }
+
+
+        /* انیمیشن زوم */
+        .zoomed {
+            transform: scale(1.2);
+        }
+
+        /* انیمیشن محو سایه */
+        .faded {
+            opacity: 0;
         }
 
 
