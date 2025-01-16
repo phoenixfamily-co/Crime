@@ -457,7 +457,7 @@
         }
 
         /* انیمیشن زوم */
-        .zoomed {
+        .crime-scene-background.zoomed {
             transform: scale(1.2);
         }
 
