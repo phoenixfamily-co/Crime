@@ -61,7 +61,12 @@
         const crimeSceneBackground = document.getElementById("crimeSceneBackground");
         setTimeout(() => {
             crimeSceneBackground.classList.add("zoomed");
+            backgroundOverlay.classList.remove("faded");
+            backgroundOverlay.classList.add("overlay-darken");
+
         }, 1500); // تأخیر برای زوم پس از حرکت نوار زرد
+
+
 
 
         crimeSceneBackground.addEventListener("animationend", async () => {
