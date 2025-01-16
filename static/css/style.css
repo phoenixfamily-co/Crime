@@ -426,7 +426,7 @@
         }
 
         .background-overlay {
-            background-color: rgba(0, 0, 0, 0.5); /* رنگ مشکی با شفافیت 50% */
+            background-color: rgba(0, 0, 0, 0.5)!important; /* رنگ مشکی با شفافیت 50% */
             z-index: 2;
         }
 
@@ -434,8 +434,8 @@
         /* آیکون پلی */
         .play-icon {
             color: #ffffff; /* رنگ سفید */
-            font-size: 64px; /* اندازه بزرگ */
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* سایه پشت آیکون */
+            font-size: 64px!important; /* اندازه بزرگ */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8)!important; /* سایه پشت آیکون */
             z-index: 4;
         }
 
