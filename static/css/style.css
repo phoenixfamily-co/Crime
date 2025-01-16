@@ -414,9 +414,9 @@
 
         }
 
-        .yellow-tape.animate-out {
-           animation: tape-slide 2s ease-in-out forwards;
-       }
+        .tape-move {
+            transform: translateY(-150%);
+        }
 
         .crime-scene-background {
             background-image: url('/static/images/crime_scene.png');
