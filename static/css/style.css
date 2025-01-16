@@ -447,7 +447,8 @@
         }
 
          .tape-move {
-            transform: translateY(-100vh)!important;
+              top: -50%; /* حرکت نوار به سمت بالا */
+             transform: rotate(-2deg); /* ثابت نگه داشتن چرخش */
         }
 
         /* انیمیشن زوم */
