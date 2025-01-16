@@ -434,7 +434,7 @@
         /* آیکون پلی */
         .play-icon {
             color: #ffffff; /* رنگ سفید */
-            font-size: 64px!important; /* اندازه بزرگ */
+            font-size: 72px!important; /* اندازه بزرگ */
             z-index: 4;
         }
 
@@ -538,6 +538,10 @@
 
               .yellow-tape {
                   top:50%;
+              }
+
+              .play-icon{
+                  font-size: 64px!important; /* اندازه بزرگ */
               }
 
 
