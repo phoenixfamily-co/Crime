@@ -19,15 +19,16 @@
  {% block content %}
 
 
-<div id="crime-scene">
-    <div class="crime-scene-background"></div>
-
+<div id="crime-scene" class="position-relative w-100 vh-100 overflow-hidden">
+    <!-- پس‌زمینه صحنه جرم -->
+    <div class="crime-scene-background position-absolute top-0 start-0 w-100 h-100"></div>
     <!-- نوار زرد -->
-    <div class="yellow-tape">
-        <img src="{% static 'images/caution.png' %}" alt="Caution Tape" class="img-responsive">
+    <div class="yellow-tape position-absolutes tart-0 w-100 text-center">
+        <img src="{% static 'images/caution.png' %}" alt="Caution Tape" class="img-fluid">
     </div>
 
 </div>
+
 
 
      <script>
