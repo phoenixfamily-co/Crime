@@ -406,7 +406,7 @@
 
         .yellow-tape {
             justify-content: center;
-            top:25%;
+            top:50%;
             transform: rotate(-2deg);
             transition: transform 1.5s ease-in-out, top 1.5s ease-in-out !important;
             z-index: 2;
