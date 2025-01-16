@@ -435,7 +435,6 @@
         .play-icon {
             color: #ffffff; /* رنگ سفید */
             font-size: 64px!important; /* اندازه بزرگ */
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8)!important; /* سایه پشت آیکون */
             z-index: 4;
         }
 
