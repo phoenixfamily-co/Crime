@@ -26,10 +26,10 @@
     </div>
 
     <!-- پس‌زمینه صحنه جرم -->
-    <div class="crime-scene-background position-absolute top-0 start-0 w-100 h-100"></div>
+    <div id="crimeSceneBackground" class="crime-scene-background position-absolute top-0 start-0 w-100 h-100"></div>
 
     <!--  سایه پس‌زمینه -->
-    <div class="background-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+    <div id="backgroundOverlay" class="background-overlay position-absolute top-0 start-0 w-100 h-100"></div>
 
     <!-- دکمه شروع -->
     <i onclick="runAnimation()" class="fa-regular fa-circle-play position-absolute top-50 start-50 translate-middle play-icon" style="color: #ffffff;"></i>
@@ -83,7 +83,7 @@
         backgroundOverlay.classList.add("faded");
 
         // زوم شدن پس‌زمینه
-        const crimeSceneBackground = document.querySelector(".crime-scene-background");
+        const crimeSceneBackground = document.getElementById("crimeSceneBackground");
         setTimeout(() => {
             crimeSceneBackground.classList.add("zoomed");
         }, 1000); // تأخیر برای زوم پس از حرکت نوار زرد
