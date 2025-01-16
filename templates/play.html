@@ -63,12 +63,6 @@
             crimeSceneBackground.classList.add("zoomed");
         }, 1500); // تأخیر برای زوم پس از حرکت نوار زرد
 
-         crimeSceneBackground.addEventListener("transitionend", () => {
-        if (backgroundOverlay) {
-            backgroundOverlay.classList.add("overlay-darken");
-        }
-    });
-
 
         crimeSceneBackground.addEventListener("animationend", async () => {
             const response = await fetch("{% url 'play:caseplay-list' %}", {
