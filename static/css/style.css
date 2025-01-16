@@ -428,6 +428,11 @@
             z-index: 3;
         }
 
+        .black-overlay.active {
+            background-color: black;
+            opacity: 1; /* فعال شدن لایه سیاه */
+        }
+
 
         /* آیکون پلی */
         .play-icon {
