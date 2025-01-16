@@ -22,16 +22,21 @@
 <div id="crime-scene" class="position-relative w-100 vh-100 overflow-hidden">
     <!-- پس‌زمینه صحنه جرم -->
     <div class="crime-scene-background position-absolute top-0 start-0 w-100 h-100"></div>
+
+    <!-- لایه تاریک روی پس‌زمینه -->
+    <div class="background-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+
     <!-- نوار زرد -->
-   <div id="yellow-tape" class="yellow-tape position-absolute start-0 w-100 text-center">
-    <!-- کانتینر برای تصویر و آیکون -->
-    <div class="tape-container position-relative d-inline-block">
-        <img src="{% static 'images/caution.png' %}" alt="Caution Tape" class="img-fluid">
-        <i class="fa-regular fa-circle-play position-absolute top-50 start-50 translate-middle" style="color: #ffffff; font-size: 64px;"></i>
+    <div id="yellow-tape" class="yellow-tape position-absolute start-0 w-100 text-center">
+        <!-- کانتینر برای تصویر و آیکون -->
+        <div class="tape-container position-relative d-inline-block">
+            <img src="{% static 'images/caution.png' %}" alt="Caution Tape" class="img-fluid">
+            <!-- آیکون پلی -->
+            <i class="fa-regular fa-circle-play position-absolute top-50 start-50 translate-middle play-icon"></i>
+        </div>
     </div>
 </div>
 
-</div>
 
 
 
