@@ -458,7 +458,7 @@
 
         /* انیمیشن زوم */
         .crime-scene-background.zoomed {
-            transform: scale(1.2);
+            animation: zoomIn 1s forwards;
         }
 
         /* انیمیشن محو سایه */
@@ -468,6 +468,15 @@
 
         .hidden {
             display: none !important;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.2);
+            }
         }
 
 
