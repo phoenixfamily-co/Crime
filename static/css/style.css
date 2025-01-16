@@ -406,20 +406,20 @@
         #crime-scene {
             position: relative;
             width: 100%;
-            height: 100vh;
-            background-color: black;
+            height: 100%;
             overflow: hidden;
         }
 
         .crime-scene-background {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            background-color: black;
-            overflow: hidden;
             height: 100%;
+            background-image: url('/static/images/crime_scene.png');
             background-size: cover;
-            opacity: 0;
-            animation: fade-in 2s forwards 2s;
+            background-position: center;
+            z-index: 1; /* لایه زیرین */
         }
 
         .yellow-tape {
@@ -431,7 +431,7 @@
             height: auto;
             transform: rotate(-5deg);
             margin-top: 100px;
-            z-index: 10;
+            z-index: 2;
         }
 
         .yellow-tape .img-responsive {
