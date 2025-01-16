@@ -76,16 +76,17 @@
 
     function runAnimation() {
 
-        const cautionTape = document.getElementById("cautionTape");
-        cautionTape.classList.add("tape-move");
+         // مخفی کردن آیکون
+        const playIcon = document.getElementById("playIcon");
+        playIcon.classList.add("hidden");
 
           // محو شدن سایه پس‌زمینه
         const backgroundOverlay = document.getElementById("backgroundOverlay");
         backgroundOverlay.classList.add("faded");
 
-         // مخفی کردن آیکون
-        const playIcon = document.getElementById("playIcon");
-        playIcon.classList.add("hidden");
+
+        const cautionTape = document.getElementById("cautionTape");
+        cautionTape.classList.add("tape-move");
 
         // زوم شدن پس‌زمینه
         const crimeSceneBackground = document.getElementById("crimeSceneBackground");

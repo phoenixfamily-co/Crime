@@ -408,22 +408,19 @@
             justify-content: center;
             top:25%;
             transform: rotate(-2deg);
-            transition: transform 1s ease-in-out;
+            transition: transform 1.5s ease-in-out;
             z-index: 2;
 
 
         }
 
-        .tape-move {
-            transform: translateY(-150%);
-        }
+
 
         .crime-scene-background {
             background-image: url('/static/images/crime_scene.png');
             background-size: cover;
             background-position: center;
             transition: transform 2s ease-in-out;
-
             z-index: 1;
         }
 
@@ -439,7 +436,7 @@
             color: #ffffff; /* رنگ سفید */
             font-size: 72px!important; /* اندازه بزرگ */
             z-index: 4;
-             transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
 
         /* افکت هاور */
@@ -449,6 +446,9 @@
             text-shadow: 0 0 10px rgb(211, 47, 47,0.7); /* اضافه کردن سایه */
         }
 
+         .tape-move {
+            transform: translateY(-100vh);
+        }
 
         /* انیمیشن زوم */
         .zoomed {
@@ -464,12 +464,6 @@
             display: none !important;
         }
 
-
-        @keyframes tape-slide {
-            to {
-                transform: translatey(-100vh);
-            }
-        }
 
         @media screen and (max-width: 768px) {
 
