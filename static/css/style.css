@@ -438,6 +438,13 @@
             z-index: 4;
         }
 
+        /* افکت هاور */
+        .play-icon:hover {
+            color: var(--navbar-border); /* تغییر رنگ به زرد */
+            transform: scale(1.2); /* بزرگ شدن آیکون */
+            text-shadow: 0 0 10px rgb(211, 47, 47,0.7); /* اضافه کردن سایه */
+        }
+
 
         @keyframes tape-slide {
             to {
