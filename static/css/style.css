@@ -406,6 +406,7 @@
 
         .yellow-tape {
             justify-content: center;
+            top:20%;
             transform: rotate(-5deg);
 
         }
@@ -512,7 +513,7 @@
             }
 
               .yellow-tape {
-
+                  top:40%;
               }
 
 
