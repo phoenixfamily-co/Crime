@@ -406,14 +406,12 @@
 
         .yellow-tape {
             justify-content: center;
-            top:50%;
+            top:45%;
             transform: rotate(-2deg);
             transition: transform 2s ease-in-out, top 2s ease-in-out !important;
             z-index: 2;
 
-
         }
-
 
 
         .crime-scene-background {
