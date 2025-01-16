@@ -18,9 +18,16 @@
 
  {% block content %}
 
-     <div id="cautionTape" class="yellow-tape">
-      <img id="tapeImage" class="img-responsive" src="{% static 'images/caution.png' %}" alt="">
-  </div>
+
+<div id="crime-scene">
+    <div id="cautionTape" class="yellow-tape">
+        <img id="tapeImage" class="img-responsive" src="{% static 'images/caution.png' %}" alt="">
+    </div>
+    <div id="crime-scene-background" style="background-image: url('{% static 'images/crime_scene.png' %}')">
+        <!-- صحنه جرم -->
+    </div>
+</div>
+
 
 
      <script>
