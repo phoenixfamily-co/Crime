@@ -429,7 +429,7 @@
         }
 
         .overlay-darken {
-             background-color: rgba(0, 0, 0) !important; /* رنگ مشکی با شفافیت 50% */
+            background-color: rgba(0, 0, 0) !important; /* رنگ مشکی با شفافیت 50% */
             opacity: 1; /* کاملاً تیره */
             transition: opacity 2s ease-in-out; /* تغییر تدریجی */
             z-index: 4; /* نمایش روی سایر عناصر */

@@ -52,14 +52,16 @@
         backgroundOverlay.classList.add("faded");
 
 
-        const cautionTape = document.getElementById("cautionTape");
+         const cautionTape = document.getElementById("cautionTape");
+    setTimeout(() => {
         cautionTape.classList.add("tape-move");
+    }, 1000); // تأخیر 1000 میلی‌ثانیه (1 ثانیه)
 
         // زوم شدن پس‌زمینه
         const crimeSceneBackground = document.getElementById("crimeSceneBackground");
         setTimeout(() => {
             crimeSceneBackground.classList.add("zoomed");
-        }, 1000); // تأخیر برای زوم پس از حرکت نوار زرد
+        }, 1500); // تأخیر برای زوم پس از حرکت نوار زرد
 
          crimeSceneBackground.addEventListener("transitionend", () => {
         if (backgroundOverlay) {
