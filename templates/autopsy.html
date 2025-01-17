@@ -144,7 +144,7 @@
  {% block footer_buttons %}
 
     <div class="container-fluid py-3 px-3">
-        <a href="{% url 'product:evidence-view' suspect.case.id %}" class="btn {% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
+        <a href="{% url 'product:evidence-view' suspect.case.id %}" class="btn mb-3 {% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
             <span>{% trans "خروج" %}</span>
             <i class="fa-solid next-icon {% if LANGUAGE_BIDI %} fa-arrow-left rtl {% else %} fa-arrow-right ltr{% endif %}"></i>
         </a>
