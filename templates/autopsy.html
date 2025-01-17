@@ -22,7 +22,7 @@
 
 {% block content %}
 
-<div class="container mt-3" style="margin-bottom: 150px">
+<div class="container-fluid d-flex flex-column align-items-center mt-3" style="margin-bottom: 150px">
     <!-- بخش اول: پروفایل مظنون -->
     <div class="section profile-info">
         <div class="d-flex align-items-center justify-content-between mb-3">
@@ -96,8 +96,10 @@
         </div>
     </div>
 
-    <div class="section">
-        <h5 class="mb-0">{% trans "تشریح جسد" %}</h5>
+    <div class="section d-flex flex-column align-items-center">
+         <div class="w-100 text-end mb-4">
+            <h5 class="mb-4">{% trans 'تشریح جسد' %}</h5>
+        </div>
         <div class="container card autopsy-text mt-3">
             <!-- تایپ تدریجی متن -->
             {{ evidence.details|linebreaksbr }}
