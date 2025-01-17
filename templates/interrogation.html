@@ -21,7 +21,7 @@
 
 {% block content %}
 
-<div class="container-fluid my-5">
+<div class="container-fluid d-flex flex-column align-items-center">
     <!-- بخش اول: پروفایل مظنون -->
     <div class="section profile-info">
         <div class="d-flex align-items-center justify-content-between mb-3">
@@ -94,9 +94,7 @@
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
     <!-- بخش دوم: سوالات و پاسخ‌ها -->
     <div class="section d-flex flex-column align-items-center">
         <!-- تیتر سوال و جواب -->
@@ -119,10 +117,8 @@
             </a>
         </div>
     </div>
-</div>
 
-<div class="container-fluid" style="margin-bottom: 150px">
-        <!-- بخش سوم: تحلیل جسمی و احساسی -->
+    <!-- بخش سوم: تحلیل جسمی و احساسی -->
         <div class="section">
             <h5>{% trans 'آنالیز بدن' %}</h5>
             <p><strong>{% trans 'ضربان قلب:' %}</strong> <span id="heart-rate"></span></p>
