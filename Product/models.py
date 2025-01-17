@@ -78,7 +78,7 @@ class Suspect(models.Model):
     # وضعیت تاهل
     marital_status = models.CharField(
         max_length=20,
-        choices=[('single', 'مجرد'), ('married', 'متاهل'), ('divorced', 'طلاقت گرفته')],
+        choices=[('single', 'مجرد'), ('married', 'متاهل'), ('divorced', 'طلاق گرفته')],
         verbose_name="وضعیت تاهل"
     )
     relationship_with_victim = models.CharField(max_length=200, verbose_name="ارتباط با مقتول", blank=True, null=True)
