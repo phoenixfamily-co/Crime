@@ -302,6 +302,7 @@
 
             .section {
                 background-color: #2c2c2e;
+                width: 90%;
                 border-radius: 10px;
                 padding: 20px;
                 margin-bottom: 20px;
