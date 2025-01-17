@@ -97,25 +97,28 @@
 </div>
 
 <div class="container-fluid my-5">
-        <!-- بخش دوم: سوالات و پاسخ‌ها -->
-        <div class="section">
-            <h5>{% trans 'سوال و جواب' %}</h5>
-            <div id="question-card" class="card d-flex justify-content-center p-3">
-
-            </div>
-            <div class="d-flex justify-content-between mt-3">
-                 <a onclick="previousQuestion()" class="btn {% if LANGUAGE_BIDI %}float-end{% else %}float-start{% endif %}">
-                     <i class="fa-solid previous-icon {% if LANGUAGE_BIDI %} fa-arrow-right rtl {% else %} fa-arrow-left ltr{% endif %}"></i>
-                     <span>{% trans "قبلی" %}</span>
-                 </a>
-
-                <a onclick="nextQuestion()" class="btn {% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
-                    <span>{% trans "بعدی" %}</span>
-                    <i class="fa-solid next-icon {% if LANGUAGE_BIDI %} fa-arrow-left rtl {% else %} fa-arrow-right ltr{% endif %}"></i>
-                </a>
-            </div>
+    <!-- بخش دوم: سوالات و پاسخ‌ها -->
+    <div class="section d-flex flex-column align-items-center">
+        <!-- تیتر سوال و جواب -->
+        <div class="w-100 text-end mb-4">
+            <h5 class="mb-4">{% trans 'سوال و جواب' %}</h5>
         </div>
-
+        <!-- کارت سوالات -->
+        <div id="question-card" class="card p-3 w-50 text-center">
+            <!-- محتوای کارت -->
+        </div>
+        <!-- دکمه‌ها -->
+        <div class="d-flex justify-content-between mt-3 w-50">
+            <a onclick="previousQuestion()" class="btn {% if LANGUAGE_BIDI %}float-end{% else %}float-start{% endif %}">
+                <i class="fa-solid previous-icon {% if LANGUAGE_BIDI %} fa-arrow-right rtl {% else %} fa-arrow-left ltr{% endif %}"></i>
+                <span>{% trans "قبلی" %}</span>
+            </a>
+            <a onclick="nextQuestion()" class="btn {% if LANGUAGE_BIDI %}float-start{% else %}float-end{% endif %}">
+                <span>{% trans "بعدی" %}</span>
+                <i class="fa-solid next-icon {% if LANGUAGE_BIDI %} fa-arrow-left rtl {% else %} fa-arrow-right ltr{% endif %}"></i>
+            </a>
+        </div>
+    </div>
 </div>
 
 <div class="container-fluid" style="margin-bottom: 150px">
