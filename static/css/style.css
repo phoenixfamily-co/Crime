@@ -380,6 +380,7 @@
         form .form-control:focus {
             background-color: transparent;
             border-color:#d32f2f;
+            color: white;
             outline: none;
             box-shadow: none;
         }
