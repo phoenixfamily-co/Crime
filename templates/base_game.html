@@ -16,54 +16,56 @@
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
-    let audio = document.getElementById("background-music");
-    const toggleButton = document.getElementById("play-music");
+     window.onload = function() {
+         document.addEventListener("DOMContentLoaded", function () {
+             let audio = document.getElementById("background-music");
+             const toggleButton = document.getElementById("play-music");
 
-    // اگر فایل صوتی قبلاً تعریف نشده، آن را ایجاد کنید
-    if (!window.audioInstance) {
-        window.audioInstance = new Audio("/path/to/audio/file.mp3");
-        audio = window.audioInstance;
-        audio.loop = true;
+             // اگر فایل صوتی قبلاً تعریف نشده، آن را ایجاد کنید
+             if (!window.audioInstance) {
+                 window.audioInstance = new Audio("/path/to/audio/file.mp3");
+                 audio = window.audioInstance;
+                 audio.loop = true;
 
-        // تنظیم زمان و وضعیت از localStorage
-        const savedTime = parseFloat(localStorage.getItem("audioTime")) || 0;
-        const isPlaying = localStorage.getItem("audioPlaying") === "true";
+                 // تنظیم زمان و وضعیت از localStorage
+                 const savedTime = parseFloat(localStorage.getItem("audioTime")) || 0;
+                 const isPlaying = localStorage.getItem("audioPlaying") === "true";
 
-        audio.addEventListener("loadedmetadata", function () {
-            audio.currentTime = savedTime;
-            if (isPlaying) audio.play();
-        });
+                 audio.addEventListener("loadedmetadata", function () {
+                     audio.currentTime = savedTime;
+                     if (isPlaying) audio.play();
+                 });
 
-        audio.addEventListener("timeupdate", function () {
-            localStorage.setItem("audioTime", audio.currentTime.toString());
-        });
-    } else {
-        // استفاده از نمونه قبلی فایل صوتی
-        audio = window.audioInstance;
-    }
+                 audio.addEventListener("timeupdate", function () {
+                     localStorage.setItem("audioTime", audio.currentTime.toString());
+                 });
+             } else {
+                 // استفاده از نمونه قبلی فایل صوتی
+                 audio = window.audioInstance;
+             }
 
-    // مدیریت وضعیت پخش با دکمه
-    toggleButton.addEventListener("click", function () {
-        if (audio.paused) {
-            audio.play();
-            toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-            localStorage.setItem("audioPlaying", "true");
-        } else {
-            audio.pause();
-            toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-            localStorage.setItem("audioPlaying", "false");
-        }
-    });
+             // مدیریت وضعیت پخش با دکمه
+             toggleButton.addEventListener("click", function () {
+                 if (audio.paused) {
+                     audio.play();
+                     toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+                     localStorage.setItem("audioPlaying", "true");
+                 } else {
+                     audio.pause();
+                     toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+                     localStorage.setItem("audioPlaying", "false");
+                 }
+             });
 
-    // به‌روزرسانی وضعیت دکمه
-    if (audio.paused) {
-        toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-    } else {
-        toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-    }
-});
+             // به‌روزرسانی وضعیت دکمه
+             if (audio.paused) {
+                 toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+             } else {
+                 toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+             }
+         });
 
+     }
 </script>
 
     <style>
