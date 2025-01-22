@@ -19,19 +19,23 @@
 window.addEventListener('load', function() {
   const musicPlayer = document.getElementById('background-music');
 
-  // چک کنید که آیا زمان قبلی در localStorage ذخیره شده است یا خیر
-  const savedTime = localStorage.getItem('musicTime');
-  if (savedTime) {
-    musicPlayer.currentTime = savedTime;
+  // چک کنید که آیا موسیقی قبلاً پخش شده است یا خیر
+  if (!localStorage.getItem('musicPlayed')) {
+    // اگر موسیقی پخش نشده باشد، آن را پخش کنید
+    musicPlayer.play();
+
+    // ذخیره وضعیت پخش موسیقی
+    localStorage.setItem('musicPlayed', 'true');
+  } else {
+    // اگر موسیقی قبلاً پخش شده باشد، پخش را ادامه دهید
+    musicPlayer.currentTime = localStorage.getItem('musicTime');
+    musicPlayer.play();
   }
 
   // هر بار که موسیقی پخش می‌شود، زمان آن را ذخیره کنید
   musicPlayer.addEventListener('timeupdate', function() {
     localStorage.setItem('musicTime', musicPlayer.currentTime);
   });
-
-  // موسیقی را شروع کنید
-  musicPlayer.play();
 });
 
 
