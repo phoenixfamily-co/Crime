@@ -33,11 +33,11 @@
 
 <div class="container" style="margin-bottom: 150px">
     <!-- Evidence Cards -->
-  <div class="row mt-2 mx-md-5 justify-content-center">
+  <div class="row mx-md-5 justify-content-center">
 
         {% for evidence in evidences %}
             {% if evidence.status == "Locked" %}
-                <div class="col-12 col-md-4 mt-5 d-flex justify-content-center">
+                <div class="col-12 col-md-4 mt-3 d-flex justify-content-center">
                     <div class="card">
                         <img src="{{ evidence.image.url }}" class="card-img-top" alt="Locked Evidence">
                         <div class="card-body">
@@ -52,7 +52,7 @@
                 </div>
 
             {% else %}
-                <div class="col-12 col-md-4 mt-5 d-flex justify-content-center">
+                <div class="col-12 col-md-4 mt-3 d-flex justify-content-center">
                     <div class="card">
                         <img src="{{ evidence.image.url }}" class="card-img-top" alt="Evidence">
                         <div class="card-body">
