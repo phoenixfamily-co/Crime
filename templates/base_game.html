@@ -37,24 +37,6 @@
         });
     }
 
-    const toggleButton = document.getElementById("play-music");
-    toggleButton.addEventListener("click", function () {
-        if (audio.paused) {
-            audio.play();
-            toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-            localStorage.setItem("audioPlaying", "true");
-        } else {
-            audio.pause();
-            toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-            localStorage.setItem("audioPlaying", "false");
-        }
-    });
-
-    if (audio.paused) {
-        toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-    } else {
-        toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-    }
 });
 
 
@@ -108,6 +90,7 @@
 {##}
 {#</div>#}
  <!-- فوتر -->
+
     <footer>
             {% block footer_buttons %}
 
