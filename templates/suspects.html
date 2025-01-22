@@ -41,7 +41,7 @@
     <!-- Blog Post Card -->
 
       {% for x in suspects %}
-    <div class="col-12 col-md-4 {% if forloop.first %} mt-sm-3 {% else %} mt-5 {% endif %} d-flex justify-content-center">
+    <div class="col-12 col-md-4 {% if forloop.first %} mt-sm-3 mt-md-3 {% else %} mt-sm-3 mt-md-3 {% endif %} d-flex justify-content-center">
       <div class="card">
           {% if x.image %}
               <img src="{{ x.image.url }}" class="card-img-top" alt="{{ x.name }}" />
