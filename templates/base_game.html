@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         audio.addEventListener("timeupdate", function () {
-            localStorage.setItem("audioTime", audio.currentTime);
+            localStorage.setItem("audioTime", audio.currentTime.toString());
         });
     } else {
         // استفاده از نمونه قبلی فایل صوتی
