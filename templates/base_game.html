@@ -27,6 +27,12 @@
         const savedTime = parseFloat(localStorage.getItem("audioTime")) || 0;
         const isPlaying = localStorage.getItem("audioPlaying") === "true";
 
+        document.body.addEventListener("click", function () {
+        if (isPlaying) {
+            audio.play(); // پخش موسیقی
+        }
+    }, { once: true });
+
         audio.addEventListener("loadedmetadata", function () {
             audio.currentTime = savedTime;
             if (isPlaying) audio.play();
