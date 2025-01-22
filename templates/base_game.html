@@ -17,52 +17,46 @@
 <script>
 
     document.addEventListener("DOMContentLoaded", function () {
-        let audio = document.getElementById("background-music");
-        const toggleButton = document.getElementById("play-music");
+    let audio = window.audioInstance;
 
-        // اگر فایل صوتی قبلاً تعریف نشده، آن را ایجاد کنید
-        if (!window.audioInstance) {
-            window.audioInstance = new Audio("{% static 'audio/playback.mp3' %}");
-            audio = window.audioInstance;
-            audio.loop = true;
+    if (!audio) {
+        audio = new Audio("{% static 'audio/playback.mp3' %}");
+        window.audioInstance = audio;
+        audio.loop = true;
 
-            // تنظیم زمان و وضعیت از localStorage
-            const savedTime = parseFloat(localStorage.getItem("audioTime")) || 0;
-            const isPlaying = localStorage.getItem("audioPlaying") === "true";
+        const savedTime = parseFloat(localStorage.getItem("audioTime")) || 0;
+        const isPlaying = localStorage.getItem("audioPlaying") === "true";
 
-            audio.addEventListener("loadedmetadata", function () {
-                audio.currentTime = savedTime;
-                if (isPlaying) audio.play();
-            });
-
-            audio.addEventListener("timeupdate", function () {
-                localStorage.setItem("audioTime", audio.currentTime.toString());
-            });
-        } else {
-            // استفاده از نمونه قبلی فایل صوتی
-            audio = window.audioInstance;
-        }
-
-        // مدیریت وضعیت پخش با دکمه
-        toggleButton.addEventListener("click", function () {
-            if (audio.paused) {
-                audio.play();
-                toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-                localStorage.setItem("audioPlaying", "true");
-            } else {
-                audio.pause();
-                toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-                localStorage.setItem("audioPlaying", "false");
-            }
+        audio.addEventListener("loadedmetadata", function () {
+            audio.currentTime = savedTime;
+            if (isPlaying) audio.play();
         });
 
-        // به‌روزرسانی وضعیت دکمه
+        audio.addEventListener("timeupdate", function () {
+            localStorage.setItem("audioTime", audio.currentTime.toString());
+        });
+    }
+
+    const toggleButton = document.getElementById("play-music");
+    toggleButton.addEventListener("click", function () {
         if (audio.paused) {
-            toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-        } else {
+            audio.play();
             toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+            localStorage.setItem("audioPlaying", "true");
+        } else {
+            audio.pause();
+            toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+            localStorage.setItem("audioPlaying", "false");
         }
     });
+
+    if (audio.paused) {
+        toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+    } else {
+        toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+    }
+});
+
 
 </script>
 
