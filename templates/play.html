@@ -34,6 +34,9 @@
     <!-- دکمه شروع -->
     <i id="playIcon" onclick="runAnimation()" class="fa-regular fa-circle-play position-absolute top-50 start-50 translate-middle play-icon" style="color: #ffffff;"></i>
 
+    <audio id="clickSound" src="{% static 'audio/intro.mp3' %}"></audio>
+
+
 </div>
 
 
@@ -41,6 +44,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
 
+        const clickSound = document.getElementById('clickSound');
 
     function runAnimation() {
 
@@ -48,6 +52,8 @@
          // مخفی کردن آیکون
         const playIcon = document.getElementById("playIcon");
         playIcon.classList.add("hidden");
+
+        clickSound.play()
 
           // محو شدن سایه پس‌زمینه
         const backgroundOverlay = document.getElementById("backgroundOverlay");
