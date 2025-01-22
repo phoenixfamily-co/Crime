@@ -37,11 +37,11 @@
 {#</div>#}
 
  <div class="container" style="margin-bottom: 150px">
-  <div class="row mt-2 mx-md-5 justify-content-center">
+  <div class="row mx-md-5 justify-content-center">
     <!-- Blog Post Card -->
 
       {% for x in suspects %}
-    <div class="col-12 col-md-4 mt-5 d-flex justify-content-center">
+    <div class="col-12 col-md-4 mt-3 d-flex justify-content-center">
       <div class="card">
           {% if x.image %}
               <img src="{{ x.image.url }}" class="card-img-top" alt="{{ x.name }}" />
