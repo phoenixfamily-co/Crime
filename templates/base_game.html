@@ -29,39 +29,52 @@
 
 <script>
 
- document.addEventListener("DOMContentLoaded", function () {
-    const audio = document.getElementById("background-music");
+document.addEventListener("DOMContentLoaded", function () {
+    let audio = document.getElementById("background-music");
     const toggleButton = document.getElementById("play-music");
 
-    // بازیابی وضعیت پخش و زمان از localStorage
-    const isPlaying = localStorage.getItem("audioPlaying") === "true";
-    audio.currentTime = parseFloat(localStorage.getItem("audioTime")) || 0; // تنظیم زمان موسیقی به آخرین زمان ذخیره شده
+    // اگر فایل صوتی قبلاً تعریف نشده، آن را ایجاد کنید
+    if (!window.audioInstance) {
+        window.audioInstance = new Audio("/path/to/audio/file.mp3");
+        audio = window.audioInstance;
+        audio.loop = true;
 
-    if (isPlaying) {
-        audio.play(); // اگر موسیقی قبلاً در حال پخش بود، آن را پخش کنید
-        toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+        // تنظیم زمان و وضعیت از localStorage
+        const savedTime = parseFloat(localStorage.getItem("audioTime")) || 0;
+        const isPlaying = localStorage.getItem("audioPlaying") === "true";
+
+        audio.addEventListener("loadedmetadata", function () {
+            audio.currentTime = savedTime;
+            if (isPlaying) audio.play();
+        });
+
+        audio.addEventListener("timeupdate", function () {
+            localStorage.setItem("audioTime", audio.currentTime);
+        });
     } else {
-        audio.pause(); // اگر نه، آن را متوقف کنید
-        toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+        // استفاده از نمونه قبلی فایل صوتی
+        audio = window.audioInstance;
     }
-
-    // ذخیره زمان پخش موسیقی در حین پخش
-    audio.addEventListener('timeupdate', function () {
-        localStorage.setItem("audioTime", audio.currentTime);
-    });
 
     // مدیریت وضعیت پخش با دکمه
     toggleButton.addEventListener("click", function () {
         if (audio.paused) {
-            audio.play(); // پخش صدا
+            audio.play();
             toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-            localStorage.setItem("audioPlaying", "true"); // ذخیره وضعیت پخش
+            localStorage.setItem("audioPlaying", "true");
         } else {
-            audio.pause(); // توقف صدا
+            audio.pause();
             toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-            localStorage.setItem("audioPlaying", "false"); // ذخیره وضعیت توقف
+            localStorage.setItem("audioPlaying", "false");
         }
     });
+
+    // به‌روزرسانی وضعیت دکمه
+    if (audio.paused) {
+        toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+    } else {
+        toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+    }
 });
 
 </script>
@@ -73,7 +86,7 @@
 </head>
 <body>
     <!-- پخش موسیقی در تمام صفحات (با استفاده از جاوا اسکریپت) -->
-    <audio id="background-music" autoplay loop>
+    <audio id="background-music" loop>
         <source src="{% static 'audio/playback.mp3' %}" type="audio/mpeg">
         مرورگر شما از تگ audio پشتیبانی نمی‌کند.
     </audio>
