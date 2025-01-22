@@ -16,33 +16,22 @@
 
 <script>
 
-    document.addEventListener("DOMContentLoaded", function () {
-    let audio = window.audioInstance;
+window.addEventListener('load', function() {
+  const musicPlayer = document.getElementById('background-music');
 
-    if (!audio) {
-        audio = new Audio("{% static 'audio/playback.mp3' %}");
-        window.audioInstance = audio;
-        audio.loop = true;
+  // چک کنید که آیا زمان قبلی در localStorage ذخیره شده است یا خیر
+  const savedTime = localStorage.getItem('musicTime');
+  if (savedTime) {
+    musicPlayer.currentTime = savedTime;
+  }
 
-        const savedTime = parseFloat(localStorage.getItem("audioTime")) || 0;
-        const isPlaying = localStorage.getItem("audioPlaying") === "true";
+  // هر بار که موسیقی پخش می‌شود، زمان آن را ذخیره کنید
+  musicPlayer.addEventListener('timeupdate', function() {
+    localStorage.setItem('musicTime', musicPlayer.currentTime);
+  });
 
-        document.body.addEventListener("click", function () {
-        if (isPlaying) {
-            audio.play(); // پخش موسیقی
-        }
-    }, { once: true });
-
-        audio.addEventListener("loadedmetadata", function () {
-            audio.currentTime = savedTime;
-            if (isPlaying) audio.play();
-        });
-
-        audio.addEventListener("timeupdate", function () {
-            localStorage.setItem("audioTime", audio.currentTime.toString());
-        });
-    }
-
+  // موسیقی را شروع کنید
+  musicPlayer.play();
 });
 
 
