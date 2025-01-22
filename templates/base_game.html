@@ -28,41 +28,42 @@
     </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const audio = document.getElementById("background-music");
-        const toggleButton = document.getElementById("play-music");
 
-        // بازیابی وضعیت پخش و زمان از localStorage
-        const isPlaying = localStorage.getItem("audioPlaying") === "true";
-        audio.currentTime = localStorage.getItem("audioTime") || 0; // تنظیم زمان موسیقی به آخرین زمان ذخیره شده
+ document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("background-music");
+    const toggleButton = document.getElementById("play-music");
 
-        // اگر موسیقی قبلاً در حال پخش بود، آن را پخش کنید
-        if (isPlaying) {
-            audio.play();
-            toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-        } else {
-            audio.pause();
-            toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-        }
+    // بازیابی وضعیت پخش و زمان از localStorage
+    const isPlaying = localStorage.getItem("audioPlaying") === "true";
+    audio.currentTime = parseFloat(localStorage.getItem("audioTime")) || 0; // تنظیم زمان موسیقی به آخرین زمان ذخیره شده
 
-        // هنگام تغییر وضعیت موسیقی، زمان پخش و وضعیت آن را ذخیره کنید
-        toggleButton.addEventListener("click", function () {
-            if (audio.paused) {
-                audio.play(); // پخش صدا
-                toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-                localStorage.setItem("audioPlaying", "true"); // ذخیره وضعیت پخش
-            } else {
-                audio.pause(); // توقف صدا
-                toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-                localStorage.setItem("audioPlaying", "false"); // ذخیره وضعیت توقف
-            }
+    if (isPlaying) {
+        audio.play(); // اگر موسیقی قبلاً در حال پخش بود، آن را پخش کنید
+        toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+    } else {
+        audio.pause(); // اگر نه، آن را متوقف کنید
+        toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+    }
 
-            // ذخیره زمان کنونی پخش موسیقی در localStorage
-            audio.addEventListener('timeupdate', function () {
-                localStorage.setItem("audioTime", audio.currentTime);
-            });
-        });
+    // ذخیره زمان پخش موسیقی در حین پخش
+    audio.addEventListener('timeupdate', function () {
+        localStorage.setItem("audioTime", audio.currentTime);
     });
+
+    // مدیریت وضعیت پخش با دکمه
+    toggleButton.addEventListener("click", function () {
+        if (audio.paused) {
+            audio.play(); // پخش صدا
+            toggleButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+            localStorage.setItem("audioPlaying", "true"); // ذخیره وضعیت پخش
+        } else {
+            audio.pause(); // توقف صدا
+            toggleButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+            localStorage.setItem("audioPlaying", "false"); // ذخیره وضعیت توقف
+        }
+    });
+});
+
 </script>
 
     <style>
