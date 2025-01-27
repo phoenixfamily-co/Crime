@@ -3,7 +3,7 @@ import uuid
 from django.http import JsonResponse
 from django.utils.timezone import now
 from django_user_agents.utils import get_user_agent
-from User.models import User, UserDeviceInfo, UserActivityLog
+from .models import User, UserDeviceInfo, UserActivityLog
 from django.contrib.auth import login
 from django.utils.crypto import get_random_string
 

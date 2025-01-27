@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Podcast',
     'About',
     'Contact',
+    'Login',
 ]
 
 MIDDLEWARE = [
