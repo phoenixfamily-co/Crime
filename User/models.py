@@ -9,10 +9,10 @@ from django.utils.timezone import now
 class CustomAccountManager(BaseUserManager):
 
     def create_superuser(self, number, password, **other_fields):
-        other_fields.setdefault('is_staff', False)
-        other_fields.setdefault('is_superuser', False)
+        other_fields.setdefault('is_staff', True)
+        other_fields.setdefault('is_superuser', True)
         other_fields.setdefault('is_active', True)
-        other_fields.setdefault('is_admin', False)
+        other_fields.setdefault('is_admin', True)
 
         return self.create_user(number, password, **other_fields)
 
@@ -20,7 +20,7 @@ class CustomAccountManager(BaseUserManager):
         user = self.model(number=number, **other_fields)
         user.set_password(password)
         user.save()
-        return User
+        return user
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # شماره تلفن (اعتبارسنجی شماره تلفن)
     phone_regex = RegexValidator(
-        regex=r'^\+?(\d[\d-.() ]+)?(\d{9,15})$',
+        regex=r'^\+?(\d[\d().\s-]*)?\d{9,15}$',
         message="Phone number must be entered in a valid international format. Examples: '+1234567890', "
                 "'+1 (234) 567-8901', or '+44-20-1234-5678'."
     )
@@ -66,7 +66,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     updated_at = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = 'number'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'password', 'birthdate', 'gender']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'birth_date', 'gender']
 
     objects = CustomAccountManager()
 
@@ -107,7 +107,7 @@ class UserDeviceInfo(models.Model):
 
     # زمان ایجاد (برای ردیابی زمان)
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='UserDeviceInfo')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_device_info')
 
     def __str__(self):
         return f"{self.device_type} - {self.device_model or 'Unknown'}"
@@ -119,7 +119,7 @@ class UserDeviceInfo(models.Model):
 
 class UserActivityLog(models.Model):
     # اطلاعات کاربر (اگر کاربر احراز هویت شده باشد)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='UserActivityLog')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_activity_log')
 
     # صفحه بازدید شده
     visited_page = models.URLField()
