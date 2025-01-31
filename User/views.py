@@ -10,6 +10,8 @@ from rest_framework.generics import GenericAPIView, UpdateAPIView
 from .serializers import UserSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
+from rest_framework.exceptions import NotFound
 
 
 
@@ -109,7 +111,7 @@ def log_exit_time(request):
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
 
-class UserView(GenericAPIView):
+class UserObserve(GenericAPIView):
     permission_classes = [AllowAny]
     serializer_class = UserSerializer
     queryset = User.objects.all()
@@ -117,11 +119,24 @@ class UserView(GenericAPIView):
     def get(self, request, number=None):
         if number:
             # Retrieve a single object
-            user = User.objects.get(number=number)
-            serializer = self.get_serializer(user)
+            try:
+                user = User.objects.get(number=number)
+                serializer = self.get_serializer(user)
+            except:
+                raise NotFound(detail="user not found.")
         else:
             # Retrieve all objects
             users = self.get_queryset()
             serializer = self.get_serializer(users, many=True)
 
         return Response(serializer.data)
+
+class UpdateUser(UpdateAPIView):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+    permission_classes = [AllowAny]
+
+    def get_object(self):
+        """Retrieve user based on the `number` field instead of `pk`."""
+        number = self.kwargs.get("number")  # Get `number` from URL
+        return get_object_or_404(User, number=number)
