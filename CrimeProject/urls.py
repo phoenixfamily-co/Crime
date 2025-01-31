@@ -20,13 +20,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-from CrimeProject import settings
+from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # مسیر پنل ادمین
     path('set_language/', include('django.conf.urls.i18n')),  # مسیر تغییر زبان
     path('not-supported/', TemplateView.as_view(template_name='support.html'), name='not_supported'),
-
 ]
 
 urlpatterns += i18n_patterns(
@@ -35,7 +34,6 @@ urlpatterns += i18n_patterns(
     path('play/', include('Play.urls', namespace='play')),  # مسیر URLهای اپلیکیشن play
     path('user/', include('User.urls', namespace='user')),  # مسیر URLهای اپلیکیشن user
     path('login/', include('Login.urls', namespace='login')),  # مسیر URLهای اپلیکیشن login
-
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
