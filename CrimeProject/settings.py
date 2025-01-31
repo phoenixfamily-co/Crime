@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from datetime import timedelta
 from django.utils.translation import gettext_lazy as _
 
 
@@ -17,6 +18,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
+    '127.0.0.1',
     'crime.phoenixfamily.co',
     'www.crime.phoenixfamily.co'
 ]
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'About',
     'Contact',
     'Login',
+    "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
@@ -57,6 +60,19 @@ MIDDLEWARE = [
     # 'CrimeProject.middleware.MobileOnlyMiddleware',
 
 ]
+AUTH_USER_MODEL = 'User.User'
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
 
 ROOT_URLCONF = 'CrimeProject.urls'
 
@@ -147,7 +163,6 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'User.User'
 
 LOGGING = {
     'version': 1,
