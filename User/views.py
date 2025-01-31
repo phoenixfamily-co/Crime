@@ -6,6 +6,11 @@ from django_user_agents.utils import get_user_agent
 from .models import User, UserDeviceInfo, UserActivityLog
 from django.contrib.auth import login
 from django.utils.crypto import get_random_string
+from rest_framework.generics import GenericAPIView, UpdateAPIView
+from .serializers import UserSerializer
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+
 
 
 def get_or_create_temporary_user(request):
@@ -103,3 +108,20 @@ def log_exit_time(request):
             return JsonResponse({'status': 'error', 'message': 'Log not found'}, status=404)
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
+
+class UserView(GenericAPIView):
+    permission_classes = [AllowAny]
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+
+    def get(self, request, number=None):
+        if number:
+            # Retrieve a single object
+            user = User.objects.get(number=number)
+            serializer = self.get_serializer(user)
+        else:
+            # Retrieve all objects
+            users = self.get_queryset()
+            serializer = self.get_serializer(users, many=True)
+
+        return Response(serializer.data)
