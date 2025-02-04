@@ -8,15 +8,13 @@ from django.contrib.auth import login
 from django.utils.crypto import get_random_string
 from rest_framework.generics import GenericAPIView, UpdateAPIView
 from .serializers import UserSerializer
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import NotFound
 
 
-
 def get_or_create_temporary_user(request):
-
     if not request.session.get('user_id'):  # بررسی اینکه آیا کاربر موقت در سشن ذخیره شده است
         user = User.objects.create(
             id=uuid.uuid4(),
@@ -111,6 +109,7 @@ def log_exit_time(request):
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
 
+
 class UserObserve(GenericAPIView):
     permission_classes = [AllowAny]
     serializer_class = UserSerializer
@@ -131,10 +130,14 @@ class UserObserve(GenericAPIView):
 
         return Response(serializer.data)
 
+
 class UpdateUser(UpdateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
+
+    # def get_object(self):
+    #     return self.request.user
 
     def get_object(self):
         """Retrieve user based on the `number` field instead of `pk`."""
