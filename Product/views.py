@@ -25,7 +25,7 @@ def play(request, pk):
 
     log = log_user_activity(request, request.build_absolute_uri(), user)
 
-    return render(request, 'play.html', {
+    return render(request, 'games/play.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
@@ -42,7 +42,7 @@ def start(request, pk):
 
     log = log_user_activity(request, request.build_absolute_uri(), request.user)
 
-    return render(request, 'start.html', {
+    return render(request, 'games/start.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
@@ -60,7 +60,7 @@ def suspects(request, pk):
 
     log = log_user_activity(request, request.build_absolute_uri(), request.user)
 
-    return render(request, 'suspects.html', {
+    return render(request, 'games/suspects.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
@@ -79,7 +79,7 @@ def interrogation(request, pk):
 
     log = log_user_activity(request, request.build_absolute_uri(), request.user)
 
-    return render(request, 'interrogation.html', {
+    return render(request, 'games/interrogation.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'interrogations': interrogations,
@@ -98,7 +98,7 @@ def evidence(request, pk):
 
     log = log_user_activity(request, request.build_absolute_uri(), request.user)
 
-    return render(request, 'evidence.html', {
+    return render(request, 'games/evidence.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
@@ -117,7 +117,7 @@ def result(request, pk):
 
     log = log_user_activity(request, request.build_absolute_uri(), request.user)
 
-    return render(request, 'result.html', {
+    return render(request, 'games/result.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
@@ -136,7 +136,7 @@ def autopsy(request, pk):
 
     log = log_user_activity(request, request.build_absolute_uri(), request.user)
 
-    return render(request, 'autopsy.html', {
+    return render(request, 'games/autopsy.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'suspect': suspect,

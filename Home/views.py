@@ -12,4 +12,4 @@ def home(request):
 
     products = Case.objects.all()
 
-    return render(request, 'home.html', {'LANGUAGE_CODE': current_language,'LANGUAGE_BIDI': is_bidi,'products':products})
+    return render(request, 'main/home.html', {'LANGUAGE_CODE': current_language, 'LANGUAGE_BIDI': is_bidi, 'products':products})

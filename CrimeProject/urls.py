@@ -25,7 +25,7 @@ from CrimeProject import settings
 urlpatterns = [
     path('admin/', admin.site.urls),  # مسیر پنل ادمین
     path('set_language/', include('django.conf.urls.i18n')),  # مسیر تغییر زبان
-    path('not-supported/', TemplateView.as_view(template_name='support.html'), name='not_supported'),
+    path('not-supported/', TemplateView.as_view(template_name='games/support.html'), name='not_supported'),
 
 ]
 

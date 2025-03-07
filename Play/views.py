@@ -22,7 +22,7 @@ def success(request, pk):
 
     log = log_user_activity(request, request.build_absolute_uri(), request.user)
 
-    return render(request, 'success.html', {
+    return render(request, 'games/success.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
@@ -41,7 +41,7 @@ def failed(request, pk):
 
     log = log_user_activity(request, request.build_absolute_uri(), request.user)
 
-    return render(request, 'failed.html', {
+    return render(request, 'games/failed.html', {
         'LANGUAGE_CODE': current_language,
         'LANGUAGE_BIDI': is_bidi,
         'case': product,
