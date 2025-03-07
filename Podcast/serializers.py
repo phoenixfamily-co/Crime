@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import PodcastPost
 
 
-class BlogPostSerializer(serializers.ModelSerializer):
+class PodcastPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = PodcastPost
         fields = [

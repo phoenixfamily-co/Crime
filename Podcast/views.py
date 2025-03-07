@@ -5,6 +5,7 @@ from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
 from About.models import AboutUs
 from .models import *
+from .serializers import PodcastPostSerializer
 
 
 class BlogPostListView(ListView):
@@ -14,7 +15,7 @@ class BlogPostListView(ListView):
     paginate_by = 10  # تعداد مقالات در هر صفحه
 
     def get_queryset(self):
-        queryset = BlogPost.objects.all().order_by("-published_date")
+        queryset = PodcastPost.objects.all().order_by("-published_date")
         filters = Q()
         author = self.request.GET.get("author")
         search = self.request.GET.get("search")
@@ -28,7 +29,7 @@ class BlogPostListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['total_posts'] = BlogPost.objects.count()  # تعداد کل مقالات
+        context['total_posts'] = PodcastPost.objects.count()  # تعداد کل مقالات
         context['About'] = AboutUs.objects.first()
 
         return context
@@ -36,13 +37,13 @@ class BlogPostListView(ListView):
 
 # جزئیات مقاله
 class PodcastPostDetailView(DetailView):
-    model = BlogPost
+    model = PodcastPost
     template_name = "main/podcastpost.html"
     context_object_name = "podcast-post"
 
     def get_object(self, queryset=None):
         pk = self.kwargs.get("pk")
-        return get_object_or_404(BlogPost, id=pk)
+        return get_object_or_404(PodcastPost, id=pk)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -100,5 +101,5 @@ class PodcastPostDetailView(DetailView):
 
 
 class PodcastViewSet(viewsets.ModelViewSet):
-    queryset = BlogPost.objects.all().order_by('-published_date')  # لیست مقالات مرتب‌شده بر اساس تاریخ انتشار
-    serializer_class = BlogPostSerializer
+    queryset = PodcastPost.objects.all().order_by('-published_date')  # لیست مقالات مرتب‌شده بر اساس تاریخ انتشار
+    serializer_class = PodcastPostSerializer
