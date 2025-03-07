@@ -61,24 +61,7 @@
 
 {% block content %}
 
-<div class="container w-80 mt-4">
-    <div class="input-group">
-        <label for="search-input"></label>
-        <input type="text" id="search-input" class="form-control" placeholder="{% trans 'Search' %}">
-        <div class="input-group-append">
-            <button id="search-button" class="btn" type="button">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
-</div>
-
 <div class="container my-5">
-  <div class="row">
-    <div class="col-md-12" style="color:var(--primary-light);">
-      <h4 class="mb-3">{% trans 'Power of Observation Creates Knowledge That Leads to More Power' %}</h4>
-    </div>
-  </div>
   <div class="row mt-4">
     <!-- Blog Post Card -->
   {% for product in products %}
