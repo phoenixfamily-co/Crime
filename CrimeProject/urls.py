@@ -34,6 +34,10 @@ urlpatterns += i18n_patterns(
     path('product/', include('Product.urls', namespace='product')),  # مسیر URLهای اپلیکیشن Home
     path('play/', include('Play.urls', namespace='play')),  # مسیر URLهای اپلیکیشن Home
     path('user/', include('User.urls', namespace='user')),  # مسیر URLهای اپلیکیشن Home
+    path('about/', include('About.urls', namespace='about')),  # مسیر URLهای اپلیکیشن Home
+    path('contact/', include('Contact.urls', namespace='contact')),  # مسیر URLهای اپلیکیشن Home
+    path('blog/', include('Blog.urls', namespace='blog')),  # مسیر URLهای اپلیکیشن Home
+    path('podcast/', include('Podcast.urls', namespace='podcast')),  # مسیر URLهای اپلیکیشن Home
 
 )
 

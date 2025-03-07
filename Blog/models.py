@@ -8,10 +8,9 @@ from Seo.models import Keyword
 # from django.contrib.auth.models import User  # برای مدیریت نویسنده‌ها
 
 
-class PodcastPost(models.Model):
+class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
-    sound = models.FileField(upload_to='sounds/', null=True)
     content = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)  # تاریخ انتشار
     # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="blog_posts", blank=True, null=True)  # نویسنده مقاله

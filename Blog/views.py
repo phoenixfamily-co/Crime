@@ -9,9 +9,9 @@ from Blog.serializers import BlogPostSerializer
 
 
 # لیست مقالات
-class PodcastViewSetPostListView(ListView):
+class BlogPostListView(ListView):
     model = BlogPost
-    template_name = "main/podcast.html"
+    template_name = "main/blog.html"
     context_object_name = "blog_posts"
     paginate_by = 10  # تعداد مقالات در هر صفحه
 
@@ -37,9 +37,9 @@ class PodcastViewSetPostListView(ListView):
 
 
 # جزئیات مقاله
-class PodcastPostDetailView(DetailView):
+class BlogPostDetailView(DetailView):
     model = BlogPost
-    template_name = "main/podcastpost.html"
+    template_name = "main/blogpost.html"
     context_object_name = "blog_post"
 
     def get_object(self, queryset=None):
@@ -101,6 +101,6 @@ class PodcastPostDetailView(DetailView):
         return blog_post.meta_keywords  # اگر مقاله دسته‌بندی‌ها داشته باشد
 
 
-class PodcastViewSet(viewsets.ModelViewSet):
+class BlogPostViewSet(viewsets.ModelViewSet):
     queryset = BlogPost.objects.all().order_by('-published_date')  # لیست مقالات مرتب‌شده بر اساس تاریخ انتشار
     serializer_class = BlogPostSerializer
