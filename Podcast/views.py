@@ -4,13 +4,11 @@ from django.views.generic import ListView, DetailView
 from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
 from About.models import AboutUs
-from Blog.models import BlogPost
-from Blog.serializers import BlogPostSerializer
+from .models import *
 
 
-# لیست مقالات
-class PodcastViewSetPostListView(ListView):
-    model = BlogPost
+class BlogPostListView(ListView):
+    model = PodcastPost
     template_name = "main/podcast.html"
     context_object_name = "blog_posts"
     paginate_by = 10  # تعداد مقالات در هر صفحه
@@ -40,7 +38,7 @@ class PodcastViewSetPostListView(ListView):
 class PodcastPostDetailView(DetailView):
     model = BlogPost
     template_name = "main/podcastpost.html"
-    context_object_name = "blog_post"
+    context_object_name = "podcast-post"
 
     def get_object(self, queryset=None):
         pk = self.kwargs.get("pk")

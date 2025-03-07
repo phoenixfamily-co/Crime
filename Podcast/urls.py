@@ -8,7 +8,7 @@ router = DefaultRouter()
 router.register(r'podcast', PodcastViewSet, basename='podcast')
 
 urlpatterns = [
-    path('', PodcastViewSet.as_view(), name='podcast-view'),  # صفحه اصلی
+    path('', BlogPostListView.as_view(), name='podcast-view'),  # صفحه اصلی
     path('blog/<int:pk>/', PodcastPostDetailView.as_view(), name='podcast-detail'),
 
     path('api/', include(router.urls)),
