@@ -31,7 +31,6 @@ body {
 
 .navbar {
     background-color: var(--navbar-bg);
-    border-bottom: 2px solid var(--navbar-border);
 }
 
 .nav-link {
