@@ -92,14 +92,6 @@ body {
 
 }
 
-.container {
-    width: 100%; /* اضافه کردن این خط */
-    display: flex;
-    background-color: transparent;
-    justify-content: center;
-}
-
-
 .card {
     color: var(--text-color) !important;
     text-align: start;
