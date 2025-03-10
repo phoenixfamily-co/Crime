@@ -26,57 +26,58 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'blogs:blog-view' %}">{% trans "Blogs" %}</a></li>
     </ul>
 
-        <!-- فرم تغییر زبان -->
-        <form action="{% url 'set_language' %}" method="post">
-            {% csrf_token %}
-            <label>
-                <select name="language" class="form-select form-select-sm w-auto"
-                        onchange="this.form.submit()" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for language in languages %}
-                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
-                                selected{% endif %}>
-                            {{ language.name_local }} ({{ language.code }})
-                        </option>
-                    {% endfor %}
-                </select>
-            </label>
-        </form>
+    <!-- فرم تغییر زبان -->
+    <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <label>
+            <select name="language" class="form-select form-select-sm w-auto"
+                    onchange="this.form.submit()" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                            selected{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+    </form>
 
 {% endblock %}
 
 
 {% block content %}
 
-<div class="container my-5">
-  <div class="row mt-4">
-    <!-- Blog Post Card -->
-  {% for product in products %}
+    <div class="container my-5">
+        <div class="row mt-4">
+            <!-- Blog Post Card -->
+            {% for product in products %}
 
-    <div class="col-md-4 mb-4">
-         <div class="card">
-             {% if product.image %}
-                 <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}" />
-             {% else %}
-                 <img src="{% static 'images/banner.webp' %}" class="card-img-top" alt="{{ post.title }}" />
-             {% endif %}
-        <div class="card-body">
-            <h5 class="card-title">{{ product.title }}</h5>
-            <p class="card-text">
-                سطح سختی:{{ product.difficulty_level }}  | درجه سختی: {{ product.difficulty_number }} از 10
-            </p>
-        </div>
-        <div class="card-footer">
-            <a href="{% url 'product:play-view' product.id %}" target="_blank">Play</a>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}"/>
+                        {% else %}
+                            <img src="{% static 'images/banner.webp' %}" class="card-img-top" alt="{{ post.title }}"/>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <p class="card-text">
+                                سطح سختی:{{ product.difficulty_level }} | درجه سختی: {{ product.difficulty_number }} از
+                                10
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{% url 'product:play-view' product.id %}" target="_blank">Play</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
         </div>
     </div>
-    </div>
-  {% endfor %}
-
-  </div>
-</div>
 
 {% endblock %}
 
@@ -85,8 +86,9 @@
     <div class="row align-items-center">
         <!-- لوگوی شرکت -->
         <div class="col-md-4 text-center mb-3 mb-md-0">
-            <a href="//crime.phoenixfamily.co">
-                <img src="{{ About.logo.url }}" alt="{{ About.name }}" class="img-fluid" style="max-width: 150px;">
+            <a href="//phoenixfamily.co">
+                <img src="{{ About.logo.url }}" alt="{{ About.name }}" class="img-fluid"
+                     style="max-width: 150px;">
             </a>
         </div>
 
@@ -112,6 +114,7 @@
             </div>
         </div>
     </div>
+
 
 {% endblock %}
 
