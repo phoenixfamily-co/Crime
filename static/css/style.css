@@ -11,7 +11,6 @@
     --primary-dark: #333;
     --toggle-bg-light: var(--primary-light);
     --toggle-bg-dark: #444;
-    --text-color-muted: #262626; /* رنگ خاکستری مشابه text-muted */
     --navbar-toggler-icon-color: #333; /* رنگ ایکون برای حالت لایت */
 }
 
@@ -21,10 +20,6 @@ body {
     color: var(--text-color) !important;
     font-family: Arial, sans-serif;
     transition: background-color 0.3s, color 0.3s;
-}
-
-.text-mute {
-    color: var(--text-color-muted) !important;
 }
 
 .navbar {
@@ -168,7 +163,6 @@ footer p {
 }
 
 footer .copyright {
-    color: var(--text-color-muted); /* رنگ متن مشابه text-muted */
     font-size: 0.875rem; /* اندازه متن شبیه text-muted */
     margin: 0; /* حذف حاشیه */
     transition: color 0.3s ease; /* تغییر روان رنگ */
