@@ -16,9 +16,12 @@
 }
 
 body {
+    justify-content: center;
+    align-items: center;
     margin: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    font-family: Arial, sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
 
