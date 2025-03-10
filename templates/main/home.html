@@ -26,24 +26,24 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'blogs:blog-view' %}">{% trans "Blogs" %}</a></li>
     </ul>
 
-    <!-- فرم تغییر زبان -->
-    <form action="{% url 'set_language' %}" method="post">
-        {% csrf_token %}
-        <label>
-            <select name="language" class="form-select form-select-sm w-auto"
-                    onchange="this.form.submit()" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
-                            selected{% endif %}>
-                        {{ language.name_local }} ({{ language.code }})
-                    </option>
-                {% endfor %}
-            </select>
-        </label>
-    </form>
+    <div class="d-flex align-items-center">
+        <form action="{% url 'set_language' %}" method="post" class="ms-3">
+            {% csrf_token %}
+            <label>
+                <select name="language" class="form-select form-select-sm w-auto"
+                        onchange="this.form.submit()" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </label>
+        </form>
+    </div>
 
 {% endblock %}
 

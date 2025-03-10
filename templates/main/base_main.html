@@ -47,8 +47,9 @@
 
 <header>
     <nav class="navbar navbar-expand-lg shadow-sm">
-        <div class="container">
+        <div class="container d-flex justify-content-between align-items-center">
 
+            <!-- لوگو سمت چپ -->
             <a class="navbar-brand" href="//phoenixfamily.co">
                 <img src="{{ About.logo.url }}" alt="{% trans 'Logo' %}" class="d-inline-block align-text-top">
             </a>
@@ -57,7 +58,7 @@
                     aria-controls="navbarNav" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
                 <i class="fa-solid fa-bars custom-toggler"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 {% block header %}
 
                 {% endblock %}
