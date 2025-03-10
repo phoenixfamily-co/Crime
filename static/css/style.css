@@ -34,7 +34,7 @@ body {
 }
 
 .nav-link {
-    color: var(--nav-link-color) !important;
+    color: var(--text-color) !important;
     transition: color 0.3s ease;
 }
 
