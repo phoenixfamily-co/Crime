@@ -26,7 +26,7 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'blogs:blog-view' %}">{% trans "Blogs" %}</a></li>
     </ul>
 
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center ms-auto">
         <form action="{% url 'set_language' %}" method="post" class="ms-3 form-inline">
             {% csrf_token %}
             <select name="language" class="form-select form-select-sm w-auto"
