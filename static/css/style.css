@@ -16,8 +16,6 @@
 }
 
 body {
-    justify-content: center;
-    align-items: center;
     margin: 0;
     background-color: var(--bg-color) !important;
     color: var(--text-color) !important;
@@ -146,12 +144,137 @@ body {
 }
 
 footer {
-    background-color: var(--navbar-bg) !important;
-    color: var(--text-color) !important;
-    position: fixed; /* برای جلوگیری از تداخل با بخش‌های دیگر */
+    background-color: var(--navbar-bg);
+    color: var(--text-color);
     border-top: 2px solid var(--navbar-border) !important;
-    bottom: 0;
-    width: 100%;
+    position: relative; /* برای جلوگیری از تداخل با بخش‌های دیگر */
+}
+
+footer a {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--nav-link-hover); /* رنگ لینک‌ها هنگام هاور */
+}
+
+footer i {
+    color: var(--text-color);
+}
+
+footer p {
+    color: var(--text-color);
+}
+
+footer .copyright {
+    color: var(--text-color-muted); /* رنگ متن مشابه text-muted */
+    font-size: 0.875rem; /* اندازه متن شبیه text-muted */
+    margin: 0; /* حذف حاشیه */
+    transition: color 0.3s ease; /* تغییر روان رنگ */
+    opacity: 0.8; /* شفافیت متن مشابه text-muted */
+
+}
+
+footer .contact-icon {
+    color: var(--primary-light); /* رنگ آیکون‌ها به رنگ لوگو */
+    font-size: 1.2rem; /* اندازه آیکون */
+    transition: color 0.3s ease; /* تغییر رنگ روان */
+    margin-right: 0.5rem
+}
+
+
+html[dir="rtl"] .contact-icon {
+    margin-right: 0; /* حذف فاصله سمت راست برای زبان‌های راست‌به‌چپ */
+    margin-left: 0.5rem; /* ایجاد فاصله از سمت چپ */
+}
+
+.center-container {
+    text-align: center;
+    margin-top: 200px;
+    padding: 30px;
+    background-color: var(--navbar-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    width: 400px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* این باعث می‌شود که بخش در وسط صفحه باشد */
+    z-index: 1000; /* اطمینان از اینکه این بخش بالاتر از سایر محتویات صفحه قرار می‌گیرد */
+}
+
+.center-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.center-container p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.center-container .spinner-border {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    border-width: 4px;
+    color: var(--btn-bg);
+}
+
+html[dir="rtl"] .social-icons {
+    display: flex;
+    justify-content: center; /* برای وسط‌چین کردن آیکون‌ها */
+    gap: 10px; /* فاصله بین آیکون‌ها */
+    direction: rtl; /* جهت متن و آیکون‌ها به راست */
+}
+
+html[dir="rtl"] .social-icons a {
+    margin-left: 0; /* حذف margin چپ اضافی */
+    margin-right: 10px; /* فاصله مناسب برای راست به چپ */
+}
+
+.social-icons a i {
+    color: var(--text-color);; /* رنگ پیش‌فرض */
+    transition: color 0.3s ease; /* انیمیشن */
+}
+
+.social-icons a i:hover {
+    color: var(--btn-bg) !important; /* تغییر رنگ هنگام hover */
+}
+
+html[dir="rtl"] .logo-container {
+    text-align: right; /* راست چین کردن محتوا */
+    margin-right: 20px; /* فاصله از سمت راست */
+}
+
+/* برای زبان‌های چپ به راست (LTR) */
+html[dir="ltr"] .logo-container {
+    text-align: center; /* وسط چین کردن محتوا */
+}
+
+.navbar-toggler-icon {
+    display: none !important; /* مخفی کردن آیکون پیش‌فرض */
+}
+
+.custom-toggler {
+    color: var(--text-color);
+    border: 0;
+    font-size: 24px;
+}
+
+.navbar-toggler {
+    border: none !important; /* حذف بردر دور دکمه */
+    outline: none !important; /* حذف کادر زمانی که روی دکمه کلیک می‌کنید */
+    background-color: transparent; /* حذف پس‌زمینه */
+    box-shadow: none !important; /* حذف هرگونه سایه */
+}
+
+.navbar-toggler:focus {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .btn {
